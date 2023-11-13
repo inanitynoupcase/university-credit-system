@@ -273,7 +273,7 @@ namespace QLNV1
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 578);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 547);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barDockControlBottom.Size = new System.Drawing.Size(1083, 20);
@@ -285,7 +285,7 @@ namespace QLNV1
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 45);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 533);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 502);
             // 
             // barDockControlRight
             // 
@@ -294,7 +294,7 @@ namespace QLNV1
             this.barDockControlRight.Location = new System.Drawing.Point(1083, 45);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 533);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 502);
             // 
             // panelControl1
             // 
@@ -372,7 +372,7 @@ namespace QLNV1
             this.lOPGridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lOPGridControl.MenuManager = this.barManager1;
             this.lOPGridControl.Name = "lOPGridControl";
-            this.lOPGridControl.Size = new System.Drawing.Size(1083, 222);
+            this.lOPGridControl.Size = new System.Drawing.Size(1083, 379);
             this.lOPGridControl.TabIndex = 6;
             this.lOPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -452,10 +452,10 @@ namespace QLNV1
             this.panelControl2.Controls.Add(mALOPLabel);
             this.panelControl2.Controls.Add(this.txbMaLop);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 318);
+            this.panelControl2.Location = new System.Drawing.Point(0, 475);
             this.panelControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1083, 260);
+            this.panelControl2.Size = new System.Drawing.Size(1083, 72);
             this.panelControl2.TabIndex = 7;
             // 
             // pictureBox1
@@ -539,7 +539,7 @@ namespace QLNV1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1083, 598);
+            this.ClientSize = new System.Drawing.Size(1083, 567);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.lOPGridControl);
             this.Controls.Add(this.panelControl1);
