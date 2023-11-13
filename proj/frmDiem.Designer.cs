@@ -58,8 +58,9 @@ namespace QLNV1
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.bdsMonHoc = new System.Windows.Forms.BindingSource(this.components);
+            this.mONHOCBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DS = new QLNV1.QLDSVHTCDataSet();
+            this.bdsMonHoc = new System.Windows.Forms.BindingSource(this.components);
             this.mONHOCTableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.MONHOCTableAdapter();
             this.tableAdapterManager = new QLNV1.QLDSVHTCDataSetTableAdapters.TableAdapterManager();
             this.DiemGridControl = new DevExpress.XtraGrid.GridControl();
@@ -85,8 +86,9 @@ namespace QLNV1
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiemGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -377,16 +379,21 @@ namespace QLNV1
             this.label4.TabIndex = 2;
             this.label4.Text = "Học kì";
             // 
-            // bdsMonHoc
+            // mONHOCBindingSource
             // 
-            this.bdsMonHoc.DataMember = "MONHOC";
-            this.bdsMonHoc.DataSource = this.DS;
-            this.bdsMonHoc.CurrentChanged += new System.EventHandler(this.bdsMonHoc_CurrentChanged);
+            this.mONHOCBindingSource.DataMember = "MONHOC";
+            this.mONHOCBindingSource.DataSource = this.DS;
             // 
             // DS
             // 
             this.DS.DataSetName = "DS";
             this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bdsMonHoc
+            // 
+            this.bdsMonHoc.DataMember = "MONHOC";
+            this.bdsMonHoc.DataSource = this.DS;
+            this.bdsMonHoc.CurrentChanged += new System.EventHandler(this.bdsMonHoc_CurrentChanged);
             // 
             // mONHOCTableAdapter
             // 
@@ -631,8 +638,9 @@ namespace QLNV1
             this.panelControl1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiemGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
@@ -690,5 +698,6 @@ namespace QLNV1
         private System.Windows.Forms.TextBox textBoxDiemCK;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxDiemGK;
+        private System.Windows.Forms.BindingSource mONHOCBindingSource;
     }
 }

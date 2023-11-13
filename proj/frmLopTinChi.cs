@@ -29,14 +29,20 @@ namespace QLNV1
         private void lOPTINCHIBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
-          
+
 
         }
 
         private void frmLopTinChi_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'DS.SP_LayDSGV' table. You can move, or remove it, as needed.
+            this.sP_LayDSGVTableAdapter.Fill(this.DS.SP_LayDSGV);
             // TODO: This line of code loads data into the 'DS.GIANGVIEN' table. You can move, or remove it, as needed.
-           
+            this.gIANGVIENTableAdapter.Fill(this.DS.GIANGVIEN);
+            // TODO: This line of code loads data into the 'DS.SP_DanhSachLTCKoDK' table. You can move, or remove it, as needed.
+            this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+            // TODO: This line of code loads data into the 'DS.GIANGVIEN' table. You can move, or remove it, as needed.
+
             // TODO: This line of code loads data into the 'DS.DANGKY' table. You can move, or remove it, as needed.
             loadGVcombobox();
             DS.EnforceConstraints = false;
@@ -47,7 +53,7 @@ namespace QLNV1
             this.DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
             this.DANGKYTableAdapter.Fill(this.DS.DANGKY);
 
-       
+
             this.MONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
             this.MONHOCTableAdapter.Fill(this.DS.MONHOC);
 
@@ -57,7 +63,7 @@ namespace QLNV1
             cbKhoa.ValueMember = "TENSERVER";
             cbKhoa.SelectedIndex = Program.mChinhanh;
 
-           
+
 
             cbTenMonHoc.DataSource = bdsMonHoc;
             cbTenMonHoc.DisplayMember = "TENMON";
@@ -69,6 +75,7 @@ namespace QLNV1
             }
             txbMaMonHoc.Text = cbTenMonHoc.ValueMember.ToString();
             txbMaGiangVien.Text = cbTenGiangVien.ValueMember.ToString();
+         
         }
 
         private void lOPTINCHIBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
@@ -91,9 +98,7 @@ namespace QLNV1
             dt = Program.ExecSqlDataTable(cmd);
             BindingSource bdsgv = new BindingSource();
             bdsgv.DataSource = dt;
-            cbTenGiangVien.DataSource = bdsgv;
-            cbTenGiangVien.DisplayMember = "HOTEN";
-            cbTenGiangVien.ValueMember = "MAGV";
+            
         }
 
         private void cbKhoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -117,14 +122,14 @@ namespace QLNV1
             }
             else if (cbKhoa.SelectedIndex != 2)
             {
-                 loadGVcombobox();
+                loadGVcombobox();
                 this.LOPTINCHITableAdapter.Connection.ConnectionString = Program.connstr;
                 this.LOPTINCHITableAdapter.Fill(this.DS.LOPTINCHI);
                 this.DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.DANGKYTableAdapter.Fill(this.DS.DANGKY);
                 macn = ((DataRowView)bdsLopTinChi[0])["MAKHOA"].ToString();
             }
-           
+
         }
 
         private void btnPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -157,10 +162,10 @@ namespace QLNV1
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;
             btnGhi.Enabled = btnPhucHoi.Enabled = true;
             lOPTINCHIGridControl.Enabled = false;
-         
+
         }
 
-     
+
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -202,7 +207,7 @@ namespace QLNV1
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             btnPhucHoi.Enabled = true;
-           
+
             if (speHocKy.Value == 0)
             {
                 MessageBox.Show("Học kì không được thiếu!", "", MessageBoxButtons.OK);
@@ -215,12 +220,12 @@ namespace QLNV1
                 speSoSVToiThieu.Focus();
                 return;
             }
-            if (speNhom.Value == 0)
+           /* if (speNhom.Value == 0)
             {
                 MessageBox.Show("Nhóm không được thiếu!", "", MessageBoxButtons.OK);
                 speSoSVToiThieu.Focus();
                 return;
-            }
+            }*/
             if (txbMaKhoa.Text.Trim() == "")
             {
                 MessageBox.Show("Mã khoa không được thiếu!", "", MessageBoxButtons.OK);
@@ -281,17 +286,17 @@ namespace QLNV1
             this.Close();
         }
 
-     
+
 
         private void cbTenGiangVien_SelectedValueChanged(object sender, EventArgs e)
         {
-            if(cbTenGiangVien.SelectedValue != null)
+            if (cbTenGiangVien.SelectedValue != null)
             {
                 txbMaGiangVien.Text = cbTenGiangVien.SelectedValue.ToString();
             }
         }
 
-      
+
         private void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             GridView view = sender as GridView;
@@ -336,16 +341,72 @@ namespace QLNV1
 
         private void txbMaMonHoc_EditValueChanged(object sender, EventArgs e)
         {
-           // cbTenMonHoc.SelectedValue = txbMaMonHoc.Text;
+            // cbTenMonHoc.SelectedValue = txbMaMonHoc.Text;
         }
 
         private void txbMaGiangVien_EditValueChanged(object sender, EventArgs e)
         {
-          //  cbTenGiangVien.SelectedValue = txbMaGiangVien.Text;
+            //  cbTenGiangVien.SelectedValue = txbMaGiangVien.Text;
         }
 
         private void cbTenGiangVien_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void lOPTINCHIGridControl_Click(object sender, EventArgs e)
+        {
+            if (bdsLopTinChi.Count > 0)
+            {
+                txbMaKhoa.Text = ((DataRowView)bdsLopTinChi[bdsLopTinChi.Position])["MAKHOA"].ToString();
+            }
+        }
+
+        private void fillToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void textEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+                    }
+
+        private void sPDanhSachLTCKoDKBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fillToolStripButton_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void fillToolStripButton_Click_2(object sender, EventArgs e)
+        {
+            try
+            {
+                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
 
         }
     }

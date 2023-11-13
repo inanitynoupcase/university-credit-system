@@ -52,7 +52,9 @@ namespace QLNV1
 
         private void frmSinhVien_Load(object sender, EventArgs e)
         {
-            
+            // TODO: This line of code loads data into the 'DS.CHUYENNGANH' table. You can move, or remove it, as needed.
+            this.cHUYENNGANHTableAdapter.Fill(this.DS.CHUYENNGANH);
+
             DS.EnforceConstraints = false;
 
             this.SINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
@@ -81,7 +83,8 @@ namespace QLNV1
             
         }
         private bool validatorSinhVien()
-        {
+        {   
+            
             if (txbMaSV.Text.Trim() == "")
             {
                 MessageBox.Show("Mã sinh viên không được thiếu!", "", MessageBoxButtons.OK);
@@ -185,6 +188,12 @@ namespace QLNV1
                     }
                 }
                 
+            }
+            if (comboBox1.SelectedValue.ToString().Substring(0, 2) != Program.MaKhoa.Substring(0, 2))
+            {   
+                XtraMessageBox.Show("Bạn không thể chọn chuyên ngành của khoa khác!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                comboBox1.Focus();
+                return false;
             }
             return true;
         }
@@ -466,6 +475,29 @@ namespace QLNV1
         }
 
         private void panelControl2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void fillByToolStripButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.cHUYENNGANHTableAdapter.FillBy(this.DS.CHUYENNGANH);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void pHAILabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
