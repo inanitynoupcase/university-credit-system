@@ -44,6 +44,7 @@ namespace QLNV1
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLopTinChi));
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label4;
             this.sPDanhSachLTCKoDKBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DS = new QLNV1.QLDSVHTCDataSet();
@@ -71,7 +72,8 @@ namespace QLNV1
             this.tableAdapterManager = new QLNV1.QLDSVHTCDataSetTableAdapters.TableAdapterManager();
             this.MONHOCTableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.MONHOCTableAdapter();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.sPLayDSGVBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.sPLayDSGVBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.cbTenMonHoc = new System.Windows.Forms.ComboBox();
             this.bdsMonHoc = new System.Windows.Forms.BindingSource(this.components);
@@ -79,6 +81,7 @@ namespace QLNV1
             this.speSoSVToiThieu = new DevExpress.XtraEditors.SpinEdit();
             this.txbMaKhoa = new DevExpress.XtraEditors.TextEdit();
             this.cbTenGiangVien = new System.Windows.Forms.ComboBox();
+            this.sPLayDSGVBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txbMaGiangVien = new DevExpress.XtraEditors.TextEdit();
             this.txbMaMonHoc = new DevExpress.XtraEditors.TextEdit();
             this.speHocKy = new DevExpress.XtraEditors.SpinEdit();
@@ -110,7 +113,7 @@ namespace QLNV1
             this.sP_DanhSachLTCKoDKBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gIANGVIENTableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.GIANGVIENTableAdapter();
             this.sP_LayDSGVTableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.SP_LayDSGVTableAdapter();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
             nIENKHOALabel = new System.Windows.Forms.Label();
             hOCKYLabel = new System.Windows.Forms.Label();
             mAMHLabel = new System.Windows.Forms.Label();
@@ -124,6 +127,7 @@ namespace QLNV1
             speNhom = new DevExpress.XtraEditors.SpinEdit();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(speNhom.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sPDanhSachLTCKoDKBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSBindingSource)).BeginInit();
@@ -134,12 +138,13 @@ namespace QLNV1
             ((System.ComponentModel.ISupportInitialize)(this.bdsLopTinChi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sPLayDSGVBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sPLayDSGVBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hUYLOPCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speSoSVToiThieu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbMaKhoa.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sPLayDSGVBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbMaGiangVien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbMaMonHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speHocKy.Properties)).BeginInit();
@@ -150,6 +155,7 @@ namespace QLNV1
             ((System.ComponentModel.ISupportInitialize)(this.lOPTINCHIGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sP_DanhSachLTCKoDKBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // nIENKHOALabel
@@ -525,6 +531,8 @@ namespace QLNV1
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(label4);
+            this.panelControl2.Controls.Add(this.textEdit2);
             this.panelControl2.Controls.Add(this.comboBox1);
             this.panelControl2.Controls.Add(label3);
             this.panelControl2.Controls.Add(this.textEdit1);
@@ -555,11 +563,26 @@ namespace QLNV1
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1083, 248);
             this.panelControl2.TabIndex = 7;
+            this.panelControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl2_Paint);
             // 
-            // sPLayDSGVBindingSource
+            // comboBox1
             // 
-            this.sPLayDSGVBindingSource.DataMember = "SP_LayDSGV";
-            this.sPLayDSGVBindingSource.DataSource = this.DS;
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.sPDanhSachLTCKoDKBindingSource, "MAGV2", true));
+            this.comboBox1.DataSource = this.sPLayDSGVBindingSource1;
+            this.comboBox1.DisplayMember = "HOTEN";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(525, 126);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(170, 21);
+            this.comboBox1.TabIndex = 27;
+            this.comboBox1.ValueMember = "MAGV";
+            // 
+            // sPLayDSGVBindingSource1
+            // 
+            this.sPLayDSGVBindingSource1.DataMember = "SP_LayDSGV";
+            this.sPLayDSGVBindingSource1.DataSource = this.DS;
             // 
             // textEdit1
             // 
@@ -571,6 +594,7 @@ namespace QLNV1
             this.textEdit1.Properties.ReadOnly = true;
             this.textEdit1.Size = new System.Drawing.Size(49, 20);
             this.textEdit1.TabIndex = 24;
+            this.textEdit1.EditValueChanged += new System.EventHandler(this.textEdit1_EditValueChanged_1);
             // 
             // cbTenMonHoc
             // 
@@ -597,7 +621,7 @@ namespace QLNV1
             // hUYLOPCheckEdit
             // 
             this.hUYLOPCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sPDanhSachLTCKoDKBindingSource, "HUYLOP", true));
-            this.hUYLOPCheckEdit.Location = new System.Drawing.Point(483, 161);
+            this.hUYLOPCheckEdit.Location = new System.Drawing.Point(525, 160);
             this.hUYLOPCheckEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.hUYLOPCheckEdit.MenuManager = this.barManager1;
             this.hUYLOPCheckEdit.Name = "hUYLOPCheckEdit";
@@ -636,7 +660,6 @@ namespace QLNV1
             // cbTenGiangVien
             // 
             this.cbTenGiangVien.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.sPDanhSachLTCKoDKBindingSource, "MAGV1", true));
-            this.cbTenGiangVien.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.sPDanhSachLTCKoDKBindingSource, "MAGV1", true));
             this.cbTenGiangVien.DataSource = this.sPLayDSGVBindingSource;
             this.cbTenGiangVien.DisplayMember = "HOTEN";
             this.cbTenGiangVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -649,6 +672,11 @@ namespace QLNV1
             this.cbTenGiangVien.ValueMember = "MAGV";
             this.cbTenGiangVien.SelectedIndexChanged += new System.EventHandler(this.cbTenGiangVien_SelectedIndexChanged);
             this.cbTenGiangVien.SelectedValueChanged += new System.EventHandler(this.cbTenGiangVien_SelectedValueChanged);
+            // 
+            // sPLayDSGVBindingSource
+            // 
+            this.sPLayDSGVBindingSource.DataMember = "SP_LayDSGV";
+            this.sPLayDSGVBindingSource.DataSource = this.DS;
             // 
             // txbMaGiangVien
             // 
@@ -969,20 +997,25 @@ namespace QLNV1
             // 
             this.sP_LayDSGVTableAdapter.ClearBeforeFill = true;
             // 
-            // comboBox1
+            // textEdit2
             // 
-            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.sPDanhSachLTCKoDKBindingSource, "MAGV1", true));
-            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.sPDanhSachLTCKoDKBindingSource, "MAGV2", true));
-            this.comboBox1.DataSource = this.sPLayDSGVBindingSource;
-            this.comboBox1.DisplayMember = "HOTEN";
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(521, 129);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 21);
-            this.comboBox1.TabIndex = 27;
-            this.comboBox1.ValueMember = "MAGV";
+            this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sPDanhSachLTCKoDKBindingSource, "SOSVDADANGKY", true));
+            this.textEdit2.Location = new System.Drawing.Point(821, 90);
+            this.textEdit2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textEdit2.MenuManager = this.barManager1;
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Properties.ReadOnly = true;
+            this.textEdit2.Size = new System.Drawing.Size(169, 20);
+            this.textEdit2.TabIndex = 28;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(744, 93);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(68, 13);
+            label4.TabIndex = 29;
+            label4.Text = "Số SV Đã ĐK";
             // 
             // frmLopTinChi
             // 
@@ -1013,12 +1046,13 @@ namespace QLNV1
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sPLayDSGVBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sPLayDSGVBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hUYLOPCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speSoSVToiThieu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbMaKhoa.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sPLayDSGVBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbMaGiangVien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbMaMonHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speHocKy.Properties)).EndInit();
@@ -1029,6 +1063,7 @@ namespace QLNV1
             ((System.ComponentModel.ISupportInitialize)(this.lOPTINCHIGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sP_DanhSachLTCKoDKBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1103,5 +1138,7 @@ namespace QLNV1
         private System.Windows.Forms.BindingSource sPLayDSGVBindingSource;
         private QLDSVHTCDataSetTableAdapters.SP_LayDSGVTableAdapter sP_LayDSGVTableAdapter;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.BindingSource sPLayDSGVBindingSource1;
+        private DevExpress.XtraEditors.TextEdit textEdit2;
     }
 }

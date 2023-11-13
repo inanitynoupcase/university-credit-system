@@ -74,14 +74,13 @@ namespace QLNV1
                 cbKhoa.Enabled = false;
             }
             txbMaMonHoc.Text = cbTenMonHoc.ValueMember.ToString();
-            txbMaGiangVien.Text = cbTenGiangVien.ValueMember.ToString();
          
         }
 
         private void lOPTINCHIBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
         {
             this.Validate();
-            this.bdsLopTinChi.EndEdit();
+            this.sPDanhSachLTCKoDKBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.DS);
 
         }
@@ -134,8 +133,8 @@ namespace QLNV1
 
         private void btnPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bdsLopTinChi.CancelEdit();
-            if (btnThem.Enabled == false) bdsLopTinChi.Position = vitri;
+            sPDanhSachLTCKoDKBindingSource.CancelEdit();
+            if (btnThem.Enabled == false) sPDanhSachLTCKoDKBindingSource.Position = vitri;
             lOPTINCHIGridControl.Enabled = true;
             panelControl2.Enabled = false;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = true;
@@ -147,16 +146,16 @@ namespace QLNV1
 
             if (vitri > 0)
             {
-                bdsLopTinChi.Position = vitri;
+                sPDanhSachLTCKoDKBindingSource.Position = vitri;
             }
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            vitri = bdsLopTinChi.Position;
+            vitri = sPDanhSachLTCKoDKBindingSource.Position;
             panelControl2.Enabled = true;
-            bdsLopTinChi.AddNew();
-            txbMaKhoa.Text = macn;
+            sPDanhSachLTCKoDKBindingSource.AddNew();
+            txbMaKhoa.Text = Program.MaKhoa;
             cbTenGiangVien.SelectedIndex = 0;
             cbTenMonHoc.SelectedIndex = 0;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;
@@ -170,7 +169,8 @@ namespace QLNV1
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string maloptc = "";
-            if (bdsDangKi.Count > 0)
+            Console.WriteLine("SV DANG KY: " + textEdit2.Text);
+            if (textEdit2.Text != "0")
             {
                 MessageBox.Show("Không thể xóa lớp này vì đã có sinh viên", "", MessageBoxButtons.OK);
                 return;
@@ -179,25 +179,25 @@ namespace QLNV1
             {
                 try
                 {
-                    maloptc = ((DataRowView)bdsLopTinChi[bdsLopTinChi.Position])["MALTC"].ToString();
-                    bdsLopTinChi.RemoveCurrent();
-                    this.LOPTINCHITableAdapter.Connection.ConnectionString = Program.connstr;
-                    this.LOPTINCHITableAdapter.Update(this.DS.LOPTINCHI);
+                    maloptc = ((DataRowView)sPDanhSachLTCKoDKBindingSource[sPDanhSachLTCKoDKBindingSource.Position])["MALTC"].ToString();
+                    sPDanhSachLTCKoDKBindingSource.RemoveCurrent();
+                    //this.LOPTINCHITableAdapter.Connection.ConnectionString = Program.connstr;
+                 //   this.LOPTINCHITableAdapter.Update(this.DS.LOPTINCHI);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Lỗi xóa lớp : " + ex.Message, "", MessageBoxButtons.OK);
-                    this.LOPTINCHITableAdapter.Fill(this.DS.LOPTINCHI);
-                    bdsLopTinChi.Position = bdsLopTinChi.Find("MALTC", maloptc);
+                    this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+                    sPDanhSachLTCKoDKBindingSource.Position = sPDanhSachLTCKoDKBindingSource.Find("MALTC", maloptc);
                     return;
                 }
             }
-            if (bdsLopTinChi.Count == 0) btnXoa.Enabled = false;
+            if (sPDanhSachLTCKoDKBindingSource.Count == 0) btnXoa.Enabled = false;
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            vitri = bdsLopTinChi.Position;
+            vitri = sPDanhSachLTCKoDKBindingSource.Position;
             panelControl2.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = false;
             btnGhi.Enabled = true;
@@ -252,10 +252,10 @@ namespace QLNV1
             }
             try
             {
-                bdsLopTinChi.EndEdit();
-                bdsLopTinChi.ResetCurrentItem();
-                this.LOPTINCHITableAdapter.Connection.ConnectionString = Program.connstr;
-                this.LOPTINCHITableAdapter.Update(this.DS.LOPTINCHI);
+                sPDanhSachLTCKoDKBindingSource.EndEdit();
+                sPDanhSachLTCKoDKBindingSource.ResetCurrentItem();
+               // this.LOPTINCHITableAdapter.Connection.ConnectionString = Program.connstr;
+                //this.LOPTINCHITableAdapter.Update(this.DS.LOPTINCHI);
             }
             catch (Exception ex)
             {
@@ -272,7 +272,7 @@ namespace QLNV1
         {
             try
             {
-                this.LOPTINCHITableAdapter.Fill(this.DS.LOPTINCHI);
+                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
             }
             catch (Exception ex)
             {
@@ -292,7 +292,7 @@ namespace QLNV1
         {
             if (cbTenGiangVien.SelectedValue != null)
             {
-                txbMaGiangVien.Text = cbTenGiangVien.SelectedValue.ToString();
+               // txbMaGiangVien.Text = cbTenGiangVien.SelectedValue.ToString();
             }
         }
 
@@ -358,7 +358,7 @@ namespace QLNV1
         {
             if (bdsLopTinChi.Count > 0)
             {
-                txbMaKhoa.Text = ((DataRowView)bdsLopTinChi[bdsLopTinChi.Position])["MAKHOA"].ToString();
+                txbMaKhoa.Text = ((DataRowView)sPDanhSachLTCKoDKBindingSource[sPDanhSachLTCKoDKBindingSource.Position])["MAKHOA"].ToString();
             }
         }
 
@@ -407,6 +407,16 @@ namespace QLNV1
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
+
+        }
+
+        private void panelControl2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textEdit1_EditValueChanged_1(object sender, EventArgs e)
+        {
 
         }
     }
