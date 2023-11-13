@@ -311,7 +311,7 @@ namespace QLNV1
             // 
             // btnCapNhat
             // 
-            this.btnCapNhat.Location = new System.Drawing.Point(934, 177);
+            this.btnCapNhat.Location = new System.Drawing.Point(929, 175);
             this.btnCapNhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(81, 24);

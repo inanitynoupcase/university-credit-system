@@ -32,7 +32,6 @@ namespace QLNV1
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label nIENKHOALabel;
             System.Windows.Forms.Label hOCKYLabel;
-            System.Windows.Forms.Label mAMHLabel;
             System.Windows.Forms.Label tENMHLabel;
             System.Windows.Forms.Label mAGVLabel;
             System.Windows.Forms.Label tENLabel;
@@ -44,9 +43,11 @@ namespace QLNV1
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLopTinChi));
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label5;
+            System.Windows.Forms.Label label6;
             this.sPDanhSachLTCKoDKBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dSBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DS = new QLNV1.QLDSVHTCDataSet();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -66,11 +67,15 @@ namespace QLNV1
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.cbKhoa = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.bdsLopTinChi = new System.Windows.Forms.BindingSource(this.components);
-            this.LOPTINCHITableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.LOPTINCHITableAdapter();
             this.tableAdapterManager = new QLNV1.QLDSVHTCDataSetTableAdapters.TableAdapterManager();
             this.MONHOCTableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.MONHOCTableAdapter();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.tHOIGIANDANGKYBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.sPLayDSGVBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.cbTenMonHoc = new System.Windows.Forms.ComboBox();
             this.bdsMonHoc = new System.Windows.Forms.BindingSource(this.components);
@@ -79,11 +84,9 @@ namespace QLNV1
             this.txbMaKhoa = new DevExpress.XtraEditors.TextEdit();
             this.cbTenGiangVien = new System.Windows.Forms.ComboBox();
             this.txbMaGiangVien = new DevExpress.XtraEditors.TextEdit();
-            this.txbMaMonHoc = new DevExpress.XtraEditors.TextEdit();
             this.speHocKy = new DevExpress.XtraEditors.SpinEdit();
             this.txbNienKhoa = new DevExpress.XtraEditors.TextEdit();
             this.gIANGVIENBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsDangKi = new System.Windows.Forms.BindingSource(this.components);
             this.DANGKYTableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.DANGKYTableAdapter();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -106,14 +109,14 @@ namespace QLNV1
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sP_DanhSachLTCKoDKTableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.SP_DanhSachLTCKoDKTableAdapter();
-            this.sP_DanhSachLTCKoDKBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gIANGVIENTableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.GIANGVIENTableAdapter();
-            this.sPLayDSGVBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sP_LayDSGVTableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.SP_LayDSGVTableAdapter();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tHOIGIANDANGKYTableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.THOIGIANDANGKYTableAdapter();
+            this.DS = new QLNV1.QLDSVHTCDataSet();
+            this.bdsLopTinChi = new System.Windows.Forms.BindingSource(this.components);
+            this.LOPTINCHITableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.LOPTINCHITableAdapter();
             nIENKHOALabel = new System.Windows.Forms.Label();
             hOCKYLabel = new System.Windows.Forms.Label();
-            mAMHLabel = new System.Windows.Forms.Label();
             tENMHLabel = new System.Windows.Forms.Label();
             mAGVLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
@@ -124,32 +127,35 @@ namespace QLNV1
             speNhom = new DevExpress.XtraEditors.SpinEdit();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(speNhom.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sPDanhSachLTCKoDKBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsLopTinChi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tHOIGIANDANGKYBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sPLayDSGVBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hUYLOPCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speSoSVToiThieu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbMaKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbMaGiangVien.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbMaMonHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speHocKy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbNienKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gIANGVIENBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsDangKi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPTINCHIGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sP_DanhSachLTCKoDKBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sPLayDSGVBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLopTinChi)).BeginInit();
             this.SuspendLayout();
             // 
             // nIENKHOALabel
@@ -170,16 +176,6 @@ namespace QLNV1
             hOCKYLabel.TabIndex = 4;
             hOCKYLabel.Text = "Học kỳ";
             // 
-            // mAMHLabel
-            // 
-            mAMHLabel.AutoSize = true;
-            mAMHLabel.Location = new System.Drawing.Point(424, 93);
-            mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(64, 13);
-            mAMHLabel.TabIndex = 6;
-            mAMHLabel.Text = "Mã môn học";
-            mAMHLabel.Click += new System.EventHandler(this.mAMHLabel_Click);
-            // 
             // tENMHLabel
             // 
             tENMHLabel.AutoSize = true;
@@ -192,7 +188,7 @@ namespace QLNV1
             // mAGVLabel
             // 
             mAGVLabel.AutoSize = true;
-            mAGVLabel.Location = new System.Drawing.Point(744, 131);
+            mAGVLabel.Location = new System.Drawing.Point(712, 129);
             mAGVLabel.Name = "mAGVLabel";
             mAGVLabel.Size = new System.Drawing.Size(71, 13);
             mAGVLabel.TabIndex = 10;
@@ -237,7 +233,7 @@ namespace QLNV1
             // nHOMLabel
             // 
             nHOMLabel.AutoSize = true;
-            nHOMLabel.Location = new System.Drawing.Point(426, 58);
+            nHOMLabel.Location = new System.Drawing.Point(424, 59);
             nHOMLabel.Name = "nHOMLabel";
             nHOMLabel.Size = new System.Drawing.Size(34, 13);
             nHOMLabel.TabIndex = 20;
@@ -257,24 +253,13 @@ namespace QLNV1
             speNhom.Name = "speNhom";
             speNhom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            speNhom.Size = new System.Drawing.Size(169, 20);
+            speNhom.Size = new System.Drawing.Size(151, 20);
             speNhom.TabIndex = 21;
             // 
             // sPDanhSachLTCKoDKBindingSource
             // 
-            this.sPDanhSachLTCKoDKBindingSource.DataMember = "SP_DanhSachLTCKoDK";
             this.sPDanhSachLTCKoDKBindingSource.DataSource = this.dSBindingSource;
             this.sPDanhSachLTCKoDKBindingSource.CurrentChanged += new System.EventHandler(this.sPDanhSachLTCKoDKBindingSource_CurrentChanged);
-            // 
-            // dSBindingSource
-            // 
-            this.dSBindingSource.DataSource = this.DS;
-            this.dSBindingSource.Position = 0;
-            // 
-            // DS
-            // 
-            this.DS.DataSetName = "DS";
-            this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // barManager1
             // 
@@ -449,6 +434,42 @@ namespace QLNV1
             label2.TabIndex = 23;
             label2.Text = "Mã lớp";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(423, 129);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(86, 13);
+            label3.TabIndex = 26;
+            label3.Text = "Tên giảng viên 2";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(424, 93);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(51, 13);
+            label4.TabIndex = 28;
+            label4.Text = "Mã TGĐK";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(712, 59);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(76, 13);
+            label5.TabIndex = 29;
+            label5.Text = "Ngày Đăng Ký";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(712, 95);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(91, 13);
+            label6.TabIndex = 30;
+            label6.Text = "Ngày kết thúc ĐK";
+            // 
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.cbKhoa);
@@ -481,15 +502,6 @@ namespace QLNV1
             this.label1.TabIndex = 0;
             this.label1.Text = "KHOA";
             // 
-            // bdsLopTinChi
-            // 
-            this.bdsLopTinChi.DataMember = "LOPTINCHI";
-            this.bdsLopTinChi.DataSource = this.DS;
-            // 
-            // LOPTINCHITableAdapter
-            // 
-            this.LOPTINCHITableAdapter.ClearBeforeFill = true;
-            // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
@@ -516,6 +528,12 @@ namespace QLNV1
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.textEdit3);
+            this.panelControl2.Controls.Add(this.textEdit2);
+            this.panelControl2.Controls.Add(label6);
+            this.panelControl2.Controls.Add(label5);
+            this.panelControl2.Controls.Add(label4);
+            this.panelControl2.Controls.Add(this.comboBox2);
             this.panelControl2.Controls.Add(label3);
             this.panelControl2.Controls.Add(this.comboBox1);
             this.panelControl2.Controls.Add(this.textEdit1);
@@ -534,8 +552,6 @@ namespace QLNV1
             this.panelControl2.Controls.Add(mAGVLabel);
             this.panelControl2.Controls.Add(this.txbMaGiangVien);
             this.panelControl2.Controls.Add(tENMHLabel);
-            this.panelControl2.Controls.Add(mAMHLabel);
-            this.panelControl2.Controls.Add(this.txbMaMonHoc);
             this.panelControl2.Controls.Add(hOCKYLabel);
             this.panelControl2.Controls.Add(this.speHocKy);
             this.panelControl2.Controls.Add(nIENKHOALabel);
@@ -546,6 +562,64 @@ namespace QLNV1
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1083, 248);
             this.panelControl2.TabIndex = 7;
+            // 
+            // textEdit3
+            // 
+            this.textEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sPDanhSachLTCKoDKBindingSource, "NGAYKETTHUCDK", true));
+            this.textEdit3.Location = new System.Drawing.Point(809, 92);
+            this.textEdit3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textEdit3.MenuManager = this.barManager1;
+            this.textEdit3.Name = "textEdit3";
+            this.textEdit3.Properties.ReadOnly = true;
+            this.textEdit3.Size = new System.Drawing.Size(107, 20);
+            this.textEdit3.TabIndex = 32;
+            // 
+            // textEdit2
+            // 
+            this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sPDanhSachLTCKoDKBindingSource, "NGAYDANGKY", true));
+            this.textEdit2.Location = new System.Drawing.Point(810, 56);
+            this.textEdit2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textEdit2.MenuManager = this.barManager1;
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Properties.ReadOnly = true;
+            this.textEdit2.Size = new System.Drawing.Size(107, 20);
+            this.textEdit2.TabIndex = 31;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.sPDanhSachLTCKoDKBindingSource, "MATGDK", true));
+            this.comboBox2.DataSource = this.tHOIGIANDANGKYBindingSource;
+            this.comboBox2.DisplayMember = "MATGDK";
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(525, 90);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(151, 21);
+            this.comboBox2.TabIndex = 27;
+            this.comboBox2.ValueMember = "MATGDK";
+            // 
+            // tHOIGIANDANGKYBindingSource
+            // 
+            this.tHOIGIANDANGKYBindingSource.DataMember = "THOIGIANDANGKY";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.sPDanhSachLTCKoDKBindingSource, "MAGV2", true));
+            this.comboBox1.DataSource = this.sPLayDSGVBindingSource;
+            this.comboBox1.DisplayMember = "HOTEN";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(525, 123);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(151, 21);
+            this.comboBox1.TabIndex = 25;
+            this.comboBox1.ValueMember = "MAGV";
+            // 
+            // sPLayDSGVBindingSource
+            // 
+            this.sPLayDSGVBindingSource.DataMember = "SP_LayDSGV";
             // 
             // textEdit1
             // 
@@ -573,17 +647,15 @@ namespace QLNV1
             this.cbTenMonHoc.TabIndex = 22;
             this.cbTenMonHoc.ValueMember = "MAMON";
             this.cbTenMonHoc.SelectedIndexChanged += new System.EventHandler(this.cbTenMonHoc_SelectedIndexChanged);
-            this.cbTenMonHoc.SelectedValueChanged += new System.EventHandler(this.cbTenMonHoc_SelectedValueChanged);
             // 
             // bdsMonHoc
             // 
             this.bdsMonHoc.DataMember = "MONHOC";
-            this.bdsMonHoc.DataSource = this.DS;
             // 
             // hUYLOPCheckEdit
             // 
             this.hUYLOPCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sPDanhSachLTCKoDKBindingSource, "HUYLOP", true));
-            this.hUYLOPCheckEdit.Location = new System.Drawing.Point(483, 161);
+            this.hUYLOPCheckEdit.Location = new System.Drawing.Point(525, 160);
             this.hUYLOPCheckEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.hUYLOPCheckEdit.MenuManager = this.barManager1;
             this.hUYLOPCheckEdit.Name = "hUYLOPCheckEdit";
@@ -621,9 +693,9 @@ namespace QLNV1
             // 
             // cbTenGiangVien
             // 
+            this.cbTenGiangVien.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.sPDanhSachLTCKoDKBindingSource, "MAGV1", true));
             this.cbTenGiangVien.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.sPDanhSachLTCKoDKBindingSource, "MAGV1", true));
-            this.cbTenGiangVien.DataSource = this.sPLayDSGVBindingSource;
-            this.cbTenGiangVien.DisplayMember = "HOTEN";
+            this.cbTenGiangVien.DataSource = this.sPDanhSachLTCKoDKBindingSource;
             this.cbTenGiangVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTenGiangVien.FormattingEnabled = true;
             this.cbTenGiangVien.Location = new System.Drawing.Point(238, 122);
@@ -638,26 +710,14 @@ namespace QLNV1
             // txbMaGiangVien
             // 
             this.txbMaGiangVien.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sPDanhSachLTCKoDKBindingSource, "NHANVIEN", true));
-            this.txbMaGiangVien.Location = new System.Drawing.Point(821, 128);
+            this.txbMaGiangVien.Location = new System.Drawing.Point(810, 122);
             this.txbMaGiangVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbMaGiangVien.MenuManager = this.barManager1;
             this.txbMaGiangVien.Name = "txbMaGiangVien";
             this.txbMaGiangVien.Properties.ReadOnly = true;
-            this.txbMaGiangVien.Size = new System.Drawing.Size(169, 20);
+            this.txbMaGiangVien.Size = new System.Drawing.Size(107, 20);
             this.txbMaGiangVien.TabIndex = 11;
             this.txbMaGiangVien.EditValueChanged += new System.EventHandler(this.txbMaGiangVien_EditValueChanged);
-            // 
-            // txbMaMonHoc
-            // 
-            this.txbMaMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsLopTinChi, "MAMON", true));
-            this.txbMaMonHoc.Location = new System.Drawing.Point(525, 90);
-            this.txbMaMonHoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txbMaMonHoc.MenuManager = this.barManager1;
-            this.txbMaMonHoc.Name = "txbMaMonHoc";
-            this.txbMaMonHoc.Properties.ReadOnly = true;
-            this.txbMaMonHoc.Size = new System.Drawing.Size(169, 20);
-            this.txbMaMonHoc.TabIndex = 7;
-            this.txbMaMonHoc.EditValueChanged += new System.EventHandler(this.txbMaMonHoc_EditValueChanged);
             // 
             // speHocKy
             // 
@@ -685,18 +745,12 @@ namespace QLNV1
             this.txbNienKhoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbNienKhoa.MenuManager = this.barManager1;
             this.txbNienKhoa.Name = "txbNienKhoa";
-            this.txbNienKhoa.Size = new System.Drawing.Size(170, 20);
+            this.txbNienKhoa.Size = new System.Drawing.Size(151, 20);
             this.txbNienKhoa.TabIndex = 3;
             // 
             // gIANGVIENBindingSource
             // 
-            this.gIANGVIENBindingSource.DataMember = "GIANGVIEN";
             this.gIANGVIENBindingSource.DataSource = this.dSBindingSource;
-            // 
-            // bdsDangKi
-            // 
-            this.bdsDangKi.DataMember = "FK_DANGKY_LOPTINCHI";
-            this.bdsDangKi.DataSource = this.bdsLopTinChi;
             // 
             // DANGKYTableAdapter
             // 
@@ -887,6 +941,7 @@ namespace QLNV1
             // 
             // lOPTINCHIGridControl
             // 
+            this.lOPTINCHIGridControl.Cursor = System.Windows.Forms.Cursors.Default;
             this.lOPTINCHIGridControl.DataSource = this.sPDanhSachLTCKoDKBindingSource;
             this.lOPTINCHIGridControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.lOPTINCHIGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -941,46 +996,31 @@ namespace QLNV1
             // 
             this.sP_DanhSachLTCKoDKTableAdapter.ClearBeforeFill = true;
             // 
-            // sP_DanhSachLTCKoDKBindingSource
-            // 
-            this.sP_DanhSachLTCKoDKBindingSource.DataMember = "SP_DanhSachLTCKoDK";
-            this.sP_DanhSachLTCKoDKBindingSource.DataSource = this.DS;
-            // 
             // gIANGVIENTableAdapter
             // 
             this.gIANGVIENTableAdapter.ClearBeforeFill = true;
-            // 
-            // sPLayDSGVBindingSource
-            // 
-            this.sPLayDSGVBindingSource.DataMember = "SP_LayDSGV";
-            this.sPLayDSGVBindingSource.DataSource = this.DS;
             // 
             // sP_LayDSGVTableAdapter
             // 
             this.sP_LayDSGVTableAdapter.ClearBeforeFill = true;
             // 
-            // comboBox1
+            // tHOIGIANDANGKYTableAdapter
             // 
-            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.sPDanhSachLTCKoDKBindingSource, "MAGV2", true));
-            this.comboBox1.DataSource = this.sPLayDSGVBindingSource;
-            this.comboBox1.DisplayMember = "HOTEN";
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(525, 123);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 21);
-            this.comboBox1.TabIndex = 25;
-            this.comboBox1.ValueMember = "MAGV";
+            this.tHOIGIANDANGKYTableAdapter.ClearBeforeFill = true;
             // 
-            // label3
+            // DS
             // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(423, 129);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(86, 13);
-            label3.TabIndex = 26;
-            label3.Text = "Tên giảng viên 2";
+            this.DS.DataSetName = "DS";
+            this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bdsLopTinChi
+            // 
+            this.bdsLopTinChi.DataMember = "LOPTINCHI";
+            this.bdsLopTinChi.DataSource = this.DS;
+            // 
+            // LOPTINCHITableAdapter
+            // 
+            this.LOPTINCHITableAdapter.ClearBeforeFill = true;
             // 
             // frmLopTinChi
             // 
@@ -1002,31 +1042,31 @@ namespace QLNV1
             ((System.ComponentModel.ISupportInitialize)(speNhom.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sPDanhSachLTCKoDKBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsLopTinChi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tHOIGIANDANGKYBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sPLayDSGVBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hUYLOPCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speSoSVToiThieu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbMaKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbMaGiangVien.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbMaMonHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speHocKy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbNienKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gIANGVIENBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsDangKi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPTINCHIGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sP_DanhSachLTCKoDKBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sPLayDSGVBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLopTinChi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1050,15 +1090,11 @@ namespace QLNV1
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private QLDSVHTCDataSet DS;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private System.Windows.Forms.ComboBox cbKhoa;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.BindingSource bdsLopTinChi;
-        private QLDSVHTCDataSetTableAdapters.LOPTINCHITableAdapter LOPTINCHITableAdapter;
         private QLDSVHTCDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.TextEdit txbMaMonHoc;
         private DevExpress.XtraEditors.SpinEdit speHocKy;
         private DevExpress.XtraEditors.TextEdit txbNienKhoa;
         private QLDSVHTCDataSetTableAdapters.MONHOCTableAdapter MONHOCTableAdapter;
@@ -1067,7 +1103,6 @@ namespace QLNV1
         private DevExpress.XtraEditors.CheckEdit hUYLOPCheckEdit;
         private DevExpress.XtraEditors.SpinEdit speSoSVToiThieu;
         private DevExpress.XtraEditors.TextEdit txbMaKhoa;
-        private System.Windows.Forms.BindingSource bdsDangKi;
         private QLDSVHTCDataSetTableAdapters.DANGKYTableAdapter DANGKYTableAdapter;
         private System.Windows.Forms.ComboBox cbTenMonHoc;
         private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
@@ -1095,11 +1130,18 @@ namespace QLNV1
         private System.Windows.Forms.ComboBox cbTenGiangVien;
         private System.Windows.Forms.BindingSource sPDanhSachLTCKoDKBindingSource;
         private DevExpress.XtraEditors.TextEdit textEdit1;
-        private System.Windows.Forms.BindingSource sP_DanhSachLTCKoDKBindingSource;
         private System.Windows.Forms.BindingSource gIANGVIENBindingSource;
         private QLDSVHTCDataSetTableAdapters.GIANGVIENTableAdapter gIANGVIENTableAdapter;
         private System.Windows.Forms.BindingSource sPLayDSGVBindingSource;
         private QLDSVHTCDataSetTableAdapters.SP_LayDSGVTableAdapter sP_LayDSGVTableAdapter;
         private System.Windows.Forms.ComboBox comboBox1;
+        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.BindingSource tHOIGIANDANGKYBindingSource;
+        private QLDSVHTCDataSetTableAdapters.THOIGIANDANGKYTableAdapter tHOIGIANDANGKYTableAdapter;
+        private QLDSVHTCDataSet DS;
+        private System.Windows.Forms.BindingSource bdsLopTinChi;
+        private QLDSVHTCDataSetTableAdapters.LOPTINCHITableAdapter LOPTINCHITableAdapter;
     }
 }

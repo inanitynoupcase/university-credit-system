@@ -152,16 +152,6 @@ namespace QLNV1
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            /*         BindingSource bdsTemp = (BindingSource)this.DiemGridControl.DataSource;
-                   if (bdsTemp == null)
-                   {
-                       MessageBox.Show("Chưa có thông tin để ghi điểm!", "", MessageBoxButtons.OK);
-                       return;
-                   }
-                   bdsTemp.EndEdit();
-                   SqlConnection conn = new SqlConnection(Program.connstr);
-                   conn.Open();*/
-
             if (DiemCC == "")
             {
                 DIEMCC = -1;
@@ -196,7 +186,7 @@ namespace QLNV1
             }
 
             string cmd = "Exec [dbo].[SP_XULY_DIEM] '" + textBoxMaSV.Text + "', " + MALTC + "," + formattedDIEMCC + "," + formattedDIEMGK + "," + formattedDIEMCK;
-            if(Program.ExecSqlNonQuery(cmd)==0)
+            if (Program.ExecSqlNonQuery(cmd) == 0)
             {
                 BindingSource gridDataSource = (BindingSource)DiemGridControl.DataSource;
 
@@ -209,10 +199,10 @@ namespace QLNV1
                     {
                         row["DIEM_CC"] = formattedDIEMCC;
                         row["DIEM_GK"] = formattedDIEMGK;
-                        row["DIEM_GK"] = formattedDIEMCK;
+                        row["DIEM_CK"] = formattedDIEMCK;
                         string diemtk = (DIEMCC * 0.1 + DIEMGK * 0.3 + DIEMCK * 0.6).ToString("F2", CultureInfo.InvariantCulture);
                         row["DIEM_TK"] = diemtk;
-                       
+
                         break;
                     }
                 }
