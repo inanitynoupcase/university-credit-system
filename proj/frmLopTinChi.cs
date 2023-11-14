@@ -17,9 +17,12 @@ namespace QLNV1
 {
     public partial class frmLopTinChi : DevExpress.XtraEditors.XtraForm
     {
+
         private SqlConnection conn_publisher = new SqlConnection();
         int vitri = 0;
         string macn = "";
+        private string _flagOptionLopTinChi;
+        private string _oldMaLTC;
         public frmLopTinChi()
         {
             InitializeComponent();
@@ -35,6 +38,8 @@ namespace QLNV1
 
         private void frmLopTinChi_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'DS.THOIGIANDANGKY' table. You can move, or remove it, as needed.
+            this.tHOIGIANDANGKYTableAdapter.Fill(this.DS.THOIGIANDANGKY);
             // TODO: This line of code loads data into the 'DS.SP_LayDSGV' table. You can move, or remove it, as needed.
             this.sP_LayDSGVTableAdapter.Fill(this.DS.SP_LayDSGV);
             // TODO: This line of code loads data into the 'DS.GIANGVIEN' table. You can move, or remove it, as needed.
@@ -73,8 +78,8 @@ namespace QLNV1
             {
                 cbKhoa.Enabled = false;
             }
-            txbMaMonHoc.Text = cbTenMonHoc.ValueMember.ToString();
-         
+            //txbMaTGDK.Text = cbTenMonHoc.ValueMember.ToString();
+           
         }
 
         private void lOPTINCHIBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
@@ -153,11 +158,14 @@ namespace QLNV1
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             vitri = sPDanhSachLTCKoDKBindingSource.Position;
+            _flagOptionLopTinChi = "ADD";
             panelControl2.Enabled = true;
             sPDanhSachLTCKoDKBindingSource.AddNew();
             txbMaKhoa.Text = Program.MaKhoa;
             cbTenGiangVien.SelectedIndex = 0;
             cbTenMonHoc.SelectedIndex = 0;
+            hUYLOPCheckEdit.Checked = false;
+            hUYLOPCheckEdit.EditValue = false;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;
             btnGhi.Enabled = btnPhucHoi.Enabled = true;
             lOPTINCHIGridControl.Enabled = false;
@@ -169,6 +177,8 @@ namespace QLNV1
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string maloptc = "";
+            _flagOptionLopTinChi = "REMOVE";
+            _oldMaLTC = textEdit1.Text.Trim();
             Console.WriteLine("SV DANG KY: " + textEdit2.Text);
             if (textEdit2.Text != "0")
             {
@@ -198,6 +208,9 @@ namespace QLNV1
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             vitri = sPDanhSachLTCKoDKBindingSource.Position;
+            _flagOptionLopTinChi = "UPDATE";
+            _oldMaLTC = textEdit1.Text.Trim();
+            
             panelControl2.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = false;
             btnGhi.Enabled = true;
@@ -207,54 +220,149 @@ namespace QLNV1
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             btnPhucHoi.Enabled = true;
+            if (_flagOptionLopTinChi == "ADD" || _flagOptionLopTinChi == "UPDATE")
+            {
+                if (speHocKy.Value == 0)
+                {
+                    MessageBox.Show("Học kì không được thiếu!", "", MessageBoxButtons.OK);
+                    speHocKy.Focus();
+                    return;
+                }
+                if (speHocKy.Value < 0)
+                {
+                    MessageBox.Show("Học kì không thể là số âm!", "", MessageBoxButtons.OK);
+                    speHocKy.Focus();
+                    return;
+                }
+                if (speSoSVToiThieu.Value == 0)
+                {
+                    MessageBox.Show("Số sinh viên tối thiểu không được thiếu!", "", MessageBoxButtons.OK);
+                    speSoSVToiThieu.Focus();
+                    return;
+                }
+                if (speSoSVToiThieu.Value < 0)
+                {
+                    MessageBox.Show("Số sinh viên tối thiểu không thể là số âm!", "", MessageBoxButtons.OK);
+                    speSoSVToiThieu.Focus();
+                    return;
+                }
+                if (spinNHOM.Value == 0)
+                {
+                    MessageBox.Show("Nhóm không được thiếu!", "", MessageBoxButtons.OK);
+                    spinNHOM.Focus();
+                    return;
+                }
+                if (spinNHOM.Value < 0)
+                {
+                    MessageBox.Show("Số nhóm không thể là số âm!", "", MessageBoxButtons.OK);
+                    spinNHOM.Focus();
+                    return;
+                }
 
-            if (speHocKy.Value == 0)
-            {
-                MessageBox.Show("Học kì không được thiếu!", "", MessageBoxButtons.OK);
-                speHocKy.Focus();
-                return;
+                if (cbMATGDK.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn mã thời gian đăng ký", "", MessageBoxButtons.OK);
+                    cbMATGDK.Focus();
+                    return;
+                }
+                if (cbTenMonHoc.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn môn học cho lớp tín chỉ", "", MessageBoxButtons.OK);
+                    cbTenMonHoc.Focus();
+                    return;
+                }
+                if (cbTenGiangVien.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn giảng viên 1 cho lớp tín chỉ", "", MessageBoxButtons.OK);
+                    cbTenGiangVien.Focus();
+                    return;
+                }
+                if (cbTenGiangVien.SelectedValue == cbTenGiangVien2.SelectedValue)
+                {
+                    MessageBox.Show("Trùng lập dữ liệu 2 giảng viên lớp tín chỉ", "", MessageBoxButtons.OK);
+                    cbTenGiangVien2.Focus();
+                    return;
+                }
+
+
+                if (txbNienKhoa.Text.Trim() == "")
+                {
+                    MessageBox.Show("Niên khóa không được thiếu!", "", MessageBoxButtons.OK);
+                    txbNienKhoa.Focus();
+                    return;
+                }
+
             }
-            if (speSoSVToiThieu.Value == 0)
-            {
-                MessageBox.Show("Số sinh viên tối thiểu không được thiếu!", "", MessageBoxButtons.OK);
-                speSoSVToiThieu.Focus();
-                return;
-            }
-           /* if (speNhom.Value == 0)
-            {
-                MessageBox.Show("Nhóm không được thiếu!", "", MessageBoxButtons.OK);
-                speSoSVToiThieu.Focus();
-                return;
-            }*/
-            if (txbMaKhoa.Text.Trim() == "")
-            {
-                MessageBox.Show("Mã khoa không được thiếu!", "", MessageBoxButtons.OK);
-                txbMaKhoa.Focus();
-                return;
-            }
-            if (txbMaMonHoc.Text.Trim() == "")
-            {
-                MessageBox.Show("Mã môn học không được thiếu!", "", MessageBoxButtons.OK);
-                txbMaKhoa.Focus();
-                return;
-            }
-            if (txbMaGiangVien.Text.Trim() == "")
-            {
-                MessageBox.Show("Mã giảng viên không được thiếu!", "", MessageBoxButtons.OK);
-                txbMaKhoa.Focus();
-                return;
-            }
-            if (txbNienKhoa.Text.Trim() == "")
-            {
-                MessageBox.Show("Niên khóa không được thiếu!", "", MessageBoxButtons.OK);
-                txbMaKhoa.Focus();
-                return;
-            }
+
+            Console.WriteLine("MALTC: " + _oldMaLTC + ", SVTT: " + speSoSVToiThieu.Text + ", Nhom: " + spinNHOM.Text + ", NienKhoa: " + txbNienKhoa.Text + ", HocKy: " + speHocKy.Text + ", MAMON: " + cbTenMonHoc.SelectedValue + ", MaNV: " + Program.username + ", HuyLop: " + hUYLOPCheckEdit.EditValue + ", maKhoa: " + txbMaKhoa.Text + ", maTGDK: " + cbMATGDK.SelectedValue + ", maGV1: " + cbTenGiangVien.SelectedValue + ", maGV2: " + cbTenGiangVien2.SelectedValue);
+
             try
             {
-                sPDanhSachLTCKoDKBindingSource.EndEdit();
-                sPDanhSachLTCKoDKBindingSource.ResetCurrentItem();
-               // this.LOPTINCHITableAdapter.Connection.ConnectionString = Program.connstr;
+                if (_flagOptionLopTinChi == "ADD")
+                {
+                    string query1;
+                    if (cbTenGiangVien2.SelectedValue != null)
+                        query1 = "EXEC [dbo].[SP_NewLTCvaGVDAY] " + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'NV001'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "','" + cbTenGiangVien2.SelectedValue + "'";
+                    else 
+                        query1 = "EXEC [dbo].[SP_NewLTCvaGVDAY] " + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'NV001'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "'";
+                    if(Program.ExecSqlNonQuery(query1) == 0)
+                    {
+                        MessageBox.Show("Ghi dữ liệu lớp tín chỉ thành công!");
+                        sPDanhSachLTCKoDKBindingSource.EndEdit();
+
+                        sPDanhSachLTCKoDKBindingSource.ResetCurrentItem();
+
+                        this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ghi dữ liệu lớp tín chỉ thất bại!");
+                    }
+                }
+                if (_flagOptionLopTinChi == "UPDATE")
+                {
+                    string query1;
+                    if (cbTenGiangVien2.SelectedValue != null)
+                        query1 = "EXEC [dbo].[SP_UPDATELTCvaGVDAY] " + _oldMaLTC + "," + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'NV001'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "','" + cbTenGiangVien2.SelectedValue + "'";
+                    else
+                        query1 = "EXEC [dbo].[SP_UPDATELTCvaGVDAY] " + _oldMaLTC + "," + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'NV001'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "'";
+                    if (Program.ExecSqlNonQuery(query1) == 0)
+                    {
+                        MessageBox.Show("Ghi dữ liệu lớp tín chỉ thành công!");
+                        sPDanhSachLTCKoDKBindingSource.EndEdit();
+
+                        sPDanhSachLTCKoDKBindingSource.ResetCurrentItem();
+
+                        this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ghi dữ liệu lớp tín chỉ thất bại!");
+                    }
+                }
+                if (_flagOptionLopTinChi == "REMOVE")
+                {
+                       string query1 = "EXEC [dbo].[SP_REMOVELTCvaGVDAY] " + _oldMaLTC;
+                    if (Program.ExecSqlNonQuery(query1) == 0)
+                    {
+                        MessageBox.Show("Ghi dữ liệu lớp tín chỉ thành công!");
+                        sPDanhSachLTCKoDKBindingSource.EndEdit();
+
+                        sPDanhSachLTCKoDKBindingSource.ResetCurrentItem();
+
+                        this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ghi dữ liệu lớp tín chỉ thất bại!");
+                    }
+                }
+                    this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+
+                // this.LOPTINCHITableAdapter.Connection.ConnectionString = Program.connstr;
                 //this.LOPTINCHITableAdapter.Update(this.DS.LOPTINCHI);
             }
             catch (Exception ex)
@@ -266,6 +374,8 @@ namespace QLNV1
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = true;
             btnGhi.Enabled = btnPhucHoi.Enabled = false;
             panelControl2.Enabled = false;
+            this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+
         }
 
         private void btnLamMoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -323,7 +433,7 @@ namespace QLNV1
         {
             if (cbTenMonHoc.SelectedValue != null)
             {
-                txbMaMonHoc.Text = cbTenMonHoc.SelectedValue.ToString();
+               // txbMaTGDK.Text = cbTenMonHoc.SelectedValue.ToString();
             }
         }
 

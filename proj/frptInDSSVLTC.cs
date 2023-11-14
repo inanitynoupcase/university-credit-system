@@ -38,8 +38,8 @@ namespace QLNV1
                 cbKhoa.Enabled = false;
             }
             cbMonHoc.DataSource = bdsMonHoc;
-            cbMonHoc.DisplayMember = "TENMH";
-            cbMonHoc.ValueMember = "TENMH";
+            cbMonHoc.DisplayMember = "TENMON";
+            cbMonHoc.ValueMember = "TENMON";
 
 
             loadcbNienkhoa();

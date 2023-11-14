@@ -55,8 +55,11 @@ namespace QLNV1
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.DangKibarButton = new DevExpress.XtraBars.BarButtonItem();
             this.DIEMSVBTN = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
             this.rpQuanTri = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpBaoCao = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -68,10 +71,7 @@ namespace QLNV1
             this.HOTEN = new System.Windows.Forms.ToolStripStatusLabel();
             this.NHOM = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnTaoTaiKhoan = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
-            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -201,6 +201,7 @@ namespace QLNV1
             // HocPhibarButton
             // 
             this.HocPhibarButton.Caption = "HỌC PHÍ";
+            this.HocPhibarButton.Enabled = false;
             this.HocPhibarButton.Id = 11;
             this.HocPhibarButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("HocPhibarButton.ImageOptions.Image")));
             this.HocPhibarButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("HocPhibarButton.ImageOptions.LargeImage")));
@@ -225,6 +226,7 @@ namespace QLNV1
             // DangKibarButton2
             // 
             this.DangKibarButton2.Caption = "ĐĂNG KÍ";
+            this.DangKibarButton2.Enabled = false;
             this.DangKibarButton2.Id = 14;
             this.DangKibarButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DangKibarButton2.ImageOptions.Image")));
             this.DangKibarButton2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("DangKibarButton2.ImageOptions.LargeImage")));
@@ -322,6 +324,18 @@ namespace QLNV1
             this.DIEMSVBTN.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.DIEMSVBTN.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "barButtonItem9";
+            this.barButtonItem9.Id = 29;
+            this.barButtonItem9.Name = "barButtonItem9";
+            // 
+            // barCheckItem1
+            // 
+            this.barCheckItem1.Caption = "barCheckItem1";
+            this.barCheckItem1.Id = 31;
+            this.barCheckItem1.Name = "barCheckItem1";
+            // 
             // rpQuanTri
             // 
             this.rpQuanTri.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -339,10 +353,14 @@ namespace QLNV1
             this.ribbonPageGroup2.ItemLinks.Add(this.LopHocbarButton);
             this.ribbonPageGroup2.ItemLinks.Add(this.MonHocButtonItem);
             this.ribbonPageGroup2.ItemLinks.Add(this.LopTinChibarButton);
-            this.ribbonPageGroup2.ItemLinks.Add(this.HocPhibarButton);
-            this.ribbonPageGroup2.ItemLinks.Add(this.DangKibarButton2);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "PHÒNG GIÁO VỤ";
+            // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.DiemButtonItem);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.Text = "KHOA";
             // 
             // ribbonPageGroup1
             // 
@@ -431,12 +449,6 @@ namespace QLNV1
             this.btnTaoTaiKhoan.Name = "btnTaoTaiKhoan";
             this.btnTaoTaiKhoan.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
-            // ribbonPageGroup5
-            // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.DiemButtonItem);
-            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
-            this.ribbonPageGroup5.Text = "KHOA";
-            // 
             // barButtonItem3
             // 
             this.barButtonItem3.Caption = "ĐIỂM";
@@ -444,18 +456,6 @@ namespace QLNV1
             this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
             this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
             this.barButtonItem3.Name = "barButtonItem3";
-            // 
-            // barButtonItem9
-            // 
-            this.barButtonItem9.Caption = "barButtonItem9";
-            this.barButtonItem9.Id = 29;
-            this.barButtonItem9.Name = "barButtonItem9";
-            // 
-            // barCheckItem1
-            // 
-            this.barCheckItem1.Caption = "barCheckItem1";
-            this.barCheckItem1.Id = 31;
-            this.barCheckItem1.Name = "barCheckItem1";
             // 
             // MainForm
             // 
