@@ -281,7 +281,7 @@ namespace QLNV1
             // 
             // barButtonItem7
             // 
-            this.barButtonItem7.Caption = "In Danh Sách HP của Lớp";
+            this.barButtonItem7.Caption = "In Danh Sách SV của Lớp";
             this.barButtonItem7.Id = 21;
             this.barButtonItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
             this.barButtonItem7.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
@@ -310,7 +310,7 @@ namespace QLNV1
             // 
             this.DangKibarButton.Caption = "ĐĂNG KÝ MÔN";
             this.DangKibarButton.Id = 25;
-            this.DangKibarButton.ImageOptions.Image = global::QLNV1.Properties.Resources.classroom;
+            this.DangKibarButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DangKibarButton.ImageOptions.Image")));
             this.DangKibarButton.Name = "DangKibarButton";
             this.DangKibarButton.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.DangKibarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DangKibarButton_ItemClick);
@@ -319,7 +319,7 @@ namespace QLNV1
             // 
             this.DIEMSVBTN.Caption = "ĐIỂM SV";
             this.DIEMSVBTN.Id = 27;
-            this.DIEMSVBTN.ImageOptions.Image = global::QLNV1.Properties.Resources.score;
+            this.DIEMSVBTN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DIEMSVBTN.ImageOptions.Image")));
             this.DIEMSVBTN.Name = "DIEMSVBTN";
             this.DIEMSVBTN.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.DIEMSVBTN.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
@@ -380,11 +380,11 @@ namespace QLNV1
             // 
             // ribbonPageGroup3
             // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.btnLapPhieuNX);
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem7);
             this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnLapPhieuNX);
             this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem5);
             this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem6);
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem7);
             this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem8);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             // 

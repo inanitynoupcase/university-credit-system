@@ -238,11 +238,11 @@ namespace QLNV1
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = this.CheckExists(typeof(frptHocPhi));
+            Form frm = this.CheckExists(typeof(frptDSSV));
             if (frm != null) frm.Activate();
             else
             {
-                frptHocPhi f = new frptHocPhi();
+                frptDSSV f = new frptDSSV();
                 f.MdiParent = this;
                 f.Show();
             }

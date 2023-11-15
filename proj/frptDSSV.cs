@@ -13,13 +13,13 @@ using System.Windows.Forms;
 
 namespace QLNV1
 {
-    public partial class frptHocPhi : DevExpress.XtraEditors.XtraForm
+    public partial class frptDSSV : DevExpress.XtraEditors.XtraForm
     {
         public static SqlConnection conn = new SqlConnection();
         public static String connstr;
         public static String database = "QLDSV_TC";
         public int type;
-        public frptHocPhi()
+        public frptDSSV()
         {
             InitializeComponent();
            
@@ -139,7 +139,7 @@ namespace QLNV1
         {
             DataTable dt = new DataTable();
             //  string cmd = "EXEC [dbo].[getAllLopByRole] "+type;
-            string cmd = "select MALOP,TENLOP from LOP";
+            string cmd = "select MALOP,TENLOP from LOP where MAKHOA = '" + cbKhoa.SelectedValue + "'";
             dt = Program.ExecSqlDataTable(cmd);
 
             BindingSource bdslh = new BindingSource();
@@ -150,12 +150,25 @@ namespace QLNV1
         }
         private void frptHocPhi_Load(object sender, EventArgs e)
         {
-            if (Program.mGroup.Equals("PGV") || Program.mGroup.Equals("KHOA"))
+            // TODO: This line of code loads data into the 'qLDSVHTCDataSet.LOP' table. You can move, or remove it, as needed.
+            this.lOPTableAdapter.Fill(this.qLDSVHTCDataSet.LOP);
+            // TODO: This line of code loads data into the 'qLDSVHTCDataSet.KHOA' table. You can move, or remove it, as needed.
+            this.kHOATableAdapter.Fill(this.qLDSVHTCDataSet.KHOA);
+            /* if (Program.mGroup.Equals("PGV") || Program.mGroup.Equals("KHOA"))
+             {
+                 if (KetNoiSql("M15R2\\SERVER_SITE4", Program.remotelogin, Program.remotepassword) == 0)
+                 {
+                     MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+                 }
+             }*/
+            if (Program.mGroup.Equals("PGV"))
+             {
+                cbKhoa.Enabled = true;
+             }
+            if (Program.mGroup.Equals("KHOA"))
             {
-                if (KetNoiSql("M15R2\\SERVER_SITE4", Program.remotelogin, Program.remotepassword) == 0)
-                {
-                    MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
-                }
+                cbKhoa.Enabled = false;
+                cbKhoa.SelectedValue = Program.MaKhoa;
             }
             if (Program.mGroup.Equals("PGV")) type = 0;
             else type = 1;
@@ -183,19 +196,26 @@ namespace QLNV1
         }
         private void btnIn_Click(object sender, EventArgs e)
         {
-            
-            if (txbNienKhoa.Text.Trim() == "")
-            {
-                MessageBox.Show("Niên khóa không được để trống", "", MessageBoxButtons.OK);
-                txbNienKhoa.Focus();
-                return;
-            }
-            if (nmHocKy.Value == 0)
-            {
-                MessageBox.Show("Học Kỳ không được để trống", "", MessageBoxButtons.OK);
-                nmHocKy.Focus();
-                return;
-            }
+
+            if (cbKhoa.SelectedValue == null)
+              {
+                  MessageBox.Show("Niên khóa không được để trống", "", MessageBoxButtons.OK);
+                cbKhoa.Focus();
+                  return;
+              }
+              if (cbLop.SelectedValue == null)
+              {
+                  MessageBox.Show("Học Kỳ không được để trống", "", MessageBoxButtons.OK);
+                cbLop.Focus();
+                  return;
+              }
+             // string query1 = "EXEC [RP_DanhSachSVLop] " + cbLop.SelectedValue;
+          //      SqlDataReader reader = ExecSqlDataReader(query1);
+//reader.Read();
+         
+            string malop = (string)cbLop.Text;
+           // reader.Close();
+            /*
             string nienkhoa = txbNienKhoa.Text;
             int hocky = (int)nmHocKy.Value;
             string malop = cbLop.Text;
@@ -212,25 +232,33 @@ namespace QLNV1
                 tongtien = reader1.GetInt32(0).ToString();     
                 reader1.Close();
 
-          
-           
-            if(tongtien != "0")
+
+
+          if (tongtien != "0")
+          {
+              tongtien = NumberToText(double.Parse(tongtien));
+          }
+
+            */
+          XrptInDSSV rpt = new XrptInDSSV(malop, connstr);
+       
+          rpt.lbMaLop.Text = malop;
+           string temp;
+            Console.WriteLine($"{cbKhoa.Text} | {cbKhoa.SelectedIndex} | {cbKhoa.SelectedItem} | {cbKhoa.SelectedValue}");
+            if (cbKhoa.SelectedValue != null && cbKhoa.SelectedValue.Equals("CNTT"))
             {
-                tongtien = NumberToText(double.Parse(tongtien));
+                temp = "Công Nghệ Thông Tin";
             }
-           
+            else
+            {
+                temp = "Viễn Thông";
+            }
+            rpt.lbKhoa.Text = temp;
 
-            XrptInHocPhi rpt = new XrptInHocPhi(malop, nienkhoa, hocky,connstr);
-            rpt.lbMaLop.Text = malop;
-            rpt.lbKhoa.Text = tenkhoa;
-            rpt.lbTienChu.Text = tongtien;
 
-
-            ReportPrintTool print = new ReportPrintTool(rpt);
-            print.ShowPreviewDialog();
-          
-           
-            
+          ReportPrintTool print = new ReportPrintTool(rpt);
+            print.AutoShowParametersPanel = false;
+          print.ShowPreviewDialog();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -244,6 +272,16 @@ namespace QLNV1
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

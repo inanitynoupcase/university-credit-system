@@ -151,11 +151,11 @@
     <Compile Include="frptDSLTC.Designer.cs">
       <DependentUpon>frptDSLTC.cs</DependentUpon>
     </Compile>
-    <Compile Include="frptHocPhi.cs">
+    <Compile Include="frptDSSV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frptHocPhi.Designer.cs">
-      <DependentUpon>frptHocPhi.cs</DependentUpon>
+    <Compile Include="frptDSSV.Designer.cs">
+      <DependentUpon>frptDSSV.cs</DependentUpon>
     </Compile>
     <Compile Include="frptInDSSVLTC.cs">
       <SubType>Form</SubType>
@@ -191,11 +191,11 @@
     <Compile Include="XrptBDTK.Designer.cs">
       <DependentUpon>XrptBDTK.cs</DependentUpon>
     </Compile>
-    <Compile Include="XrptInHocPhi.cs">
+    <Compile Include="XrptInDSSV.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="XrptInHocPhi.Designer.cs">
-      <DependentUpon>XrptInHocPhi.cs</DependentUpon>
+    <Compile Include="XrptInDSSV.Designer.cs">
+      <DependentUpon>XrptInDSSV.cs</DependentUpon>
     </Compile>
     <Compile Include="XrptPhieuDiemSV.cs">
       <SubType>Component</SubType>
@@ -260,8 +260,8 @@
     <EmbeddedResource Include="frptDSLTC.resx">
       <DependentUpon>frptDSLTC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frptHocPhi.resx">
-      <DependentUpon>frptHocPhi.cs</DependentUpon>
+    <EmbeddedResource Include="frptDSSV.resx">
+      <DependentUpon>frptDSSV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frptInDSSVLTC.resx">
       <DependentUpon>frptInDSSVLTC.cs</DependentUpon>
@@ -286,8 +286,8 @@
     <EmbeddedResource Include="XrptBDTK.resx">
       <DependentUpon>XrptBDTK.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="XrptInHocPhi.resx">
-      <DependentUpon>XrptInHocPhi.cs</DependentUpon>
+    <EmbeddedResource Include="XrptInDSSV.resx">
+      <DependentUpon>XrptInDSSV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XrptPhieuDiemSV.resx">
       <DependentUpon>XrptPhieuDiemSV.cs</DependentUpon>

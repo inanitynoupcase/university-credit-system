@@ -30,13 +30,20 @@ namespace QLNV1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Xtrp_InDanhSachLopTinChi_Report));
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Xtrp_InDanhSachLopTinChi_Report));
             DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
+            DevExpress.DataAccess.ConnectionParameters.MsSqlConnectionParameters msSqlConnectionParameters1 = new DevExpress.DataAccess.ConnectionParameters.MsSqlConnectionParameters();
+            DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery2 = new DevExpress.DataAccess.Sql.StoredProcQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter3 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter4 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter5 = new DevExpress.DataAccess.Sql.QueryParameter();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
+            this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
@@ -74,8 +81,7 @@ namespace QLNV1
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
-            this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
+            this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -83,9 +89,32 @@ namespace QLNV1
             // TopMargin
             // 
             this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrPictureBox1,
-            this.xrLabel6});
+            this.xrLabel6,
+            this.xrPictureBox1});
+            this.TopMargin.HeightF = 110F;
             this.TopMargin.Name = "TopMargin";
+            // 
+            // xrLabel6
+            // 
+            this.xrLabel6.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.xrLabel6.ForeColor = System.Drawing.Color.Firebrick;
+            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(110.9028F, 23.74548F);
+            this.xrLabel6.Name = "xrLabel6";
+            this.xrLabel6.SizeF = new System.Drawing.SizeF(529.0972F, 52.52767F);
+            this.xrLabel6.StyleName = "Title";
+            this.xrLabel6.StylePriority.UseFont = false;
+            this.xrLabel6.StylePriority.UseForeColor = false;
+            this.xrLabel6.StylePriority.UseTextAlignment = false;
+            this.xrLabel6.Text = "HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG CƠ SỞ TẠI TP.HỒ CHÍ MINH";
+            this.xrLabel6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // xrPictureBox1
+            // 
+            this.xrPictureBox1.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("xrPictureBox1.ImageSource"));
+            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(9.999996F, 8.245499F);
+            this.xrPictureBox1.Name = "xrPictureBox1";
+            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(86.46977F, 91.7545F);
+            this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage;
             // 
             // BottomMargin
             // 
@@ -106,7 +135,7 @@ namespace QLNV1
             // 
             this.pageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(325F, 0F);
             this.pageInfo2.Name = "pageInfo2";
-            this.pageInfo2.SizeF = new System.Drawing.SizeF(325F, 23F);
+            this.pageInfo2.SizeF = new System.Drawing.SizeF(364F, 23F);
             this.pageInfo2.StyleName = "PageInfo";
             this.pageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.pageInfo2.TextFormatString = "Page {0} of {1}";
@@ -135,52 +164,52 @@ namespace QLNV1
             this.xrLabel5.StylePriority.UseForeColor = false;
             this.xrLabel5.StylePriority.UseTextAlignment = false;
             this.xrLabel5.Text = "DANH SÁCH LỚP TÍN CHỈ";
-            this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // lbKhoa
             // 
             this.lbKhoa.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbKhoa.LocationFloat = new DevExpress.Utils.PointFloat(157.617F, 46.66667F);
             this.lbKhoa.Name = "lbKhoa";
-            this.lbKhoa.SizeF = new System.Drawing.SizeF(393.3333F, 24.19432F);
+            this.lbKhoa.SizeF = new System.Drawing.SizeF(344.7222F, 24.19432F);
             this.lbKhoa.StyleName = "Title";
             this.lbKhoa.StylePriority.UseFont = false;
             this.lbKhoa.StylePriority.UseTextAlignment = false;
-            this.lbKhoa.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            this.lbKhoa.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel1
             // 
             this.xrLabel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(155.9503F, 74.139F);
             this.xrLabel1.Name = "xrLabel1";
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(105.8333F, 24.19433F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(105.8333F, 24.19434F);
             this.xrLabel1.StyleName = "Title";
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseTextAlignment = false;
             this.xrLabel1.Text = "Niên khóa:";
-            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             // 
             // lbNienKhoa
             // 
             this.lbNienKhoa.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNienKhoa.LocationFloat = new DevExpress.Utils.PointFloat(261.7837F, 74.139F);
+            this.lbNienKhoa.LocationFloat = new DevExpress.Utils.PointFloat(261.7836F, 74.139F);
             this.lbNienKhoa.Name = "lbNienKhoa";
-            this.lbNienKhoa.SizeF = new System.Drawing.SizeF(105.8333F, 24.19433F);
+            this.lbNienKhoa.SizeF = new System.Drawing.SizeF(94.16666F, 24.19433F);
             this.lbNienKhoa.StyleName = "Title";
             this.lbNienKhoa.StylePriority.UseFont = false;
             this.lbNienKhoa.StylePriority.UseTextAlignment = false;
-            this.lbNienKhoa.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.lbNienKhoa.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // lbHocKy
             // 
             this.lbHocKy.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHocKy.LocationFloat = new DevExpress.Utils.PointFloat(445.117F, 74.139F);
+            this.lbHocKy.LocationFloat = new DevExpress.Utils.PointFloat(445.117F, 74.13901F);
             this.lbHocKy.Name = "lbHocKy";
-            this.lbHocKy.SizeF = new System.Drawing.SizeF(105.8333F, 24.19433F);
+            this.lbHocKy.SizeF = new System.Drawing.SizeF(57.2222F, 24.19433F);
             this.lbHocKy.StyleName = "Title";
             this.lbHocKy.StylePriority.UseFont = false;
             this.lbHocKy.StylePriority.UseTextAlignment = false;
-            this.lbHocKy.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.lbHocKy.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // xrLabel2
             // 
@@ -192,7 +221,7 @@ namespace QLNV1
             this.xrLabel2.StylePriority.UseFont = false;
             this.xrLabel2.StylePriority.UseTextAlignment = false;
             this.xrLabel2.Text = "Học kỳ:";
-            this.xrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.xrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             // 
             // GroupHeader1
             // 
@@ -208,7 +237,7 @@ namespace QLNV1
             this.table1.Name = "table1";
             this.table1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.tableRow1});
-            this.table1.SizeF = new System.Drawing.SizeF(650F, 28F);
+            this.table1.SizeF = new System.Drawing.SizeF(689F, 28F);
             // 
             // tableRow1
             // 
@@ -224,11 +253,17 @@ namespace QLNV1
             // 
             // xrTableCell1
             // 
-            this.xrTableCell1.Borders = DevExpress.XtraPrinting.BorderSide.Right;
+            this.xrTableCell1.BorderColor = System.Drawing.Color.Silver;
+            this.xrTableCell1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTableCell1.BorderWidth = 1F;
             this.xrTableCell1.Multiline = true;
             this.xrTableCell1.Name = "xrTableCell1";
             this.xrTableCell1.StyleName = "DetailCaption1";
+            this.xrTableCell1.StylePriority.UseBorderColor = false;
             this.xrTableCell1.StylePriority.UseBorders = false;
+            this.xrTableCell1.StylePriority.UseBorderWidth = false;
             this.xrTableCell1.StylePriority.UseTextAlignment = false;
             this.xrTableCell1.Text = "STT";
             this.xrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
@@ -236,10 +271,16 @@ namespace QLNV1
             // 
             // tableCell1
             // 
-            this.tableCell1.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.tableCell1.BorderColor = System.Drawing.Color.Silver;
+            this.tableCell1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.tableCell1.BorderWidth = 1F;
             this.tableCell1.Name = "tableCell1";
             this.tableCell1.StyleName = "DetailCaption1";
+            this.tableCell1.StylePriority.UseBorderColor = false;
             this.tableCell1.StylePriority.UseBorders = false;
+            this.tableCell1.StylePriority.UseBorderWidth = false;
             this.tableCell1.StylePriority.UseTextAlignment = false;
             this.tableCell1.Text = "Môn học";
             this.tableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
@@ -247,8 +288,16 @@ namespace QLNV1
             // 
             // tableCell2
             // 
+            this.tableCell2.BorderColor = System.Drawing.Color.Silver;
+            this.tableCell2.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.tableCell2.BorderWidth = 1F;
             this.tableCell2.Name = "tableCell2";
             this.tableCell2.StyleName = "DetailCaption1";
+            this.tableCell2.StylePriority.UseBorderColor = false;
+            this.tableCell2.StylePriority.UseBorders = false;
+            this.tableCell2.StylePriority.UseBorderWidth = false;
             this.tableCell2.StylePriority.UseTextAlignment = false;
             this.tableCell2.Text = "Nhóm";
             this.tableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
@@ -256,36 +305,60 @@ namespace QLNV1
             // 
             // tableCell3
             // 
+            this.tableCell3.BorderColor = System.Drawing.Color.Silver;
+            this.tableCell3.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.tableCell3.BorderWidth = 1F;
             this.tableCell3.Name = "tableCell3";
             this.tableCell3.StyleName = "DetailCaption1";
+            this.tableCell3.StylePriority.UseBorderColor = false;
+            this.tableCell3.StylePriority.UseBorders = false;
+            this.tableCell3.StylePriority.UseBorderWidth = false;
             this.tableCell3.StylePriority.UseTextAlignment = false;
             this.tableCell3.Text = "Họ tên GV";
             this.tableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.tableCell3.Weight = 0.29878709394108638D;
+            this.tableCell3.Weight = 0.3562077007833867D;
             // 
             // tableCell4
             // 
+            this.tableCell4.BorderColor = System.Drawing.Color.Silver;
+            this.tableCell4.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.tableCell4.BorderWidth = 1F;
             this.tableCell4.Name = "tableCell4";
             this.tableCell4.StyleName = "DetailCaption1";
+            this.tableCell4.StylePriority.UseBorderColor = false;
+            this.tableCell4.StylePriority.UseBorders = false;
+            this.tableCell4.StylePriority.UseBorderWidth = false;
             this.tableCell4.StylePriority.UseTextAlignment = false;
             this.tableCell4.Text = "Số SV tối thiểu";
             this.tableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.tableCell4.Weight = 0.214009972923686D;
+            this.tableCell4.Weight = 0.22274761361883816D;
             // 
             // tableCell5
             // 
+            this.tableCell5.BorderColor = System.Drawing.Color.Silver;
+            this.tableCell5.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.tableCell5.BorderWidth = 1F;
             this.tableCell5.Name = "tableCell5";
             this.tableCell5.StyleName = "DetailCaption1";
+            this.tableCell5.StylePriority.UseBorderColor = false;
+            this.tableCell5.StylePriority.UseBorders = false;
+            this.tableCell5.StylePriority.UseBorderWidth = false;
             this.tableCell5.StylePriority.UseTextAlignment = false;
             this.tableCell5.Text = "Số SV Đăng Ký";
             this.tableCell5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.tableCell5.Weight = 0.19997906024639423D;
+            this.tableCell5.Weight = 0.21327098971089492D;
             // 
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.table2});
-            this.Detail.HeightF = 80F;
+            this.Detail.HeightF = 25F;
             this.Detail.Name = "Detail";
             // 
             // table2
@@ -295,10 +368,13 @@ namespace QLNV1
             this.table2.OddStyleName = "DetailData3_Odd";
             this.table2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.tableRow2});
-            this.table2.SizeF = new System.Drawing.SizeF(650F, 25F);
+            this.table2.SizeF = new System.Drawing.SizeF(689F, 25F);
             // 
             // tableRow2
             // 
+            this.tableRow2.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.tableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.xrTableCell2,
             this.tableCell6,
@@ -307,6 +383,7 @@ namespace QLNV1
             this.tableCell9,
             this.tableCell10});
             this.tableRow2.Name = "tableRow2";
+            this.tableRow2.StylePriority.UseBorders = false;
             this.tableRow2.Weight = 11.5D;
             // 
             // xrTableCell2
@@ -318,32 +395,37 @@ namespace QLNV1
             this.xrTableCell2.BorderWidth = 1F;
             this.xrTableCell2.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumRecordNumber()")});
-            this.xrTableCell2.Multiline = true;
             this.xrTableCell2.Name = "xrTableCell2";
             this.xrTableCell2.StyleName = "DetailData1";
             this.xrTableCell2.StylePriority.UseBorderColor = false;
             this.xrTableCell2.StylePriority.UseBorders = false;
             this.xrTableCell2.StylePriority.UseBorderWidth = false;
+            this.xrTableCell2.StylePriority.UseTextAlignment = false;
             xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrTableCell2.Summary = xrSummary1;
             this.xrTableCell2.Text = "xrTableCell2";
+            this.xrTableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell2.Weight = 0.10177703639873961D;
+            this.xrTableCell2.WordWrap = false;
             // 
             // tableCell6
             // 
-            this.tableCell6.BorderColor = System.Drawing.Color.DarkGray;
+            this.tableCell6.BorderColor = System.Drawing.Color.Silver;
             this.tableCell6.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.tableCell6.BorderWidth = 1F;
             this.tableCell6.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TENMH]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TENMONHOC]")});
             this.tableCell6.Name = "tableCell6";
             this.tableCell6.StyleName = "DetailData1";
             this.tableCell6.StylePriority.UseBorderColor = false;
             this.tableCell6.StylePriority.UseBorders = false;
             this.tableCell6.StylePriority.UseBorderWidth = false;
+            this.tableCell6.StylePriority.UseTextAlignment = false;
+            this.tableCell6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell6.Weight = 0.40775722701104256D;
+            this.tableCell6.WordWrap = false;
             // 
             // tableCell7
             // 
@@ -360,8 +442,9 @@ namespace QLNV1
             this.tableCell7.StylePriority.UseBorders = false;
             this.tableCell7.StylePriority.UseBorderWidth = false;
             this.tableCell7.StylePriority.UseTextAlignment = false;
-            this.tableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.tableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell7.Weight = 0.10185923201743424D;
+            this.tableCell7.WordWrap = false;
             // 
             // tableCell8
             // 
@@ -371,13 +454,16 @@ namespace QLNV1
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.tableCell8.BorderWidth = 1F;
             this.tableCell8.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[HOTEN]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[HOTENGV]")});
             this.tableCell8.Name = "tableCell8";
             this.tableCell8.StyleName = "DetailData1";
             this.tableCell8.StylePriority.UseBorderColor = false;
             this.tableCell8.StylePriority.UseBorders = false;
             this.tableCell8.StylePriority.UseBorderWidth = false;
-            this.tableCell8.Weight = 0.29878710720712237D;
+            this.tableCell8.StylePriority.UseTextAlignment = false;
+            this.tableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tableCell8.Weight = 0.35620771506738308D;
+            this.tableCell8.WordWrap = false;
             // 
             // tableCell9
             // 
@@ -394,8 +480,8 @@ namespace QLNV1
             this.tableCell9.StylePriority.UseBorders = false;
             this.tableCell9.StylePriority.UseBorderWidth = false;
             this.tableCell9.StylePriority.UseTextAlignment = false;
-            this.tableCell9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.tableCell9.Weight = 0.21400997729354576D;
+            this.tableCell9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tableCell9.Weight = 0.22274761814359992D;
             // 
             // tableCell10
             // 
@@ -405,15 +491,16 @@ namespace QLNV1
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.tableCell10.BorderWidth = 1F;
             this.tableCell10.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[AMOUNT]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SOSVDANGKY]")});
             this.tableCell10.Name = "tableCell10";
             this.tableCell10.StyleName = "DetailData1";
             this.tableCell10.StylePriority.UseBorderColor = false;
             this.tableCell10.StylePriority.UseBorders = false;
             this.tableCell10.StylePriority.UseBorderWidth = false;
             this.tableCell10.StylePriority.UseTextAlignment = false;
-            this.tableCell10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.tableCell10.Weight = 0.19997906024639423D;
+            this.tableCell10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tableCell10.Weight = 0.21327098994653609D;
+            this.tableCell10.WordWrap = false;
             // 
             // sqlDataSource1
             // 
@@ -496,13 +583,13 @@ namespace QLNV1
             // xrLabel4
             // 
             this.xrLabel4.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumRecordNumber([TENMH])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumRecordNumber([TENMONHOC])")});
             this.xrLabel4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(157.617F, 10F);
             this.xrLabel4.Multiline = true;
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel4.SizeF = new System.Drawing.SizeF(51.66667F, 23F);
+            this.xrLabel4.SizeF = new System.Drawing.SizeF(116.0049F, 23F);
             this.xrLabel4.StylePriority.UseFont = false;
             xrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrLabel4.Summary = xrSummary2;
@@ -518,26 +605,33 @@ namespace QLNV1
             this.xrLabel3.StylePriority.UseFont = false;
             this.xrLabel3.Text = "Số lượng lớp đã mở:";
             // 
-            // xrPictureBox1
+            // sqlDataSource2
             // 
-            this.xrPictureBox1.ImageUrl = "C:\\Users\\tran bao\\Desktop\\Logo Học Viện Công Nghệ Bưu Chính Viễn Thông - PTIT(Sim" +
-    "ple).png";
-            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(23.33335F, 9.666646F);
-            this.xrPictureBox1.Name = "xrPictureBox1";
-            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(69.99999F, 80F);
-            this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage;
-            // 
-            // xrLabel6
-            // 
-            this.xrLabel6.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.xrLabel6.ForeColor = System.Drawing.Color.Firebrick;
-            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(111.6667F, 26.33331F);
-            this.xrLabel6.Name = "xrLabel6";
-            this.xrLabel6.SizeF = new System.Drawing.SizeF(507.5252F, 52.52767F);
-            this.xrLabel6.StyleName = "Title";
-            this.xrLabel6.StylePriority.UseFont = false;
-            this.xrLabel6.StylePriority.UseForeColor = false;
-            this.xrLabel6.Text = "HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG CƠ SỞ TẠI TP.HỒ CHÍ MINH";
+            this.sqlDataSource2.ConnectionName = "QLDSVHTCConnectionString";
+            msSqlConnectionParameters1.AuthorizationType = DevExpress.DataAccess.ConnectionParameters.MsSqlAuthorizationType.SqlServer;
+            msSqlConnectionParameters1.DatabaseName = "QLDSVHTC";
+            msSqlConnectionParameters1.Password = "123";
+            msSqlConnectionParameters1.ServerName = "20.255.58.0,1431";
+            msSqlConnectionParameters1.UserName = "sa";
+            this.sqlDataSource2.ConnectionParameters = msSqlConnectionParameters1;
+            this.sqlDataSource2.Name = "sqlDataSource2";
+            storedProcQuery2.Name = "RP_InDanhSachLopTinChi";
+            queryParameter3.Name = "@NienKhoa";
+            queryParameter3.Type = typeof(string);
+            queryParameter3.ValueInfo = "2023-2024";
+            queryParameter4.Name = "@HocKy";
+            queryParameter4.Type = typeof(int);
+            queryParameter4.ValueInfo = "1";
+            queryParameter5.Name = "@MaKhoa";
+            queryParameter5.Type = typeof(string);
+            queryParameter5.ValueInfo = "CNTT";
+            storedProcQuery2.Parameters.Add(queryParameter3);
+            storedProcQuery2.Parameters.Add(queryParameter4);
+            storedProcQuery2.Parameters.Add(queryParameter5);
+            storedProcQuery2.StoredProcName = "RP_InDanhSachLopTinChi";
+            this.sqlDataSource2.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            storedProcQuery2});
+            this.sqlDataSource2.ResultSchemaSerializable = resources.GetString("sqlDataSource2.ResultSchemaSerializable");
             // 
             // Xtrp_InDanhSachLopTinChi_Report
             // 
@@ -549,10 +643,12 @@ namespace QLNV1
             this.Detail,
             this.ReportFooter});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
-            this.sqlDataSource1});
-            this.DataMember = "SP_InDanhSachLopTinChi_Report";
-            this.DataSource = this.sqlDataSource1;
+            this.sqlDataSource1,
+            this.sqlDataSource2});
+            this.DataMember = "RP_InDanhSachLopTinChi";
+            this.DataSource = this.sqlDataSource2;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.Margins = new System.Drawing.Printing.Margins(61, 100, 110, 100);
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.DetailCaption1,
@@ -608,7 +704,8 @@ namespace QLNV1
         public DevExpress.XtraReports.UI.XRLabel lbNienKhoa;
         public DevExpress.XtraReports.UI.XRLabel lbHocKy;
         public DevExpress.XtraReports.UI.XRLabel xrLabel5;
-        private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel6;
+        private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox1;
+        private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource2;
     }
 }
