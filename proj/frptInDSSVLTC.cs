@@ -114,13 +114,14 @@ namespace QLNV1
             int hocky = Int32.Parse(cbHocKi.Text);
             int nhom = Int32.Parse(cbNhom.Text);
             string monhoc = cbMonHoc.SelectedValue.ToString();
-            string khoa = cbKhoa.Text;
+            string khoa = (string)cbKhoa.SelectedValue;
+            if (khoa == "PTITHCM\\CNTT2") khoa = "CNTT"; else khoa = "VT";
             Xrpt_SVDangKyLTC rpt = new Xrpt_SVDangKyLTC(nienkhoa, hocky, nhom, monhoc);
             rpt.lbMonHoc.Text = monhoc;
             rpt.lbHocKy.Text = hocky.ToString();
             rpt.lbNhom.Text = nhom.ToString();
             rpt.lbNienKhoa.Text = nienkhoa;
-            rpt.lbKhoa.Text = khoa;
+            rpt.lbKhoa.Text = cbKhoa.Text;
             ReportPrintTool print = new ReportPrintTool(rpt);
             print.ShowPreviewDialog();
         }

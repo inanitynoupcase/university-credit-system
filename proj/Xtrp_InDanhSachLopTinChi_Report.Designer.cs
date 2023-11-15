@@ -82,6 +82,7 @@ namespace QLNV1
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+            this.xrLabel7 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -143,6 +144,7 @@ namespace QLNV1
             // ReportHeader
             // 
             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel7,
             this.xrLabel5,
             this.lbKhoa,
             this.xrLabel1,
@@ -169,9 +171,9 @@ namespace QLNV1
             // lbKhoa
             // 
             this.lbKhoa.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbKhoa.LocationFloat = new DevExpress.Utils.PointFloat(157.617F, 46.66667F);
+            this.lbKhoa.LocationFloat = new DevExpress.Utils.PointFloat(230.41F, 46.66668F);
             this.lbKhoa.Name = "lbKhoa";
-            this.lbKhoa.SizeF = new System.Drawing.SizeF(344.7222F, 24.19432F);
+            this.lbKhoa.SizeF = new System.Drawing.SizeF(271.9293F, 22.99997F);
             this.lbKhoa.StyleName = "Title";
             this.lbKhoa.StylePriority.UseFont = false;
             this.lbKhoa.StylePriority.UseTextAlignment = false;
@@ -633,6 +635,19 @@ namespace QLNV1
             storedProcQuery2});
             this.sqlDataSource2.ResultSchemaSerializable = resources.GetString("sqlDataSource2.ResultSchemaSerializable");
             // 
+            // xrLabel7
+            // 
+            this.xrLabel7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(169.4052F, 46.66666F);
+            this.xrLabel7.Multiline = true;
+            this.xrLabel7.Name = "xrLabel7";
+            this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel7.SizeF = new System.Drawing.SizeF(61.0049F, 22.99999F);
+            this.xrLabel7.StylePriority.UseFont = false;
+            this.xrLabel7.StylePriority.UseTextAlignment = false;
+            this.xrLabel7.Text = "KHOA:";
+            this.xrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
             // Xtrp_InDanhSachLopTinChi_Report
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -707,5 +722,6 @@ namespace QLNV1
         private DevExpress.XtraReports.UI.XRLabel xrLabel6;
         private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox1;
         private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource2;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel7;
     }
 }
