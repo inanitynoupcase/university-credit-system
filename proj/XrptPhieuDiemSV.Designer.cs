@@ -70,6 +70,7 @@ namespace QLNV1
             this.table2 = new DevExpress.XtraReports.UI.XRTable();
             this.tableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
             this.lbMonHoc = new DevExpress.XtraReports.UI.XRLabel();
@@ -78,7 +79,6 @@ namespace QLNV1
             this.bUOITHUTableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.BUOITHUTableAdapter();
             this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.sqlDataSource3 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
-            this.xrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qldsvhtcDataSet1)).BeginInit();
@@ -378,6 +378,26 @@ namespace QLNV1
             this.xrTableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell2.Weight = 0.17936156920677809D;
             // 
+            // xrTableCell3
+            // 
+            this.xrTableCell3.BorderColor = System.Drawing.Color.Silver;
+            this.xrTableCell3.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTableCell3.BorderWidth = 1F;
+            this.xrTableCell3.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TENMON]")});
+            this.xrTableCell3.Multiline = true;
+            this.xrTableCell3.Name = "xrTableCell3";
+            this.xrTableCell3.StyleName = "DetailData1";
+            this.xrTableCell3.StylePriority.UseBorderColor = false;
+            this.xrTableCell3.StylePriority.UseBorders = false;
+            this.xrTableCell3.StylePriority.UseBorderWidth = false;
+            this.xrTableCell3.StylePriority.UseTextAlignment = false;
+            this.xrTableCell3.Text = "xrTableCell3";
+            this.xrTableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell3.Weight = 0.79242171439581366D;
+            // 
             // tableCell4
             // 
             this.tableCell4.BorderColor = System.Drawing.Color.Silver;
@@ -406,7 +426,7 @@ namespace QLNV1
             // lbMonHoc
             // 
             this.lbMonHoc.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumRecordNumber([TENMH])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumRecordNumber([TENMON])")});
             this.lbMonHoc.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMonHoc.LocationFloat = new DevExpress.Utils.PointFloat(142.4242F, 21.16666F);
             this.lbMonHoc.Multiline = true;
@@ -488,26 +508,6 @@ namespace QLNV1
             this.sqlDataSource3.ResultSchemaSerializable = "PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTMiPjxWaWV3IE5hbWU9IlJQX1BoaWV1RGllbSI+PEZpZ" +
     "WxkIE5hbWU9IlRFTk1PTiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJESUVNVEsiIFR5cGU9I" +
     "kRlY2ltYWwiIC8+PC9WaWV3PjwvRGF0YVNldD4=";
-            // 
-            // xrTableCell3
-            // 
-            this.xrTableCell3.BorderColor = System.Drawing.Color.Silver;
-            this.xrTableCell3.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableCell3.BorderWidth = 1F;
-            this.xrTableCell3.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TENMON]")});
-            this.xrTableCell3.Multiline = true;
-            this.xrTableCell3.Name = "xrTableCell3";
-            this.xrTableCell3.StyleName = "DetailData1";
-            this.xrTableCell3.StylePriority.UseBorderColor = false;
-            this.xrTableCell3.StylePriority.UseBorders = false;
-            this.xrTableCell3.StylePriority.UseBorderWidth = false;
-            this.xrTableCell3.StylePriority.UseTextAlignment = false;
-            this.xrTableCell3.Text = "xrTableCell3";
-            this.xrTableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell3.Weight = 0.79242171439581366D;
             // 
             // XrptPhieuDiemSV
             // 

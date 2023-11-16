@@ -43,7 +43,7 @@ namespace QLNV1
                 Program.conn.Close();
             try
             {
-                if (Program.severname == "PTITHCM\\CNTT2")
+                if (Program.severname == "PTITHCM\\CNTT")
                 {
                     Program.severname = "20.255.58.0,1433";
                     Program.MaKhoa = "CNTT";
