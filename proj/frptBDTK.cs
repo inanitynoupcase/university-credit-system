@@ -93,15 +93,17 @@ namespace QLNV1
         private void btnIn_Click(object sender, EventArgs e)
         {
             string malop = cbLop.Text;
-            string cmd = "SELECT TENKHOA,KHOAHOC FROM dbo.LOP,dbo.KHOA WHERE MALOP = '" + malop + "' AND KHOA.MAKHOA = LOP.MAKHOA";
+            string cmd = "SELECT TENKHOA,NAMNHAPHOC FROM dbo.LOP,dbo.KHOA WHERE MALOP = '" + malop + "' AND KHOA.MAKHOA = LOP.MAKHOA";
+
             SqlDataReader reader = Program.ExecSqlDataReader(cmd);
             reader.Read();
             string tenkhoa = reader.GetString(0);
-            string khoahoc = reader.GetString(1);
+            int khoahoc = reader.GetValue(1) as int? ?? default(int);
             reader.Close();
+            Console.WriteLine(tenkhoa + " " + khoahoc + " " + malop);
             XrptBDTK rpt = new XrptBDTK(malop);
             rpt.lbKhoa.Text = tenkhoa;
-            rpt.lbKhoaHoc.Text = khoahoc;
+            rpt.lbKhoaHoc.Text = khoahoc.ToString();
             rpt.lbLop.Text = malop;
 
             ReportPrintTool print = new ReportPrintTool(rpt);
@@ -110,6 +112,11 @@ namespace QLNV1
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cbLop_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

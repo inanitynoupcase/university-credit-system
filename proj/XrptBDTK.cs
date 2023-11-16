@@ -15,8 +15,8 @@ namespace QLNV1
         public XrptBDTK(string malop)
         {
             InitializeComponent();
-            this.sqlDataSource1.Connection.ConnectionString = Program.connstr;
-            this.sqlDataSource1.Queries[0].Parameters[0].Value = malop;
+            this.sqlDataSource2.Connection.ConnectionString = Program.connstr;
+            this.sqlDataSource2.Queries[0].Parameters[0].Value = malop;
         }
     }
 }
