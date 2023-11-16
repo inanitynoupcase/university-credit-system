@@ -48,85 +48,90 @@ namespace QLNV1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(77, 68);
+            this.label1.Location = new System.Drawing.Point(90, 84);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.Size = new System.Drawing.Size(90, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên Sinh Viên";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(390, 68);
+            this.label2.Location = new System.Drawing.Point(455, 84);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.Size = new System.Drawing.Size(45, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Mã SV";
             // 
             // LopLabel
             // 
             this.LopLabel.AutoSize = true;
-            this.LopLabel.Location = new System.Drawing.Point(554, 68);
+            this.LopLabel.Location = new System.Drawing.Point(646, 84);
             this.LopLabel.Name = "LopLabel";
-            this.LopLabel.Size = new System.Drawing.Size(21, 13);
+            this.LopLabel.Size = new System.Drawing.Size(26, 17);
             this.LopLabel.TabIndex = 2;
             this.LopLabel.Text = "lớp";
             // 
             // TensvBox
             // 
             this.TensvBox.Enabled = false;
-            this.TensvBox.Location = new System.Drawing.Point(154, 60);
+            this.TensvBox.Location = new System.Drawing.Point(180, 74);
+            this.TensvBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TensvBox.Name = "TensvBox";
-            this.TensvBox.Size = new System.Drawing.Size(211, 21);
+            this.TensvBox.Size = new System.Drawing.Size(245, 23);
             this.TensvBox.TabIndex = 3;
             // 
             // MasvBox
             // 
             this.MasvBox.Enabled = false;
-            this.MasvBox.Location = new System.Drawing.Point(432, 60);
+            this.MasvBox.Location = new System.Drawing.Point(504, 74);
+            this.MasvBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MasvBox.Name = "MasvBox";
-            this.MasvBox.Size = new System.Drawing.Size(100, 21);
+            this.MasvBox.Size = new System.Drawing.Size(116, 23);
             this.MasvBox.TabIndex = 4;
             // 
             // LopBox
             // 
             this.LopBox.Enabled = false;
-            this.LopBox.Location = new System.Drawing.Point(581, 60);
+            this.LopBox.Location = new System.Drawing.Point(678, 74);
+            this.LopBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LopBox.Name = "LopBox";
-            this.LopBox.Size = new System.Drawing.Size(100, 21);
+            this.LopBox.Size = new System.Drawing.Size(116, 23);
             this.LopBox.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(351, 227);
+            this.label4.Location = new System.Drawing.Point(409, 279);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
+            this.label4.Size = new System.Drawing.Size(45, 17);
             this.label4.TabIndex = 6;
             this.label4.Text = "Mã SV";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(393, 219);
+            this.textBox1.Location = new System.Drawing.Point(458, 270);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(205, 21);
+            this.textBox1.Size = new System.Drawing.Size(238, 23);
             this.textBox1.TabIndex = 7;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(351, 275);
+            this.label5.Location = new System.Drawing.Point(402, 342);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.Size = new System.Drawing.Size(52, 17);
             this.label5.TabIndex = 8;
             this.label5.Text = "Mã Lớp";
             // 
             // CheckInfo
             // 
-            this.CheckInfo.Location = new System.Drawing.Point(613, 219);
+            this.CheckInfo.Location = new System.Drawing.Point(715, 270);
+            this.CheckInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CheckInfo.Name = "CheckInfo";
-            this.CheckInfo.Size = new System.Drawing.Size(102, 23);
+            this.CheckInfo.Size = new System.Drawing.Size(123, 28);
             this.CheckInfo.TabIndex = 10;
             this.CheckInfo.Text = "Check Thông TIn";
             this.CheckInfo.UseVisualStyleBackColor = true;
@@ -134,9 +139,10 @@ namespace QLNV1
             // 
             // SwitchClassbtn
             // 
-            this.SwitchClassbtn.Location = new System.Drawing.Point(496, 322);
+            this.SwitchClassbtn.Location = new System.Drawing.Point(579, 396);
+            this.SwitchClassbtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SwitchClassbtn.Name = "SwitchClassbtn";
-            this.SwitchClassbtn.Size = new System.Drawing.Size(102, 23);
+            this.SwitchClassbtn.Size = new System.Drawing.Size(119, 28);
             this.SwitchClassbtn.TabIndex = 11;
             this.SwitchClassbtn.Text = "Chuyển Lớp";
             this.SwitchClassbtn.UseVisualStyleBackColor = true;
@@ -145,34 +151,36 @@ namespace QLNV1
             // 
             this.ComboboxLopHoc.Enabled = false;
             this.ComboboxLopHoc.FormattingEnabled = true;
-            this.ComboboxLopHoc.Location = new System.Drawing.Point(393, 267);
+            this.ComboboxLopHoc.Location = new System.Drawing.Point(458, 335);
+            this.ComboboxLopHoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ComboboxLopHoc.Name = "ComboboxLopHoc";
-            this.ComboboxLopHoc.Size = new System.Drawing.Size(205, 21);
+            this.ComboboxLopHoc.Size = new System.Drawing.Size(238, 24);
             this.ComboboxLopHoc.TabIndex = 12;
             this.ComboboxLopHoc.SelectedIndexChanged += new System.EventHandler(this.ComboboxLopHoc_SelectedIndexChanged);
             // 
             // NamLabel
             // 
             this.NamLabel.AutoSize = true;
-            this.NamLabel.Location = new System.Drawing.Point(708, 68);
+            this.NamLabel.Location = new System.Drawing.Point(826, 84);
             this.NamLabel.Name = "NamLabel";
-            this.NamLabel.Size = new System.Drawing.Size(49, 13);
+            this.NamLabel.Size = new System.Drawing.Size(64, 17);
             this.NamLabel.TabIndex = 13;
             this.NamLabel.Text = "Năm Học";
             // 
             // NamHocBox
             // 
             this.NamHocBox.Enabled = false;
-            this.NamHocBox.Location = new System.Drawing.Point(763, 60);
+            this.NamHocBox.Location = new System.Drawing.Point(890, 74);
+            this.NamHocBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NamHocBox.Name = "NamHocBox";
-            this.NamHocBox.Size = new System.Drawing.Size(100, 21);
+            this.NamHocBox.Size = new System.Drawing.Size(116, 23);
             this.NamHocBox.TabIndex = 14;
             // 
             // FormChuyenLop
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1083, 685);
+            this.ClientSize = new System.Drawing.Size(1263, 843);
             this.Controls.Add(this.NamHocBox);
             this.Controls.Add(this.NamLabel);
             this.Controls.Add(this.ComboboxLopHoc);
@@ -187,6 +195,7 @@ namespace QLNV1
             this.Controls.Add(this.LopLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormChuyenLop";
             this.Text = "FormChuyenLop";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
