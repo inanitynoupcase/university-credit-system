@@ -283,5 +283,17 @@ namespace QLNV1
                 f.Show();
             }
         }
+
+        private void ChuyenLopBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormChuyenLop));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormChuyenLop f = new FormChuyenLop();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

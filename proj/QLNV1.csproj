@@ -79,6 +79,12 @@
     <Compile Include="DiemSVForm.Designer.cs">
       <DependentUpon>DiemSVForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChuyenLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuyenLop.Designer.cs">
+      <DependentUpon>FormChuyenLop.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDangKi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +229,9 @@
     </Compile>
     <EmbeddedResource Include="DiemSVForm.resx">
       <DependentUpon>DiemSVForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChuyenLop.resx">
+      <DependentUpon>FormChuyenLop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDangKi.resx">
       <DependentUpon>frmDangKi.cs</DependentUpon>
