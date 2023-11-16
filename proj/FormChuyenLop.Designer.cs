@@ -43,6 +43,8 @@ namespace QLNV1
             this.ComboboxLopHoc = new System.Windows.Forms.ComboBox();
             this.NamLabel = new System.Windows.Forms.Label();
             this.NamHocBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Khoabox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -75,7 +77,7 @@ namespace QLNV1
             // TensvBox
             // 
             this.TensvBox.Enabled = false;
-            this.TensvBox.Location = new System.Drawing.Point(180, 74);
+            this.TensvBox.Location = new System.Drawing.Point(186, 81);
             this.TensvBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TensvBox.Name = "TensvBox";
             this.TensvBox.Size = new System.Drawing.Size(245, 23);
@@ -84,7 +86,7 @@ namespace QLNV1
             // MasvBox
             // 
             this.MasvBox.Enabled = false;
-            this.MasvBox.Location = new System.Drawing.Point(504, 74);
+            this.MasvBox.Location = new System.Drawing.Point(506, 84);
             this.MasvBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MasvBox.Name = "MasvBox";
             this.MasvBox.Size = new System.Drawing.Size(116, 23);
@@ -93,7 +95,7 @@ namespace QLNV1
             // LopBox
             // 
             this.LopBox.Enabled = false;
-            this.LopBox.Location = new System.Drawing.Point(678, 74);
+            this.LopBox.Location = new System.Drawing.Point(678, 84);
             this.LopBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LopBox.Name = "LopBox";
             this.LopBox.Size = new System.Drawing.Size(116, 23);
@@ -146,6 +148,7 @@ namespace QLNV1
             this.SwitchClassbtn.TabIndex = 11;
             this.SwitchClassbtn.Text = "Chuyển Lớp";
             this.SwitchClassbtn.UseVisualStyleBackColor = true;
+            this.SwitchClassbtn.Click += new System.EventHandler(this.SwitchClassbtn_Click);
             // 
             // ComboboxLopHoc
             // 
@@ -170,17 +173,37 @@ namespace QLNV1
             // NamHocBox
             // 
             this.NamHocBox.Enabled = false;
-            this.NamHocBox.Location = new System.Drawing.Point(890, 74);
+            this.NamHocBox.Location = new System.Drawing.Point(896, 84);
             this.NamHocBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NamHocBox.Name = "NamHocBox";
             this.NamHocBox.Size = new System.Drawing.Size(116, 23);
             this.NamHocBox.TabIndex = 14;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1039, 90);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 17);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Khoa";
+            // 
+            // Khoabox
+            // 
+            this.Khoabox.Enabled = false;
+            this.Khoabox.Location = new System.Drawing.Point(1084, 84);
+            this.Khoabox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Khoabox.Name = "Khoabox";
+            this.Khoabox.Size = new System.Drawing.Size(129, 23);
+            this.Khoabox.TabIndex = 16;
             // 
             // FormChuyenLop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1263, 843);
+            this.Controls.Add(this.Khoabox);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.NamHocBox);
             this.Controls.Add(this.NamLabel);
             this.Controls.Add(this.ComboboxLopHoc);
@@ -220,5 +243,7 @@ namespace QLNV1
         private System.Windows.Forms.TextBox MasvBox;
         private System.Windows.Forms.Label NamLabel;
         private System.Windows.Forms.TextBox NamHocBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox Khoabox;
     }
 }

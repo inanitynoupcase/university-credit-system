@@ -32,7 +32,21 @@ namespace QLNV1
                 DataTable dt = Program.ExecSqlDataTable(cmd);
                 if(dt.Rows.Count > 0)
                 {
-                    
+                    if(dt.Rows[0].ItemArray[0].ToString()=="-1")
+                    {
+                        MessageBox.Show("sinh viên đã có điểm");
+                        ComboboxLopHoc.Enabled = false;
+                        SwitchClassbtn.Enabled = false;
+
+                        return;
+                    }
+                    else if(dt.Rows[0].ItemArray[0].ToString() == "-2")
+                    {
+                        MessageBox.Show("sinh viên đã nghỉ học hoặc không tồn tại");
+                        ComboboxLopHoc.Enabled = false;
+                        SwitchClassbtn.Enabled = false;
+                        return;
+                    }
                     TensvBox.Text = dt.Rows[0].ItemArray[0].ToString();
                     MasvBox.Text = dt.Rows[0].ItemArray[1].ToString();
                     LopBox.Text = dt.Rows[0].ItemArray[2].ToString();
@@ -44,6 +58,7 @@ namespace QLNV1
                         ComboboxLopHoc.DataSource = dtLop;
                         ComboboxLopHoc.DisplayMember = "MALOP";
                         ComboboxLopHoc.Enabled = true;
+                        SwitchClassbtn.Enabled = true;
 
                         foreach (var item in ComboboxLopHoc.Items)
                         {
@@ -82,6 +97,11 @@ namespace QLNV1
         }
 
         private void ComboboxLopHoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SwitchClassbtn_Click(object sender, EventArgs e)
         {
 
         }
