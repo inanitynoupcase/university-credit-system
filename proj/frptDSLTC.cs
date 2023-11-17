@@ -95,7 +95,7 @@ namespace QLNV1
             string nienkhoa = cbNienKhoa.Text;
             int hocky = Int32.Parse(cbHocKi.Text);
             string khoa = (string)cbKhoa.SelectedValue;
-            if (khoa == "PTITHCM\\CNTT2") khoa = "CNTT"; else khoa = "VT";
+            if (khoa == "PTITHCM\\CNTT") khoa = "CNTT"; else khoa = "VT";
             Console.WriteLine(nienkhoa + " " +  hocky + " " + khoa);
             Xtrp_InDanhSachLopTinChi_Report rpt = new Xtrp_InDanhSachLopTinChi_Report(nienkhoa,hocky,khoa);
             rpt.lbKhoa.Text = cbKhoa.Text;
