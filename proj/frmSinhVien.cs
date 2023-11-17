@@ -317,9 +317,11 @@ namespace QLNV1
             panelControl2.Enabled = true;
             bdsSinhVien.AddNew();
             txbMaLop.Text = ((DataRowView)bdsLop[bdsLop.Position])["MALOP"].ToString();
+            txbMaSV.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;
             btnGhi.Enabled = btnPhucHoi.Enabled = true;
             sINHVIENGridControl.Enabled = false;
+            comboBox1.SelectedIndex = 0;
         }
 
         private void btnLamMoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
