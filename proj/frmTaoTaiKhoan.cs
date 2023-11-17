@@ -38,31 +38,44 @@ namespace QLNV1
             if (Program.mGroup.Equals("KHOA"))
             {
                 rdoKhoa.Checked = true;
-                rdoPGV.Enabled = rdoPKT.Enabled = false;
+                rdoPGV.Enabled = rdoKhoa.Enabled = false;
             }
             if (Program.mGroup.Equals("PGV"))
             {
-                rdoPKT.Enabled = false;
+                rdoPGV.Checked = true;
+                rdoPGV.Enabled = rdoKhoa.Enabled = false;
+
             }
-            if (Program.mGroup.Equals("PKT"))
-            {
-                rdoPKT.Checked = true;
-                rdoKhoa.Enabled = rdoPGV.Enabled = false;
-            }
+
         }
-       
+
         void loadGVcombobox()
         {
-            DataTable dt = new DataTable();
-            string cmd = "EXEC dbo.SP_LayDSGV";
-            dt = Program.ExecSqlDataTable(cmd);
+            if (Program.mGroup.Equals("KHOA")){
+                    DataTable dt = new DataTable();
+                    string cmd = "EXEC dbo.SP_LayDSGV";
+                    dt = Program.ExecSqlDataTable(cmd);
 
-            BindingSource bdsgv = new BindingSource();
-            bdsgv.DataSource = dt;
-            cbGiangVien.DataSource = bdsgv;
-            cbGiangVien.DisplayMember = "MAGV";
-            cbGiangVien.ValueMember = "MAGV";
+                    BindingSource bdsgv = new BindingSource();
+                    bdsgv.DataSource = dt;
+                    cbGiangVien.DataSource = bdsgv;
+                    cbGiangVien.DisplayMember = "MAGV";
+                    cbGiangVien.ValueMember = "MAGV";
+                }
+            if (Program.mGroup.Equals("PGV"))
+                {
+                DataTable dt = new DataTable();
+                string cmd = "EXEC dbo.SP_LayDSNV";
+                dt = Program.ExecSqlDataTable(cmd);
+
+                BindingSource bdsgv = new BindingSource();
+                bdsgv.DataSource = dt;
+                cbGiangVien.DataSource = bdsgv;
+                cbGiangVien.DisplayMember = "MANV";
+                cbGiangVien.ValueMember = "MANV";
+            }
         }
+
         private void btnDangKy_Click(object sender, EventArgs e)
         {
             if(txbTenLogin.Text.Trim() == "")
@@ -89,7 +102,7 @@ namespace QLNV1
                 txbXacNhanMK.Focus();
                 return;
             }
-            if (rdoKhoa.Checked == false && rdoPGV.Checked == false && rdoPKT.Checked == false)
+            if (rdoKhoa.Checked == false && rdoPGV.Checked == false)
             {
                 MessageBox.Show("Nhóm quyền không được thiếu!", "", MessageBoxButtons.OK);
                 rdoKhoa.Focus();
@@ -101,7 +114,6 @@ namespace QLNV1
             string role = "";
             if (rdoKhoa.Checked) role = "KHOA";
             if (rdoPGV.Checked) role = "PGV";
-            if (rdoPKT.Checked) role = "PKT";
 
             String subLenh = " EXEC    @return_value = [dbo].[SP_TAOLOGIN] " +
 
@@ -147,7 +159,7 @@ namespace QLNV1
             }
             else if (resultCheckLogin == 2)
             {
-                XtraMessageBox.Show("Giảng viên đã có tài khoản rồi !", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Người này đã có tài khoản rồi !", "", MessageBoxButtons.OK);
                
 
             }

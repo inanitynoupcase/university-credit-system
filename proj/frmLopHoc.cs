@@ -328,6 +328,7 @@ namespace QLNV1
                 this.LOPTableAdapter.Fill(this.DS.LOP);
                 this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+                if(bdsLop.Count > 0)
                 macn = ((DataRowView)bdsLop[0])["MAKHOA"].ToString();
             }
         }

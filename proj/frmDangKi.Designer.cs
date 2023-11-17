@@ -219,31 +219,35 @@ namespace QLNV1
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1263, 51);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlTop.Size = new System.Drawing.Size(1083, 45);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 823);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 665);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1263, 20);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1083, 20);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 51);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 45);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 772);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 620);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1263, 51);
+            this.barDockControlRight.Location = new System.Drawing.Point(1083, 45);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 772);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 620);
             // 
             // btnThem
             // 
@@ -284,9 +288,9 @@ namespace QLNV1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(481, 7);
+            this.label1.Location = new System.Drawing.Point(412, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(317, 32);
+            this.label1.Size = new System.Drawing.Size(256, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "ĐĂNG KÍ LỚP TÍN CHỈ";
             // 
@@ -294,9 +298,10 @@ namespace QLNV1
             // 
             this.panelControl1.Controls.Add(this.label1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 51);
+            this.panelControl1.Location = new System.Drawing.Point(0, 45);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1263, 42);
+            this.panelControl1.Size = new System.Drawing.Size(1083, 34);
             this.panelControl1.TabIndex = 4;
             // 
             // panelControl2
@@ -310,51 +315,56 @@ namespace QLNV1
             this.panelControl2.Controls.Add(this.txbMaSV);
             this.panelControl2.Controls.Add(this.label2);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl2.Location = new System.Drawing.Point(0, 93);
+            this.panelControl2.Location = new System.Drawing.Point(0, 79);
+            this.panelControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1263, 92);
+            this.panelControl2.Size = new System.Drawing.Size(1083, 75);
             this.panelControl2.TabIndex = 5;
             // 
             // cbHocKi
             // 
             this.cbHocKi.FormattingEnabled = true;
-            this.cbHocKi.Location = new System.Drawing.Point(792, 58);
+            this.cbHocKi.Location = new System.Drawing.Point(679, 47);
+            this.cbHocKi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbHocKi.Name = "cbHocKi";
-            this.cbHocKi.Size = new System.Drawing.Size(223, 24);
+            this.cbHocKi.Size = new System.Drawing.Size(192, 21);
             this.cbHocKi.TabIndex = 6;
             // 
             // cbNienKhoa
             // 
             this.cbNienKhoa.FormattingEnabled = true;
-            this.cbNienKhoa.Location = new System.Drawing.Point(792, 21);
+            this.cbNienKhoa.Location = new System.Drawing.Point(679, 17);
+            this.cbNienKhoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbNienKhoa.Name = "cbNienKhoa";
-            this.cbNienKhoa.Size = new System.Drawing.Size(223, 24);
+            this.cbNienKhoa.Size = new System.Drawing.Size(192, 21);
             this.cbNienKhoa.TabIndex = 5;
             this.cbNienKhoa.SelectedIndexChanged += new System.EventHandler(this.cbNienKhoa_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(699, 58);
+            this.label4.Location = new System.Drawing.Point(599, 47);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 17);
+            this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Học kì";
             // 
             // btnSearchLopTinChi
             // 
-            this.btnSearchLopTinChi.Location = new System.Drawing.Point(1039, 17);
+            this.btnSearchLopTinChi.Location = new System.Drawing.Point(891, 14);
+            this.btnSearchLopTinChi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearchLopTinChi.Name = "btnSearchLopTinChi";
-            this.btnSearchLopTinChi.Size = new System.Drawing.Size(94, 62);
+            this.btnSearchLopTinChi.Size = new System.Drawing.Size(81, 50);
             this.btnSearchLopTinChi.TabIndex = 2;
             this.btnSearchLopTinChi.Text = "Tìm";
             this.btnSearchLopTinChi.Click += new System.EventHandler(this.btnSearchLopTinChi_Click);
             // 
             // btnSearchSinhVien
             // 
-            this.btnSearchSinhVien.Location = new System.Drawing.Point(430, 17);
+            this.btnSearchSinhVien.Location = new System.Drawing.Point(369, 14);
+            this.btnSearchSinhVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearchSinhVien.Name = "btnSearchSinhVien";
-            this.btnSearchSinhVien.Size = new System.Drawing.Size(94, 23);
+            this.btnSearchSinhVien.Size = new System.Drawing.Size(81, 19);
             this.btnSearchSinhVien.TabIndex = 2;
             this.btnSearchSinhVien.Text = "Tìm";
             this.btnSearchSinhVien.Click += new System.EventHandler(this.btnSearchSinhVien_Click);
@@ -362,37 +372,40 @@ namespace QLNV1
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(699, 21);
+            this.label3.Location = new System.Drawing.Point(599, 17);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 17);
+            this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Niên khóa";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // txbMaSV
             // 
-            this.txbMaSV.Location = new System.Drawing.Point(187, 17);
+            this.txbMaSV.Location = new System.Drawing.Point(160, 14);
+            this.txbMaSV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbMaSV.Name = "txbMaSV";
-            this.txbMaSV.Size = new System.Drawing.Size(223, 23);
+            this.txbMaSV.Size = new System.Drawing.Size(192, 21);
             this.txbMaSV.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 17);
+            this.label2.Location = new System.Drawing.Point(45, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 17);
+            this.label2.Size = new System.Drawing.Size(94, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Nhập mã sinh viên";
             // 
             // SINHVIENgridControl
             // 
             this.SINHVIENgridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SINHVIENgridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SINHVIENgridControl.Location = new System.Drawing.Point(2, 2);
             this.SINHVIENgridControl.MainView = this.gridView1;
+            this.SINHVIENgridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SINHVIENgridControl.MenuManager = this.barManager1;
             this.SINHVIENgridControl.Name = "SINHVIENgridControl";
-            this.SINHVIENgridControl.Size = new System.Drawing.Size(602, 318);
+            this.SINHVIENgridControl.Size = new System.Drawing.Size(515, 249);
             this.SINHVIENgridControl.TabIndex = 6;
             this.SINHVIENgridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -406,6 +419,7 @@ namespace QLNV1
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4});
+            this.gridView1.DetailHeight = 284;
             this.gridView1.GridControl = this.SINHVIENgridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.ReadOnly = true;
@@ -418,11 +432,11 @@ namespace QLNV1
             this.gridColumn1.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn1.Caption = "Mã sinh viên";
             this.gridColumn1.FieldName = "MASV";
-            this.gridColumn1.MinWidth = 25;
+            this.gridColumn1.MinWidth = 21;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 94;
+            this.gridColumn1.Width = 81;
             // 
             // gridColumn2
             // 
@@ -430,11 +444,11 @@ namespace QLNV1
             this.gridColumn2.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn2.Caption = "Họ";
             this.gridColumn2.FieldName = "HOSV";
-            this.gridColumn2.MinWidth = 25;
+            this.gridColumn2.MinWidth = 21;
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 94;
+            this.gridColumn2.Width = 81;
             // 
             // gridColumn3
             // 
@@ -442,11 +456,11 @@ namespace QLNV1
             this.gridColumn3.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn3.Caption = "Tên";
             this.gridColumn3.FieldName = "TENSV";
-            this.gridColumn3.MinWidth = 25;
+            this.gridColumn3.MinWidth = 21;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 94;
+            this.gridColumn3.Width = 81;
             // 
             // gridColumn4
             // 
@@ -454,30 +468,32 @@ namespace QLNV1
             this.gridColumn4.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn4.Caption = "Mã lớp";
             this.gridColumn4.FieldName = "MALOP";
-            this.gridColumn4.MinWidth = 25;
+            this.gridColumn4.MinWidth = 21;
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 94;
+            this.gridColumn4.Width = 81;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(152, 2);
+            this.label5.Location = new System.Drawing.Point(130, 2);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(208, 20);
+            this.label5.Size = new System.Drawing.Size(175, 17);
             this.label5.TabIndex = 0;
             this.label5.Text = "THÔNG TIN SINH VIÊN";
             // 
             // LOPTINCHIgridControl
             // 
             this.LOPTINCHIgridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LOPTINCHIgridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LOPTINCHIgridControl.Location = new System.Drawing.Point(2, 2);
             this.LOPTINCHIgridControl.MainView = this.gridView2;
+            this.LOPTINCHIgridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LOPTINCHIgridControl.MenuManager = this.barManager1;
             this.LOPTINCHIgridControl.Name = "LOPTINCHIgridControl";
-            this.LOPTINCHIgridControl.Size = new System.Drawing.Size(649, 318);
+            this.LOPTINCHIgridControl.Size = new System.Drawing.Size(556, 249);
             this.LOPTINCHIgridControl.TabIndex = 7;
             this.LOPTINCHIgridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -493,6 +509,7 @@ namespace QLNV1
             this.gridColumn8,
             this.gridColumn9,
             this.gridColumn10});
+            this.gridView2.DetailHeight = 284;
             this.gridView2.GridControl = this.LOPTINCHIgridControl;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.ReadOnly = true;
@@ -505,11 +522,11 @@ namespace QLNV1
             this.gridColumn5.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn5.Caption = "Mã lớp tín chỉ";
             this.gridColumn5.FieldName = "MALTC";
-            this.gridColumn5.MinWidth = 25;
+            this.gridColumn5.MinWidth = 21;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 0;
-            this.gridColumn5.Width = 94;
+            this.gridColumn5.Width = 81;
             // 
             // gridColumn6
             // 
@@ -517,11 +534,11 @@ namespace QLNV1
             this.gridColumn6.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn6.Caption = "Tên môn học";
             this.gridColumn6.FieldName = "TENMH";
-            this.gridColumn6.MinWidth = 25;
+            this.gridColumn6.MinWidth = 21;
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 1;
-            this.gridColumn6.Width = 94;
+            this.gridColumn6.Width = 81;
             // 
             // gridColumn7
             // 
@@ -529,11 +546,11 @@ namespace QLNV1
             this.gridColumn7.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn7.Caption = "Nhóm";
             this.gridColumn7.FieldName = "NHOM";
-            this.gridColumn7.MinWidth = 25;
+            this.gridColumn7.MinWidth = 21;
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 2;
-            this.gridColumn7.Width = 94;
+            this.gridColumn7.Width = 81;
             // 
             // gridColumn8
             // 
@@ -541,11 +558,11 @@ namespace QLNV1
             this.gridColumn8.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn8.Caption = "Họ tên";
             this.gridColumn8.FieldName = "HOTEN";
-            this.gridColumn8.MinWidth = 25;
+            this.gridColumn8.MinWidth = 21;
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 3;
-            this.gridColumn8.Width = 94;
+            this.gridColumn8.Width = 81;
             // 
             // gridColumn9
             // 
@@ -553,11 +570,11 @@ namespace QLNV1
             this.gridColumn9.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn9.Caption = "Số SV tối thiểu";
             this.gridColumn9.FieldName = "SOSVTOITHIEU";
-            this.gridColumn9.MinWidth = 25;
+            this.gridColumn9.MinWidth = 21;
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 4;
-            this.gridColumn9.Width = 94;
+            this.gridColumn9.Width = 81;
             // 
             // gridColumn10
             // 
@@ -565,63 +582,66 @@ namespace QLNV1
             this.gridColumn10.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn10.Caption = "Số SV đã đăng kí";
             this.gridColumn10.FieldName = "AMOUNT";
-            this.gridColumn10.MinWidth = 25;
+            this.gridColumn10.MinWidth = 21;
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.OptionsColumn.ReadOnly = true;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 5;
-            this.gridColumn10.Width = 94;
+            this.gridColumn10.Width = 81;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(910, 2);
+            this.label6.Location = new System.Drawing.Point(780, 2);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(235, 20);
+            this.label6.Size = new System.Drawing.Size(193, 17);
             this.label6.TabIndex = 0;
             this.label6.Text = "DANH SÁCH LỚP TÍN CHỈ";
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(339, 72);
+            this.simpleButton2.Location = new System.Drawing.Point(291, 58);
+            this.simpleButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(94, 62);
+            this.simpleButton2.Size = new System.Drawing.Size(81, 50);
             this.simpleButton2.TabIndex = 22;
             this.simpleButton2.Text = "ĐĂNG KÍ";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click_1);
             // 
             // txbMaLopTinChi
             // 
-            this.txbMaLopTinChi.Location = new System.Drawing.Point(142, 111);
+            this.txbMaLopTinChi.Location = new System.Drawing.Point(122, 90);
+            this.txbMaLopTinChi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbMaLopTinChi.Name = "txbMaLopTinChi";
             this.txbMaLopTinChi.ReadOnly = true;
-            this.txbMaLopTinChi.Size = new System.Drawing.Size(172, 23);
+            this.txbMaLopTinChi.Size = new System.Drawing.Size(148, 21);
             this.txbMaLopTinChi.TabIndex = 20;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(47, 114);
+            this.label9.Location = new System.Drawing.Point(40, 93);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 17);
+            this.label9.Size = new System.Drawing.Size(54, 13);
             this.label9.TabIndex = 18;
             this.label9.Text = "Mã lớp TC";
             // 
             // txbMaSVDK
             // 
-            this.txbMaSVDK.Location = new System.Drawing.Point(142, 72);
+            this.txbMaSVDK.Location = new System.Drawing.Point(122, 58);
+            this.txbMaSVDK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbMaSVDK.Name = "txbMaSVDK";
             this.txbMaSVDK.ReadOnly = true;
-            this.txbMaSVDK.Size = new System.Drawing.Size(172, 23);
+            this.txbMaSVDK.Size = new System.Drawing.Size(148, 21);
             this.txbMaSVDK.TabIndex = 21;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(47, 75);
+            this.label8.Location = new System.Drawing.Point(40, 61);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(82, 17);
+            this.label8.Size = new System.Drawing.Size(66, 13);
             this.label8.TabIndex = 19;
             this.label8.Text = "Mã sinh viên";
             // 
@@ -629,9 +649,9 @@ namespace QLNV1
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(138, 32);
+            this.label7.Location = new System.Drawing.Point(118, 26);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(191, 20);
+            this.label7.Size = new System.Drawing.Size(162, 17);
             this.label7.TabIndex = 17;
             this.label7.Text = "THÔNG TIN ĐĂNG KÍ";
             // 
@@ -640,9 +660,10 @@ namespace QLNV1
             this.panelControl3.Controls.Add(this.panelControl9);
             this.panelControl3.Controls.Add(this.panelControl8);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl3.Location = new System.Drawing.Point(0, 538);
+            this.panelControl3.Location = new System.Drawing.Point(0, 433);
+            this.panelControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1263, 285);
+            this.panelControl3.Size = new System.Drawing.Size(1083, 232);
             this.panelControl3.TabIndex = 27;
             // 
             // panelControl9
@@ -650,28 +671,32 @@ namespace QLNV1
             this.panelControl9.Controls.Add(this.panelControl11);
             this.panelControl9.Controls.Add(this.panelControl10);
             this.panelControl9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl9.Location = new System.Drawing.Point(465, 2);
+            this.panelControl9.Location = new System.Drawing.Point(399, 2);
+            this.panelControl9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl9.Name = "panelControl9";
-            this.panelControl9.Size = new System.Drawing.Size(796, 281);
+            this.panelControl9.Size = new System.Drawing.Size(682, 228);
             this.panelControl9.TabIndex = 24;
             // 
             // panelControl11
             // 
             this.panelControl11.Controls.Add(this.DSLTC_HUYgridControl);
             this.panelControl11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl11.Location = new System.Drawing.Point(2, 26);
+            this.panelControl11.Location = new System.Drawing.Point(2, 22);
+            this.panelControl11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl11.Name = "panelControl11";
-            this.panelControl11.Size = new System.Drawing.Size(792, 253);
+            this.panelControl11.Size = new System.Drawing.Size(678, 204);
             this.panelControl11.TabIndex = 2;
             // 
             // DSLTC_HUYgridControl
             // 
             this.DSLTC_HUYgridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DSLTC_HUYgridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DSLTC_HUYgridControl.Location = new System.Drawing.Point(2, 2);
             this.DSLTC_HUYgridControl.MainView = this.gridView3;
+            this.DSLTC_HUYgridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DSLTC_HUYgridControl.MenuManager = this.barManager1;
             this.DSLTC_HUYgridControl.Name = "DSLTC_HUYgridControl";
-            this.DSLTC_HUYgridControl.Size = new System.Drawing.Size(788, 249);
+            this.DSLTC_HUYgridControl.Size = new System.Drawing.Size(674, 200);
             this.DSLTC_HUYgridControl.TabIndex = 0;
             this.DSLTC_HUYgridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -686,6 +711,7 @@ namespace QLNV1
             this.gridColumn14,
             this.gridColumn15,
             this.gridColumn16});
+            this.gridView3.DetailHeight = 284;
             this.gridView3.GridControl = this.DSLTC_HUYgridControl;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsBehavior.ReadOnly = true;
@@ -698,11 +724,11 @@ namespace QLNV1
             this.gridColumn11.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn11.Caption = "Mã lớp tín chỉ";
             this.gridColumn11.FieldName = "MALTC";
-            this.gridColumn11.MinWidth = 25;
+            this.gridColumn11.MinWidth = 21;
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 0;
-            this.gridColumn11.Width = 94;
+            this.gridColumn11.Width = 81;
             // 
             // gridColumn12
             // 
@@ -710,47 +736,47 @@ namespace QLNV1
             this.gridColumn12.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn12.Caption = "Niên khóa";
             this.gridColumn12.FieldName = "NIENKHOA";
-            this.gridColumn12.MinWidth = 25;
+            this.gridColumn12.MinWidth = 21;
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 1;
-            this.gridColumn12.Width = 94;
+            this.gridColumn12.Width = 81;
             // 
             // gridColumn13
             // 
             this.gridColumn13.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.gridColumn13.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn13.Caption = "Học kỳ";
-            this.gridColumn13.FieldName = "HOCKY";
-            this.gridColumn13.MinWidth = 25;
+            this.gridColumn13.FieldName = "HOCKI";
+            this.gridColumn13.MinWidth = 21;
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 2;
-            this.gridColumn13.Width = 94;
+            this.gridColumn13.Width = 81;
             // 
             // gridColumn14
             // 
             this.gridColumn14.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.gridColumn14.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn14.Caption = "Môn học";
-            this.gridColumn14.FieldName = "TENMH";
-            this.gridColumn14.MinWidth = 25;
+            this.gridColumn14.FieldName = "TENMON";
+            this.gridColumn14.MinWidth = 21;
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 3;
-            this.gridColumn14.Width = 94;
+            this.gridColumn14.Width = 81;
             // 
             // gridColumn15
             // 
             this.gridColumn15.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.gridColumn15.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn15.Caption = "Giáo viên";
-            this.gridColumn15.FieldName = "HOTENGV";
-            this.gridColumn15.MinWidth = 25;
+            this.gridColumn15.FieldName = "Họ tên GV giảng";
+            this.gridColumn15.MinWidth = 21;
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 4;
-            this.gridColumn15.Width = 94;
+            this.gridColumn15.Width = 81;
             // 
             // gridColumn16
             // 
@@ -758,28 +784,29 @@ namespace QLNV1
             this.gridColumn16.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn16.Caption = "Nhóm";
             this.gridColumn16.FieldName = "NHOM";
-            this.gridColumn16.MinWidth = 25;
+            this.gridColumn16.MinWidth = 21;
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 5;
-            this.gridColumn16.Width = 94;
+            this.gridColumn16.Width = 81;
             // 
             // panelControl10
             // 
             this.panelControl10.Controls.Add(this.label10);
             this.panelControl10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl10.Location = new System.Drawing.Point(2, 2);
+            this.panelControl10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl10.Name = "panelControl10";
-            this.panelControl10.Size = new System.Drawing.Size(792, 24);
+            this.panelControl10.Size = new System.Drawing.Size(678, 20);
             this.panelControl10.TabIndex = 1;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(296, 3);
+            this.label10.Location = new System.Drawing.Point(254, 2);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(497, 20);
+            this.label10.Size = new System.Drawing.Size(412, 17);
             this.label10.TabIndex = 0;
             this.label10.Text = "DANH SÁCH LỚP TÍN CHỈ SV ĐÃ ĐĂNG KÍ CÓ THỂ HỦY";
             // 
@@ -793,8 +820,9 @@ namespace QLNV1
             this.panelControl8.Controls.Add(this.label8);
             this.panelControl8.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl8.Location = new System.Drawing.Point(2, 2);
+            this.panelControl8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(463, 281);
+            this.panelControl8.Size = new System.Drawing.Size(397, 228);
             this.panelControl8.TabIndex = 23;
             // 
             // panelControl4
@@ -802,9 +830,10 @@ namespace QLNV1
             this.panelControl4.Controls.Add(this.label5);
             this.panelControl4.Controls.Add(this.label6);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl4.Location = new System.Drawing.Point(0, 185);
+            this.panelControl4.Location = new System.Drawing.Point(0, 154);
+            this.panelControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(1263, 27);
+            this.panelControl4.Size = new System.Drawing.Size(1083, 22);
             this.panelControl4.TabIndex = 28;
             // 
             // panelControl5
@@ -812,18 +841,20 @@ namespace QLNV1
             this.panelControl5.Controls.Add(this.panelControl7);
             this.panelControl5.Controls.Add(this.panelControl6);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl5.Location = new System.Drawing.Point(0, 212);
+            this.panelControl5.Location = new System.Drawing.Point(0, 176);
+            this.panelControl5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(1263, 326);
+            this.panelControl5.Size = new System.Drawing.Size(1083, 257);
             this.panelControl5.TabIndex = 29;
             // 
             // panelControl7
             // 
             this.panelControl7.Controls.Add(this.LOPTINCHIgridControl);
             this.panelControl7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl7.Location = new System.Drawing.Point(608, 2);
+            this.panelControl7.Location = new System.Drawing.Point(521, 2);
+            this.panelControl7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(653, 322);
+            this.panelControl7.Size = new System.Drawing.Size(560, 253);
             this.panelControl7.TabIndex = 1;
             // 
             // panelControl6
@@ -831,15 +862,16 @@ namespace QLNV1
             this.panelControl6.Controls.Add(this.SINHVIENgridControl);
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl6.Location = new System.Drawing.Point(2, 2);
+            this.panelControl6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(606, 322);
+            this.panelControl6.Size = new System.Drawing.Size(519, 253);
             this.panelControl6.TabIndex = 0;
             // 
             // frmDangKi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1263, 843);
+            this.ClientSize = new System.Drawing.Size(1083, 685);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.panelControl4);
             this.Controls.Add(this.panelControl3);
@@ -849,6 +881,7 @@ namespace QLNV1
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmDangKi";
             this.Text = "Đăng kí LTC";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
