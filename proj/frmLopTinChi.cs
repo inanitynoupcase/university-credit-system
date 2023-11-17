@@ -529,5 +529,15 @@ namespace QLNV1
         {
 
         }
+
+        private void txbMaKhoa_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txbNienKhoa_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -371,5 +371,10 @@ namespace QLNV1
         {
 
         }
+
+        private void lOPGridControl_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

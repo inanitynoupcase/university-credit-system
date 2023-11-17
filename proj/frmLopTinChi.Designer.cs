@@ -702,6 +702,7 @@ namespace QLNV1
             this.txbMaKhoa.Properties.ReadOnly = true;
             this.txbMaKhoa.Size = new System.Drawing.Size(151, 20);
             this.txbMaKhoa.TabIndex = 15;
+            this.txbMaKhoa.EditValueChanged += new System.EventHandler(this.txbMaKhoa_EditValueChanged);
             // 
             // cbTenGiangVien
             // 
@@ -764,6 +765,7 @@ namespace QLNV1
             this.txbNienKhoa.Name = "txbNienKhoa";
             this.txbNienKhoa.Size = new System.Drawing.Size(170, 20);
             this.txbNienKhoa.TabIndex = 3;
+            this.txbNienKhoa.EditValueChanged += new System.EventHandler(this.txbNienKhoa_EditValueChanged);
             // 
             // gIANGVIENBindingSource
             // 

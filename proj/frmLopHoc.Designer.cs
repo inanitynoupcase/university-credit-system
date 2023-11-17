@@ -376,6 +376,7 @@ namespace QLNV1
             this.lOPGridControl.TabIndex = 6;
             this.lOPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.lOPGridControl.Click += new System.EventHandler(this.lOPGridControl_Click);
             // 
             // gridView1
             // 
