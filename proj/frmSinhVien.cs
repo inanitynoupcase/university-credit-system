@@ -237,8 +237,8 @@ namespace QLNV1
                 this.DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.DANGKYTableAdapter.Fill(this.DS.DANGKY);
 
-                
-                macn = ((DataRowView)bdsLop[0])["MAKHOA"].ToString();
+                if(bdsLop.Count > 0    )              macn = ((DataRowView)bdsLop[0])["MAKHOA"].ToString();
+
             }
             
         }

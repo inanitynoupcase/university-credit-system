@@ -23,6 +23,7 @@ namespace QLNV1
         string macn = "";
         private string _flagOptionLopTinChi;
         private string _oldMaLTC;
+        string a;
         public frmLopTinChi()
         {
             InitializeComponent();
@@ -45,24 +46,24 @@ namespace QLNV1
             // TODO: This line of code loads data into the 'DS.GIANGVIEN' table. You can move, or remove it, as needed.
             this.gIANGVIENTableAdapter.Fill(this.DS.GIANGVIEN);
             // TODO: This line of code loads data into the 'DS.SP_DanhSachLTCKoDK' table. You can move, or remove it, as needed.
-            this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+
+            if (Program.severname == "20.255.58.0,1432") a = "VT"; else a = "CNTT";
+            this.sP_DanhSachLTCKoDKTableAdapter.Connection.ConnectionString = Program.connstr;
+
+            this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, a);
             // TODO: This line of code loads data into the 'DS.GIANGVIEN' table. You can move, or remove it, as needed.
 
             // TODO: This line of code loads data into the 'DS.DANGKY' table. You can move, or remove it, as needed.
             loadGVcombobox();
             DS.EnforceConstraints = false;
 
-            this.LOPTINCHITableAdapter.Connection.ConnectionString = Program.connstr;
-            this.LOPTINCHITableAdapter.Fill(this.DS.LOPTINCHI);
-
-            this.DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.DANGKYTableAdapter.Fill(this.DS.DANGKY);
+           
 
 
             this.MONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
             this.MONHOCTableAdapter.Fill(this.DS.MONHOC);
 
-            macn = ((DataRowView)bdsLopTinChi[0])["MAKHOA"].ToString();
+            //macn = ((DataRowView)bdsLopTinChi[0])["MAKHOA"].ToString();
             cbKhoa.DataSource = Program.bds_dspm;
             cbKhoa.DisplayMember = "TENKHOA";
             cbKhoa.ValueMember = "TENSERVER";
@@ -127,11 +128,16 @@ namespace QLNV1
             else if (cbKhoa.SelectedIndex != 2)
             {
                 loadGVcombobox();
-                this.LOPTINCHITableAdapter.Connection.ConnectionString = Program.connstr;
+          /*      this.LOPTINCHITableAdapter.Connection.ConnectionString = Program.connstr;
                 this.LOPTINCHITableAdapter.Fill(this.DS.LOPTINCHI);
                 this.DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.DANGKYTableAdapter.Fill(this.DS.DANGKY);
+                this.DANGKYTableAdapter.Fill(this.DS.DANGKY);*/
+                if (bdsLopTinChi.Count > 0) 
                 macn = ((DataRowView)bdsLopTinChi[0])["MAKHOA"].ToString();
+                if (Program.severname == "20.255.58.0,1432") a = "VT"; else a = "CNTT";
+                this.sP_DanhSachLTCKoDKTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, a);
+                Console.WriteLine(": " + a + " " + Program.severname);
             }
 
         }
@@ -161,7 +167,9 @@ namespace QLNV1
             _flagOptionLopTinChi = "ADD";
             panelControl2.Enabled = true;
             sPDanhSachLTCKoDKBindingSource.AddNew();
-            txbMaKhoa.Text = Program.MaKhoa;
+            if (cbKhoa.SelectedIndex == 1) a = "CNTT"; else a = "VT";
+            
+            txbMaKhoa.Text = a;
             cbTenGiangVien.SelectedIndex = 0;
             cbTenMonHoc.SelectedIndex = 0;
             hUYLOPCheckEdit.Checked = false;
@@ -197,7 +205,10 @@ namespace QLNV1
                 catch (Exception ex)
                 {
                     MessageBox.Show("Lỗi xóa lớp : " + ex.Message, "", MessageBoxButtons.OK);
-                    this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+                    if (cbKhoa.SelectedIndex == 1) a = "CNTT"; else a = "VT";
+                    this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, a);
+
+
                     sPDanhSachLTCKoDKBindingSource.Position = sPDanhSachLTCKoDKBindingSource.Find("MALTC", maloptc);
                     return;
                 }
@@ -312,7 +323,11 @@ namespace QLNV1
 
                         sPDanhSachLTCKoDKBindingSource.ResetCurrentItem();
 
-                        this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+
+                        if (Program.severname == "20.255.58.0,1432") a = "VT"; else a = "CNTT";
+                        this.sP_DanhSachLTCKoDKTableAdapter.Connection.ConnectionString = Program.connstr;
+
+                        this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, a);
 
                     }
                     else
@@ -324,7 +339,7 @@ namespace QLNV1
                 {
                     string query1;
                     if (cbTenGiangVien2.SelectedValue != null)
-                        query1 = "EXEC [dbo].[SP_UPDATELTCvaGVDAY] " + _oldMaLTC + "," + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'" + Program.username + "'," + cbTenMonHoc.SelectedValue + ",'NV001'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "','" + cbTenGiangVien2.SelectedValue + "'";
+                        query1 = "EXEC [dbo].[SP_UPDATELTCvaGVDAY] " + _oldMaLTC + "," + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'" + Program.username + "'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "','" + cbTenGiangVien2.SelectedValue + "'";
                     else
                         query1 = "EXEC [dbo].[SP_UPDATELTCvaGVDAY] " + _oldMaLTC + "," + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'" + Program.username + "'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "'";
                     if (Program.ExecSqlNonQuery(query1) == 0)
@@ -334,7 +349,11 @@ namespace QLNV1
 
                         sPDanhSachLTCKoDKBindingSource.ResetCurrentItem();
 
-                        this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+
+                        if (Program.severname == "20.255.58.0,1432") a = "VT"; else a = "CNTT";
+                        this.sP_DanhSachLTCKoDKTableAdapter.Connection.ConnectionString = Program.connstr;
+
+                        this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, a);
 
                     }
                     else
@@ -352,7 +371,10 @@ namespace QLNV1
 
                         sPDanhSachLTCKoDKBindingSource.ResetCurrentItem();
 
-                        this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+                        if (Program.severname == "20.255.58.0,1432") a = "VT"; else a = "CNTT";
+                        this.sP_DanhSachLTCKoDKTableAdapter.Connection.ConnectionString = Program.connstr;
+
+                        this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, a);
 
                     }
                     else
@@ -360,8 +382,11 @@ namespace QLNV1
                         MessageBox.Show("Ghi dữ liệu lớp tín chỉ thất bại!");
                     }
                 }
-                    this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
 
+                if (Program.severname == "20.255.58.0,1432") a = "VT"; else a = "CNTT";
+                this.sP_DanhSachLTCKoDKTableAdapter.Connection.ConnectionString = Program.connstr;
+
+                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, a);
                 // this.LOPTINCHITableAdapter.Connection.ConnectionString = Program.connstr;
                 //this.LOPTINCHITableAdapter.Update(this.DS.LOPTINCHI);
             }
@@ -374,7 +399,10 @@ namespace QLNV1
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = true;
             btnGhi.Enabled = btnPhucHoi.Enabled = false;
             panelControl2.Enabled = false;
-            this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+            if (Program.severname == "20.255.58.0,1432") a = "VT"; else a = "CNTT";
+            this.sP_DanhSachLTCKoDKTableAdapter.Connection.ConnectionString = Program.connstr;
+
+            this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, a);
 
         }
 
@@ -382,7 +410,10 @@ namespace QLNV1
         {
             try
             {
-                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+                if (Program.severname == "20.255.58.0,1432") a = "VT"; else a = "CNTT";
+                this.sP_DanhSachLTCKoDKTableAdapter.Connection.ConnectionString = Program.connstr;
+
+                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, a);
             }
             catch (Exception ex)
             {
@@ -468,7 +499,7 @@ namespace QLNV1
         {
             if (bdsLopTinChi.Count > 0)
             {
-                txbMaKhoa.Text = ((DataRowView)sPDanhSachLTCKoDKBindingSource[sPDanhSachLTCKoDKBindingSource.Position])["MAKHOA"].ToString();
+                ///txbMaKhoa.Text = ((DataRowView)sPDanhSachLTCKoDKBindingSource[sPDanhSachLTCKoDKBindingSource.Position])["MAKHOA"].ToString();
             }
         }
 
@@ -476,7 +507,10 @@ namespace QLNV1
         {
             try
             {
-                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+                if (Program.severname == "20.255.58.0,1432") a = "VT"; else a = "CNTT";
+                this.sP_DanhSachLTCKoDKTableAdapter.Connection.ConnectionString = Program.connstr;
+
+                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, a);
             }
             catch (System.Exception ex)
             {
@@ -498,7 +532,10 @@ namespace QLNV1
         {
             try
             {
-                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+                if (Program.severname == "20.255.58.0,1432") a = "VT"; else a = "CNTT";
+                this.sP_DanhSachLTCKoDKTableAdapter.Connection.ConnectionString = Program.connstr;
+
+                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, a);
             }
             catch (System.Exception ex)
             {
@@ -511,7 +548,11 @@ namespace QLNV1
         {
             try
             {
-                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, Program.MaKhoa);
+
+                if (Program.severname == "20.255.58.0,1432") a = "VT"; else a = "CNTT";
+                this.sP_DanhSachLTCKoDKTableAdapter.Connection.ConnectionString = Program.connstr;
+
+                this.sP_DanhSachLTCKoDKTableAdapter.Fill(this.DS.SP_DanhSachLTCKoDK, a);
             }
             catch (System.Exception ex)
             {
