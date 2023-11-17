@@ -38,19 +38,25 @@ namespace QLNV1
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MAMON = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.diemtbbox = new DevExpress.XtraEditors.TextEdit();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DiemSVGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.diemtbbox.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // DiemSVGrid
             // 
-            this.DiemSVGrid.Location = new System.Drawing.Point(1, 137);
+            this.DiemSVGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.DiemSVGrid.Location = new System.Drawing.Point(0, 189);
             this.DiemSVGrid.MainView = this.gridView1;
             this.DiemSVGrid.Name = "DiemSVGrid";
-            this.DiemSVGrid.Size = new System.Drawing.Size(1260, 632);
+            this.DiemSVGrid.Size = new System.Drawing.Size(1263, 654);
             this.DiemSVGrid.TabIndex = 0;
             this.DiemSVGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -65,7 +71,8 @@ namespace QLNV1
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
-            this.gridColumn6});
+            this.gridColumn6,
+            this.gridColumn8});
             this.gridView1.GridControl = this.DiemSVGrid;
             this.gridView1.Name = "gridView1";
             // 
@@ -161,6 +168,19 @@ namespace QLNV1
             this.gridColumn6.VisibleIndex = 6;
             this.gridColumn6.Width = 221;
             // 
+            // gridColumn8
+            // 
+            this.gridColumn8.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.gridColumn8.AppearanceHeader.Options.UseBackColor = true;
+            this.gridColumn8.Caption = "Điểm Tổng Kết";
+            this.gridColumn8.FieldName = "DIEM_TK";
+            this.gridColumn8.MinWidth = 25;
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.Width = 94;
+            // 
             // MAMON
             // 
             this.MAMON.AppearanceHeader.BackColor = System.Drawing.Color.Red;
@@ -175,10 +195,38 @@ namespace QLNV1
             // 
             // panelControl1
             // 
-            this.panelControl1.Location = new System.Drawing.Point(1, 45);
+            this.panelControl1.Appearance.BackColor = System.Drawing.Color.DarkGray;
+            this.panelControl1.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panelControl1.Appearance.BorderColor = System.Drawing.Color.White;
+            this.panelControl1.Appearance.Options.UseBackColor = true;
+            this.panelControl1.Appearance.Options.UseBorderColor = true;
+            this.panelControl1.Controls.Add(this.diemtbbox);
+            this.panelControl1.Controls.Add(this.label1);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1263, 42);
+            this.panelControl1.Size = new System.Drawing.Size(1263, 138);
             this.panelControl1.TabIndex = 1;
+            // 
+            // diemtbbox
+            // 
+            this.diemtbbox.Enabled = false;
+            this.diemtbbox.Location = new System.Drawing.Point(172, 55);
+            this.diemtbbox.Name = "diemtbbox";
+            this.diemtbbox.Size = new System.Drawing.Size(125, 22);
+            this.diemtbbox.TabIndex = 1;
+            this.diemtbbox.EditValueChanged += new System.EventHandler(this.diemtbbox_EditValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Silver;
+            this.label1.Location = new System.Drawing.Point(-4, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(170, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Điểm Trung Bình Tổng Kết";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // DiemSVForm
             // 
@@ -194,6 +242,9 @@ namespace QLNV1
             ((System.ComponentModel.ISupportInitialize)(this.DiemSVGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.diemtbbox.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -211,5 +262,8 @@ namespace QLNV1
         private DevExpress.XtraGrid.Columns.GridColumn MAMON;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraEditors.TextEdit diemtbbox;
+        private System.Windows.Forms.Label label1;
     }
 }
