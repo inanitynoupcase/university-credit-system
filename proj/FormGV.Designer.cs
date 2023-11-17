@@ -195,7 +195,8 @@ namespace QLNV1
             this.panelControl1.Controls.Add(this.txbTen);
             this.panelControl1.Controls.Add(this.txbHocVi);
             this.panelControl1.Controls.Add(this.txbMaGV);
-            this.panelControl1.Location = new System.Drawing.Point(0, 400);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(0, 69);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1298, 298);
