@@ -47,12 +47,10 @@ namespace QLNV1
             // 
             // DiemSVGrid
             // 
-            this.DiemSVGrid.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DiemSVGrid.Location = new System.Drawing.Point(1, 111);
+            this.DiemSVGrid.Location = new System.Drawing.Point(1, 137);
             this.DiemSVGrid.MainView = this.gridView1;
-            this.DiemSVGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DiemSVGrid.Name = "DiemSVGrid";
-            this.DiemSVGrid.Size = new System.Drawing.Size(1080, 514);
+            this.DiemSVGrid.Size = new System.Drawing.Size(1260, 632);
             this.DiemSVGrid.TabIndex = 0;
             this.DiemSVGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -68,101 +66,100 @@ namespace QLNV1
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6});
-            this.gridView1.DetailHeight = 284;
             this.gridView1.GridControl = this.DiemSVGrid;
             this.gridView1.Name = "gridView1";
             // 
             // gridColumn7
             // 
-            this.gridColumn7.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.gridColumn7.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.gridColumn7.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn7.Caption = "Mã Môn";
             this.gridColumn7.FieldName = "MAMON";
-            this.gridColumn7.MinWidth = 21;
+            this.gridColumn7.MinWidth = 25;
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 0;
-            this.gridColumn7.Width = 81;
+            this.gridColumn7.Width = 94;
             // 
             // gridColumn1
             // 
-            this.gridColumn1.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.gridColumn1.AppearanceHeader.BackColor = System.Drawing.Color.Gray;
             this.gridColumn1.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn1.Caption = "Tên Môn";
             this.gridColumn1.FieldName = "TENMON";
-            this.gridColumn1.MinWidth = 21;
+            this.gridColumn1.MinWidth = 25;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 191;
+            this.gridColumn1.Width = 223;
             // 
             // gridColumn2
             // 
-            this.gridColumn2.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.gridColumn2.AppearanceHeader.BackColor = System.Drawing.Color.Gray;
             this.gridColumn2.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn2.Caption = "Năm Học";
             this.gridColumn2.FieldName = "NAM";
-            this.gridColumn2.MinWidth = 21;
+            this.gridColumn2.MinWidth = 25;
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 117;
+            this.gridColumn2.Width = 137;
             // 
             // gridColumn3
             // 
-            this.gridColumn3.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.gridColumn3.AppearanceHeader.BackColor = System.Drawing.Color.Gray;
             this.gridColumn3.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn3.Caption = "Học Kỳ";
             this.gridColumn3.FieldName = "HOCKY";
-            this.gridColumn3.MinWidth = 21;
+            this.gridColumn3.MinWidth = 25;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 3;
-            this.gridColumn3.Width = 135;
+            this.gridColumn3.Width = 158;
             // 
             // gridColumn4
             // 
-            this.gridColumn4.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.gridColumn4.AppearanceHeader.BackColor = System.Drawing.Color.Gray;
             this.gridColumn4.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn4.Caption = "Điểm CC";
             this.gridColumn4.FieldName = "DIEM_CC";
-            this.gridColumn4.MinWidth = 21;
+            this.gridColumn4.MinWidth = 25;
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 4;
-            this.gridColumn4.Width = 169;
+            this.gridColumn4.Width = 197;
             // 
             // gridColumn5
             // 
-            this.gridColumn5.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.gridColumn5.AppearanceHeader.BackColor = System.Drawing.Color.Gray;
             this.gridColumn5.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn5.Caption = "Điểm Giữa Kì";
             this.gridColumn5.FieldName = "DIEM_GK";
-            this.gridColumn5.MinWidth = 21;
+            this.gridColumn5.MinWidth = 25;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
-            this.gridColumn5.Width = 169;
+            this.gridColumn5.Width = 197;
             // 
             // gridColumn6
             // 
             this.gridColumn6.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.gridColumn6.AppearanceCell.Options.UseBackColor = true;
-            this.gridColumn6.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.gridColumn6.AppearanceHeader.BackColor = System.Drawing.Color.Gray;
             this.gridColumn6.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn6.Caption = "Điểm Cuối Kì";
             this.gridColumn6.FieldName = "DIEM_CK";
-            this.gridColumn6.MinWidth = 21;
+            this.gridColumn6.MinWidth = 25;
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 6;
-            this.gridColumn6.Width = 189;
+            this.gridColumn6.Width = 221;
             // 
             // MAMON
             // 
@@ -178,20 +175,18 @@ namespace QLNV1
             // 
             // panelControl1
             // 
-            this.panelControl1.Location = new System.Drawing.Point(1, 37);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelControl1.Location = new System.Drawing.Point(1, 45);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1083, 34);
+            this.panelControl1.Size = new System.Drawing.Size(1263, 42);
             this.panelControl1.TabIndex = 1;
             // 
             // DiemSVForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1083, 685);
+            this.ClientSize = new System.Drawing.Size(1263, 843);
             this.Controls.Add(this.DiemSVGrid);
             this.Controls.Add(this.panelControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "DiemSVForm";
             this.Text = "DiemSVForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
