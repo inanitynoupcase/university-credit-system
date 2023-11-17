@@ -95,10 +95,10 @@ namespace QLNV1
             string nienkhoa = cbNienKhoa.Text;
             int hocky = Int32.Parse(cbHocKi.Text);
             string khoa = (string)cbKhoa.SelectedValue;
-            if (khoa == "PTITHCM\\CNTT") khoa = "CNTT"; else khoa = "VT";
+            if (khoa == "PTITHCM\\CNTT") khoa = "Công Nghệ Thông Tin"; else khoa = "Viễn Thông";
             Console.WriteLine(nienkhoa + " " +  hocky + " " + khoa);
             Xtrp_InDanhSachLopTinChi_Report rpt = new Xtrp_InDanhSachLopTinChi_Report(nienkhoa,hocky,khoa);
-            rpt.lbKhoa.Text = cbKhoa.Text;
+            rpt.lbKhoa.Text = khoa;
             rpt.lbHocKy.Text = hocky.ToString();
             rpt.lbNienKhoa.Text = nienkhoa;
             ReportPrintTool print = new ReportPrintTool(rpt);

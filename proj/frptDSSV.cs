@@ -114,7 +114,7 @@ namespace QLNV1
             return "("+ result + (suffix ? " đồng chẵn)" : ")");
         }
     */
-        public static int KetNoiSql(string severname,string mlogin,string password)
+     /*   public static int KetNoiSql(string severname,string mlogin,string password)
         {
             if (conn != null && conn.State == ConnectionState.Open)
                 conn.Close();
@@ -135,7 +135,7 @@ namespace QLNV1
             }
 
         }
-        void loadLOPcombobox()
+       /* void loadLOPcombobox()
         {
             DataTable dt = new DataTable();
             //  string cmd = "EXEC [dbo].[getAllLopByRole] "+type;
@@ -147,13 +147,15 @@ namespace QLNV1
             cbLop.DataSource = bdslh;
             cbLop.DisplayMember = "MALOP";
             cbLop.ValueMember = "TENLOP";
-        }
+        }*/
         private void frptHocPhi_Load(object sender, EventArgs e)
         {
+            this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+
             // TODO: This line of code loads data into the 'qLDSVHTCDataSet.LOP' table. You can move, or remove it, as needed.
             this.lOPTableAdapter.Fill(this.qLDSVHTCDataSet.LOP);
             // TODO: This line of code loads data into the 'qLDSVHTCDataSet.KHOA' table. You can move, or remove it, as needed.
-            this.kHOATableAdapter.Fill(this.qLDSVHTCDataSet.KHOA);
+          //  this.kHOATableAdapter.Fill(this.qLDSVHTCDataSet.KHOA);
             /* if (Program.mGroup.Equals("PGV") || Program.mGroup.Equals("KHOA"))
              {
                  if (KetNoiSql("M15R2\\SERVER_SITE4", Program.remotelogin, Program.remotepassword) == 0)
@@ -176,7 +178,7 @@ namespace QLNV1
             if (Program.mGroup.Equals("KHOA"))
             {
                 cbKhoa.Enabled = false;
-                cbKhoa.SelectedValue = Program.MaKhoa;
+               
             }
             if (Program.mGroup.Equals("PGV")) type = 0;
             else type = 1;
