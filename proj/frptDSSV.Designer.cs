@@ -31,23 +31,23 @@ namespace QLNV1
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cbKhoa = new System.Windows.Forms.ComboBox();
-            this.kHOABindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.qLDSVHTCDataSet = new QLNV1.QLDSVHTCDataSet();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnIn = new System.Windows.Forms.Button();
             this.cbLop = new System.Windows.Forms.ComboBox();
-            this.lOPBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.kHOABindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLDSVHTCDataSet = new QLNV1.QLDSVHTCDataSet();
+            this.lOPBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.lOPBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kHOATableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.KHOATableAdapter();
             this.lOPTableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.LOPTableAdapter();
-            this.lOPBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.cbKhoa = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kHOABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLDSVHTCDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,30 +66,6 @@ namespace QLNV1
             this.panel1.Size = new System.Drawing.Size(1083, 219);
             this.panel1.TabIndex = 2;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // cbKhoa
-            // 
-            this.cbKhoa.DataSource = this.kHOABindingSource;
-            this.cbKhoa.DisplayMember = "TENKHOA";
-            this.cbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbKhoa.Enabled = false;
-            this.cbKhoa.FormattingEnabled = true;
-            this.cbKhoa.Location = new System.Drawing.Point(399, 42);
-            this.cbKhoa.Name = "cbKhoa";
-            this.cbKhoa.Size = new System.Drawing.Size(279, 21);
-            this.cbKhoa.TabIndex = 7;
-            this.cbKhoa.ValueMember = "MAKHOA";
-            this.cbKhoa.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // kHOABindingSource
-            // 
-            this.kHOABindingSource.DataMember = "KHOA";
-            this.kHOABindingSource.DataSource = this.qLDSVHTCDataSet;
-            // 
-            // qLDSVHTCDataSet
-            // 
-            this.qLDSVHTCDataSet.DataSetName = "QLDSVHTCDataSet";
-            this.qLDSVHTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnThoat
             // 
@@ -119,8 +95,6 @@ namespace QLNV1
             // 
             // cbLop
             // 
-            this.cbLop.DataSource = this.lOPBindingSource1;
-            this.cbLop.DisplayMember = "MALOP";
             this.cbLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLop.FormattingEnabled = true;
             this.cbLop.Location = new System.Drawing.Point(399, 79);
@@ -128,13 +102,7 @@ namespace QLNV1
             this.cbLop.Name = "cbLop";
             this.cbLop.Size = new System.Drawing.Size(279, 21);
             this.cbLop.TabIndex = 3;
-            this.cbLop.ValueMember = "MALOP";
             this.cbLop.SelectedIndexChanged += new System.EventHandler(this.cbLop_SelectedIndexChanged);
-            // 
-            // lOPBindingSource
-            // 
-            this.lOPBindingSource.DataMember = "LOP";
-            this.lOPBindingSource.DataSource = this.qLDSVHTCDataSet;
             // 
             // label2
             // 
@@ -157,6 +125,26 @@ namespace QLNV1
             this.label1.TabIndex = 2;
             this.label1.Text = "MÃ LỚP";
             // 
+            // kHOABindingSource
+            // 
+            this.kHOABindingSource.DataMember = "KHOA";
+            this.kHOABindingSource.DataSource = this.qLDSVHTCDataSet;
+            // 
+            // qLDSVHTCDataSet
+            // 
+            this.qLDSVHTCDataSet.DataSetName = "QLDSVHTCDataSet";
+            this.qLDSVHTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lOPBindingSource1
+            // 
+            this.lOPBindingSource1.DataMember = "LOP";
+            this.lOPBindingSource1.DataSource = this.qLDSVHTCDataSet;
+            // 
+            // lOPBindingSource
+            // 
+            this.lOPBindingSource.DataMember = "LOP";
+            this.lOPBindingSource.DataSource = this.qLDSVHTCDataSet;
+            // 
             // kHOATableAdapter
             // 
             this.kHOATableAdapter.ClearBeforeFill = true;
@@ -165,27 +153,33 @@ namespace QLNV1
             // 
             this.lOPTableAdapter.ClearBeforeFill = true;
             // 
-            // lOPBindingSource1
+            // cbKhoa
             // 
-            this.lOPBindingSource1.DataMember = "LOP";
-            this.lOPBindingSource1.DataSource = this.qLDSVHTCDataSet;
+            this.cbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbKhoa.FormattingEnabled = true;
+            this.cbKhoa.Location = new System.Drawing.Point(399, 44);
+            this.cbKhoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbKhoa.Name = "cbKhoa";
+            this.cbKhoa.Size = new System.Drawing.Size(279, 21);
+            this.cbKhoa.TabIndex = 7;
+            this.cbKhoa.SelectedIndexChanged += new System.EventHandler(this.cbKhoa_SelectedIndexChanged);
             // 
-            // frptHocPhi
+            // frptDSSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1083, 567);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "frptHocPhi";
+            this.Name = "frptDSSV";
             this.Text = "Danh Sách sinh viên";
             this.Load += new System.EventHandler(this.frptHocPhi_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kHOABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLDSVHTCDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -198,12 +192,12 @@ namespace QLNV1
         private System.Windows.Forms.ComboBox cbLop;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbKhoa;
         private QLDSVHTCDataSet qLDSVHTCDataSet;
         private System.Windows.Forms.BindingSource kHOABindingSource;
         private QLDSVHTCDataSetTableAdapters.KHOATableAdapter kHOATableAdapter;
         private System.Windows.Forms.BindingSource lOPBindingSource;
         private QLDSVHTCDataSetTableAdapters.LOPTableAdapter lOPTableAdapter;
         private System.Windows.Forms.BindingSource lOPBindingSource1;
+        private System.Windows.Forms.ComboBox cbKhoa;
     }
 }

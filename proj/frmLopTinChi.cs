@@ -302,9 +302,9 @@ namespace QLNV1
                 {
                     string query1;
                     if (cbTenGiangVien2.SelectedValue != null)
-                        query1 = "EXEC [dbo].[SP_NewLTCvaGVDAY] " + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'NV001'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "','" + cbTenGiangVien2.SelectedValue + "'";
+                        query1 = "EXEC [dbo].[SP_NewLTCvaGVDAY] " + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'" + Program.username + "'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "','" + cbTenGiangVien2.SelectedValue + "'";
                     else 
-                        query1 = "EXEC [dbo].[SP_NewLTCvaGVDAY] " + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'NV001'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "'";
+                        query1 = "EXEC [dbo].[SP_NewLTCvaGVDAY] " + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'" + Program.username + "'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "'";
                     if(Program.ExecSqlNonQuery(query1) == 0)
                     {
                         MessageBox.Show("Ghi dữ liệu lớp tín chỉ thành công!");
@@ -324,9 +324,9 @@ namespace QLNV1
                 {
                     string query1;
                     if (cbTenGiangVien2.SelectedValue != null)
-                        query1 = "EXEC [dbo].[SP_UPDATELTCvaGVDAY] " + _oldMaLTC + "," + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'NV001'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "','" + cbTenGiangVien2.SelectedValue + "'";
+                        query1 = "EXEC [dbo].[SP_UPDATELTCvaGVDAY] " + _oldMaLTC + "," + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'" + Program.username + "'," + cbTenMonHoc.SelectedValue + ",'NV001'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "','" + cbTenGiangVien2.SelectedValue + "'";
                     else
-                        query1 = "EXEC [dbo].[SP_UPDATELTCvaGVDAY] " + _oldMaLTC + "," + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'NV001'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "'";
+                        query1 = "EXEC [dbo].[SP_UPDATELTCvaGVDAY] " + _oldMaLTC + "," + speSoSVToiThieu.Text + "," + spinNHOM.Text + ",'" + txbNienKhoa.Text + "'," + speHocKy.Text + "," + cbTenMonHoc.SelectedValue + ",'" + Program.username + "'," + hUYLOPCheckEdit.EditValue + ",'" + txbMaKhoa.Text + "'," + cbMATGDK.SelectedValue + ",'" + cbTenGiangVien.SelectedValue + "'";
                     if (Program.ExecSqlNonQuery(query1) == 0)
                     {
                         MessageBox.Show("Ghi dữ liệu lớp tín chỉ thành công!");

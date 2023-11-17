@@ -121,13 +121,13 @@ namespace QLNV1
             int nhom = Int32.Parse(cbNhom.Text);
             string monhoc = cbMonHoc.SelectedValue.ToString();
             string khoa = (string)cbKhoa.SelectedValue;
-            if (khoa == "PTITHCM\\CNTT2") khoa = "CNTT"; else khoa = "VT";
+            if (khoa == "PTITHCM\\CNTT") khoa = "Công Nghệ Thông Tin"; else khoa = "Viễn Thông";
             Xrpt_InBDHM rpt = new Xrpt_InBDHM(nienkhoa, hocky, nhom, monhoc);
             rpt.lbMonHoc.Text = monhoc;
             rpt.lbHocKy.Text = hocky.ToString();
             rpt.lbNhom.Text = nhom.ToString();
             rpt.lbNienKhoa.Text = nienkhoa;
-            rpt.lbKhoa.Text = cbKhoa.Text;
+            rpt.lbKhoa.Text = khoa;
             ReportPrintTool print = new ReportPrintTool(rpt);
             print.ShowPreviewDialog();
         }

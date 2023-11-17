@@ -17,7 +17,7 @@ namespace QLNV1
     {
         public static SqlConnection conn = new SqlConnection();
         public static String connstr;
-        public static String database = "QLDSV_TC";
+        public static String database = "QLDSVHTC";
         public int type;
         public frptDSSV()
         {
@@ -26,7 +26,7 @@ namespace QLNV1
         }
 
       
-        public static string NumberToText(double inputNumber, bool suffix = true)
+    /*    public static string NumberToText(double inputNumber, bool suffix = true)
         {
             string[] unitNumbers = new string[] { "không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín" };
             string[] placeValues = new string[] { "", "nghìn", "triệu", "tỷ" };
@@ -113,7 +113,7 @@ namespace QLNV1
             if (isNegative) result = "Âm " + result;
             return "("+ result + (suffix ? " đồng chẵn)" : ")");
         }
-
+    */
         public static int KetNoiSql(string severname,string mlogin,string password)
         {
             if (conn != null && conn.State == ConnectionState.Open)
@@ -161,6 +161,14 @@ namespace QLNV1
                      MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
                  }
              }*/
+
+            cbLop.DataSource = lOPBindingSource;
+            cbLop.DisplayMember = "MALOP";
+            cbLop.ValueMember = "TENLOP";
+            cbKhoa.DataSource = Program.bds_dspm;
+            cbKhoa.DisplayMember = "TENKHOA";
+            cbKhoa.ValueMember = "TENSERVER";
+            cbKhoa.SelectedIndex = Program.mChinhanh;
             if (Program.mGroup.Equals("PGV"))
              {
                 cbKhoa.Enabled = true;
@@ -172,7 +180,7 @@ namespace QLNV1
             }
             if (Program.mGroup.Equals("PGV")) type = 0;
             else type = 1;
-            loadLOPcombobox();
+
 
 
         }
@@ -245,7 +253,7 @@ namespace QLNV1
           rpt.lbMaLop.Text = malop;
            string temp;
             Console.WriteLine($"{cbKhoa.Text} | {cbKhoa.SelectedIndex} | {cbKhoa.SelectedItem} | {cbKhoa.SelectedValue}");
-            if (cbKhoa.SelectedValue != null && cbKhoa.SelectedValue.Equals("CNTT"))
+            if (cbKhoa.SelectedValue != null && cbKhoa.SelectedValue.Equals("PTITHCM\\CNTT"))
             {
                 temp = "Công Nghệ Thông Tin";
             }
@@ -281,9 +289,36 @@ namespace QLNV1
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+           
+        }
 
+        private void cbKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbKhoa.SelectedValue.ToString() == "System.Data.DataRowView")
+                return;
+            Program.severname = cbKhoa.SelectedValue.ToString();
+            if (cbKhoa.SelectedIndex != Program.mChinhanh)
+            {
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+            }
+            else
+            {
+                Program.mlogin = Program.mloginDN;
+                Program.password = Program.passwordDN;
+            }
+            if (Program.KetNoi() == 0)
+            {
+                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+
+            }
+            else
+            {
+                this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.lOPTableAdapter.Fill(this.qLDSVHTCDataSet.LOP);
+            }
         }
     }
 }
