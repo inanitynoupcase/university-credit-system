@@ -198,8 +198,9 @@ namespace QLNV1
             string cmd = "Exec [dbo].[SP_XULY_DIEM] '" + textBoxMaSV.Text + "', " + MALTC + "," + formattedDIEMCC + "," + formattedDIEMGK + "," + formattedDIEMCK;
             if(Program.ExecSqlNonQuery(cmd)==0)
             {
+                loadBDMH();
                 MessageBox.Show("Ghi Thành Công");
-                BindingSource gridDataSource = (BindingSource)DiemGridControl.DataSource;
+              /*  BindingSource gridDataSource = (BindingSource)DiemGridControl.DataSource;
                 DataTable dataSource = (DataTable)gridDataSource.DataSource;
                 foreach (DataRow row in dataSource.Rows)
                 {
@@ -215,7 +216,7 @@ namespace QLNV1
 
                         break;
                     }
-                }
+                }*/
 
             }
             else

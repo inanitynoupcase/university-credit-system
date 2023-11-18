@@ -103,7 +103,11 @@ namespace QLNV1
 
         private void SwitchClassbtn_Click(object sender, EventArgs e)
         {
-           // string cmd = "exec "
+            string cmd = "exec ChuyenLopSv '" + MasvBox + "','" + ComboboxLopHoc.SelectedItem.ToString() + "'";
+            if(Program.ExecSqlNonQuery(cmd) == 0)
+            {
+
+            }
         }
     }
 }
