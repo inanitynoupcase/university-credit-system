@@ -51,7 +51,7 @@ namespace QLNV1
                     MasvBox.Text = dt.Rows[0].ItemArray[1].ToString();
                     LopBox.Text = dt.Rows[0].ItemArray[2].ToString();
                     NamHocBox.Text = dt.Rows[0].ItemArray[3].ToString();
-                    string cmd2 = "EXEC [dbo].[SP_LayLopTheoNam] " + NamHocBox.Text;
+                    string cmd2 = "EXEC [dbo].[SP_LayLopTheoNam] " + NamHocBox.Text +",'"+LopBox.Text+"'";
                     DataTable dtLop = Program.ExecSqlDataTable(cmd2);
                     if (dt.Rows.Count > 0)
                     {
@@ -103,7 +103,7 @@ namespace QLNV1
 
         private void SwitchClassbtn_Click(object sender, EventArgs e)
         {
-
+           // string cmd = "exec "
         }
     }
 }

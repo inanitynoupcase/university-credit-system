@@ -45,8 +45,8 @@ namespace QLNV1
         }
         void enableComponent(bool value)
         {
-            textBoxMaSV.Enabled = value;
-            textBoxTenSV.Enabled = value;
+         //   textBoxMaSV.Enabled = value;
+        //    textBoxTenSV.Enabled = value;
             textBoxDiemCC.Enabled = value;
             textBoxDiemGK.Enabled = value;
             textBoxDiemCK.Enabled = value;
@@ -198,9 +198,8 @@ namespace QLNV1
             string cmd = "Exec [dbo].[SP_XULY_DIEM] '" + textBoxMaSV.Text + "', " + MALTC + "," + formattedDIEMCC + "," + formattedDIEMGK + "," + formattedDIEMCK;
             if(Program.ExecSqlNonQuery(cmd)==0)
             {
+                MessageBox.Show("Ghi Thành Công");
                 BindingSource gridDataSource = (BindingSource)DiemGridControl.DataSource;
-
-                // Assuming your underlying data source is a DataTable
                 DataTable dataSource = (DataTable)gridDataSource.DataSource;
                 foreach (DataRow row in dataSource.Rows)
                 {
@@ -209,14 +208,19 @@ namespace QLNV1
                     {
                         row["DIEM_CC"] = formattedDIEMCC;
                         row["DIEM_GK"] = formattedDIEMGK;
-                        row["DIEM_GK"] = formattedDIEMCK;
+                        row["DIEM_CK"] = formattedDIEMCK;
                         string diemtk = (DIEMCC * 0.1 + DIEMGK * 0.3 + DIEMCK * 0.6).ToString("F2", CultureInfo.InvariantCulture);
                         row["DIEM_TK"] = diemtk;
-                       
+                      //  DiemGridControl.DataSource = dataSource;
+
                         break;
                     }
                 }
 
+            }
+            else
+            {
+                MessageBox.Show("Lỗi Kết Nối");
             }
 
         }
@@ -370,13 +374,14 @@ namespace QLNV1
         private void textBoxDiemCC_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-         (e.KeyChar != '.'))
+         (e.KeyChar != '.') && (e.KeyChar != '-'))
             {
                 e.Handled = true;
             }
 
             // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1) ||
+    (e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1))
             {
                 e.Handled = true;
             }
@@ -385,7 +390,7 @@ namespace QLNV1
         private void textBoxDiemCC_Leave(object sender, EventArgs e)
         {
             string a = textBoxDiemCC.Text;
-            string pattern = @"^(?:[0-9]|10)(\.\d)?$";
+            string pattern = @"^(-1|\b(?:[0-9]|10)(\.\d)?)$";
             if (Regex.IsMatch(a, pattern))
             {
                 Console.WriteLine("chay: " + a );
@@ -408,13 +413,13 @@ namespace QLNV1
 
         private void textBoxDiemGK_Leave(object sender, EventArgs e)
         {
-            string a=  textBoxDiemGK.Text;
-            string pattern = @"^(?:[0-9]|10)(\.\d)?$";
+            string a = textBoxDiemCC.Text;
+            string pattern = @"^(-1|\b(?:[0-9]|10)(\.\d)?)$";
             if (Regex.IsMatch(a, pattern))
             {
                 Console.WriteLine("chay: " + a);
             }
-            else { textBoxDiemGK.Text = ""; MessageBox.Show(": SAI FORMAT ĐIỂM GIƯA KÌ  "); }
+            else { textBoxDiemCC.Text = ""; MessageBox.Show(":  SAI FORMAT ĐIỂM CHUYÊN CẦN "); }
 
 
         }
@@ -422,13 +427,14 @@ namespace QLNV1
         private void textBoxDiemGK_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-      (e.KeyChar != '.'))
+         (e.KeyChar != '.') && (e.KeyChar != '-'))
             {
                 e.Handled = true;
             }
 
             // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1) ||
+    (e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1))
             {
                 e.Handled = true;
             }
@@ -437,13 +443,14 @@ namespace QLNV1
         private void textBoxDiemCK_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-      (e.KeyChar != '.'))
+        (e.KeyChar != '.') && (e.KeyChar != '-'))
             {
                 e.Handled = true;
             }
 
             // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1) ||
+    (e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1))
             {
                 e.Handled = true;
             }
@@ -451,13 +458,13 @@ namespace QLNV1
 
         private void textBoxDiemCK_Leave(object sender, EventArgs e)
         {
-            string a = textBoxDiemCK.Text;
-            string pattern = @"^(?:[0-9]|10)(\.\d)?$";
+            string a = textBoxDiemCC.Text;
+            string pattern = @"^(-1|\b(?:[0-9]|10)(\.\d)?)$";
             if (Regex.IsMatch(a, pattern))
             {
                 Console.WriteLine("chay: " + a);
             }
-            else { textBoxDiemCK.Text = ""; MessageBox.Show(":  SAI FORMAT ĐIỂM CUỐI KÌ "); }
+            else { textBoxDiemCC.Text = ""; MessageBox.Show(":  SAI FORMAT ĐIỂM CHUYÊN CẦN "); }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

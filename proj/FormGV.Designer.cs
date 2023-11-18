@@ -195,11 +195,11 @@ namespace QLNV1
             this.panelControl1.Controls.Add(this.txbTen);
             this.panelControl1.Controls.Add(this.txbHocVi);
             this.panelControl1.Controls.Add(this.txbMaGV);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 69);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl1.Location = new System.Drawing.Point(0, 468);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1298, 298);
+            this.panelControl1.Size = new System.Drawing.Size(1298, 190);
             this.panelControl1.TabIndex = 0;
             this.panelControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
             // 
@@ -516,13 +516,13 @@ namespace QLNV1
             // GvGrid
             // 
             this.GvGrid.DataSource = this.gIANGVIENBindingSource;
-            this.GvGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GvGrid.Dock = System.Windows.Forms.DockStyle.Top;
             this.GvGrid.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GvGrid.Location = new System.Drawing.Point(0, 69);
             this.GvGrid.MainView = this.gridView1;
             this.GvGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GvGrid.Name = "GvGrid";
-            this.GvGrid.Size = new System.Drawing.Size(1298, 589);
+            this.GvGrid.Size = new System.Drawing.Size(1298, 420);
             this.GvGrid.TabIndex = 0;
             this.GvGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});

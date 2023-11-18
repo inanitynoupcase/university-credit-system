@@ -75,9 +75,9 @@ namespace QLNV1
         {
             vitri = gIANGVIENBindingSource.Position;
             panelControl1.Enabled = true;
-
+           
             gIANGVIENBindingSource.AddNew();
-            txbMaGV.Text = ((DataRowView)gIANGVIENBindingSource[gIANGVIENBindingSource.Position])["MAGV"].ToString();
+            txbMaGV.Text =  ((DataRowView)gIANGVIENBindingSource[gIANGVIENBindingSource.Position])["MAGV"].ToString();
             txbMaKhoa.Text = Program.MaKhoa;
 
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;
@@ -95,6 +95,7 @@ namespace QLNV1
             vitri = gIANGVIENBindingSource.Position;
             txbMaGV.Enabled = false;
             panelControl1.Enabled = true;
+            txbChuyenMon.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnPhucHoi.Enabled = false;
             btnGhi.Enabled = true;
             GvGrid.Enabled = false;
@@ -191,6 +192,9 @@ namespace QLNV1
             panelControl1.Enabled = false;
             GvGrid.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnGhi.Enabled = true;
+            gIANGVIENBindingSource.CancelEdit();
+            FormGV_Load(sender, e);
+
 
         }
 

@@ -42,13 +42,13 @@ namespace QLNV1
             panelControl2.Enabled = false;
         }
 
-        private void lOPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+       /* private void lOPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
             this.bdsLop.EndEdit();
             this.tableAdapterManager.UpdateAll(this.DS);
 
-        }
+        }*/
 
         private void frmSinhVien_Load(object sender, EventArgs e)
         {
@@ -423,20 +423,14 @@ namespace QLNV1
             Console.WriteLine("weq");
         }
 
-        private void sINHVIENGridControl_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void btn(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
         }
 
-        private void lOPGridControl_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void bdsDangKi_CurrentChanged(object sender, EventArgs e)
         {
@@ -503,5 +497,7 @@ namespace QLNV1
         {
 
         }
+
+      
     }
 }

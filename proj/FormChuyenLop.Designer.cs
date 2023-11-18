@@ -76,28 +76,28 @@ namespace QLNV1
             // 
             // TensvBox
             // 
-            this.TensvBox.Enabled = false;
             this.TensvBox.Location = new System.Drawing.Point(186, 81);
             this.TensvBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TensvBox.Name = "TensvBox";
+            this.TensvBox.ReadOnly = true;
             this.TensvBox.Size = new System.Drawing.Size(245, 23);
             this.TensvBox.TabIndex = 3;
             // 
             // MasvBox
             // 
-            this.MasvBox.Enabled = false;
             this.MasvBox.Location = new System.Drawing.Point(506, 84);
             this.MasvBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MasvBox.Name = "MasvBox";
+            this.MasvBox.ReadOnly = true;
             this.MasvBox.Size = new System.Drawing.Size(116, 23);
             this.MasvBox.TabIndex = 4;
             // 
             // LopBox
             // 
-            this.LopBox.Enabled = false;
             this.LopBox.Location = new System.Drawing.Point(678, 84);
             this.LopBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LopBox.Name = "LopBox";
+            this.LopBox.ReadOnly = true;
             this.LopBox.Size = new System.Drawing.Size(116, 23);
             this.LopBox.TabIndex = 5;
             // 
@@ -172,10 +172,10 @@ namespace QLNV1
             // 
             // NamHocBox
             // 
-            this.NamHocBox.Enabled = false;
             this.NamHocBox.Location = new System.Drawing.Point(896, 84);
             this.NamHocBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NamHocBox.Name = "NamHocBox";
+            this.NamHocBox.ReadOnly = true;
             this.NamHocBox.Size = new System.Drawing.Size(116, 23);
             this.NamHocBox.TabIndex = 14;
             // 
@@ -190,10 +190,10 @@ namespace QLNV1
             // 
             // Khoabox
             // 
-            this.Khoabox.Enabled = false;
             this.Khoabox.Location = new System.Drawing.Point(1084, 84);
             this.Khoabox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Khoabox.Name = "Khoabox";
+            this.Khoabox.ReadOnly = true;
             this.Khoabox.Size = new System.Drawing.Size(129, 23);
             this.Khoabox.TabIndex = 16;
             // 
