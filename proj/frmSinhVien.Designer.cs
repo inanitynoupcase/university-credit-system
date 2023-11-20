@@ -96,8 +96,7 @@ namespace QLNV1
             this.txbMaLop = new DevExpress.XtraEditors.TextEdit();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.cHUYENNGANHBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.dANGHIHOCCheckEdit = new DevExpress.XtraEditors.CheckEdit();
@@ -118,6 +117,7 @@ namespace QLNV1
             this.sinhViênBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sinhViênBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.sinhViênBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+
             mASVLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
@@ -147,7 +147,7 @@ namespace QLNV1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cHUYENNGANHBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dANGHIHOCCheckEdit.Properties)).BeginInit();
@@ -196,7 +196,6 @@ namespace QLNV1
             pHAILabel.Size = new System.Drawing.Size(33, 17);
             pHAILabel.TabIndex = 6;
             pHAILabel.Text = "Phái";
-            pHAILabel.Click += new System.EventHandler(this.pHAILabel_Click);
             // 
             // dIACHILabel
             // 
@@ -403,6 +402,7 @@ namespace QLNV1
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 698);
+
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barDockControlBottom.Size = new System.Drawing.Size(1263, 20);
@@ -415,6 +415,7 @@ namespace QLNV1
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 668);
+
             // 
             // barDockControlRight
             // 
@@ -424,6 +425,7 @@ namespace QLNV1
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 668);
+
             // 
             // barButtonItem1
             // 
@@ -698,11 +700,13 @@ namespace QLNV1
             this.sINHVIENGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sINHVIENGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sINHVIENGridControl.Location = new System.Drawing.Point(729, 398);
+
             this.sINHVIENGridControl.MainView = this.gridView2;
             this.sINHVIENGridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sINHVIENGridControl.MenuManager = this.barManager1;
             this.sINHVIENGridControl.Name = "sINHVIENGridControl";
             this.sINHVIENGridControl.Size = new System.Drawing.Size(534, 300);
+
             this.sINHVIENGridControl.TabIndex = 7;
             this.sINHVIENGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -735,12 +739,11 @@ namespace QLNV1
             this.txbTen.MenuManager = this.barManager1;
             this.txbTen.Name = "txbTen";
             this.txbTen.Size = new System.Drawing.Size(185, 22);
+
             this.txbTen.TabIndex = 5;
             // 
             // pHAICheckEdit
             // 
-            this.pHAICheckEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pHAICheckEdit.Cursor = System.Windows.Forms.Cursors.Default;
             this.pHAICheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "PHAI", true));
             this.pHAICheckEdit.Location = new System.Drawing.Point(472, 90);
             this.pHAICheckEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -801,7 +804,7 @@ namespace QLNV1
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.comboBox1);
+            this.panelControl2.Controls.Add(this.textEdit3);
             this.panelControl2.Controls.Add(label4);
             this.panelControl2.Controls.Add(this.textEdit2);
             this.panelControl2.Controls.Add(label3);
@@ -829,10 +832,11 @@ namespace QLNV1
             this.panelControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(729, 300);
+
             this.panelControl2.TabIndex = 7;
             this.panelControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl2_Paint);
             // 
-            // comboBox1
+            // textEdit3
             // 
             this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsSinhVien, "MACN", true));
             this.comboBox1.DataSource = this.cHUYENNGANHBindingSource;
@@ -877,6 +881,7 @@ namespace QLNV1
             this.dANGHIHOCCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "NGHIHOC", true));
             this.dANGHIHOCCheckEdit.EditValue = true;
             this.dANGHIHOCCheckEdit.Location = new System.Drawing.Point(126, 219);
+
             this.dANGHIHOCCheckEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dANGHIHOCCheckEdit.MenuManager = this.barManager1;
             this.dANGHIHOCCheckEdit.Name = "dANGHIHOCCheckEdit";
@@ -1017,6 +1022,7 @@ namespace QLNV1
             this.fillByToolStrip.Location = new System.Drawing.Point(729, 398);
             this.fillByToolStrip.Name = "fillByToolStrip";
             this.fillByToolStrip.Size = new System.Drawing.Size(534, 27);
+
             this.fillByToolStrip.TabIndex = 12;
             this.fillByToolStrip.Text = "fillByToolStrip";
             // 
@@ -1026,10 +1032,7 @@ namespace QLNV1
             this.fillByToolStripButton.Name = "fillByToolStripButton";
             this.fillByToolStripButton.Size = new System.Drawing.Size(63, 24);
             this.fillByToolStripButton.Text = "Chi tiết:";
-            // 
-            // cHUYENNGANHTableAdapter
-            // 
-            this.cHUYENNGANHTableAdapter.ClearBeforeFill = true;
+            //this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
             // 
             // sinhViênBindingSource
             // 
@@ -1051,6 +1054,7 @@ namespace QLNV1
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1263, 718);
+
             this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.sINHVIENGridControl);
             this.Controls.Add(this.panelControl2);
@@ -1084,7 +1088,7 @@ namespace QLNV1
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cHUYENNGANHBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dANGHIHOCCheckEdit.Properties)).EndInit();
@@ -1179,6 +1183,7 @@ namespace QLNV1
         private System.Windows.Forms.BindingSource sinhViênBindingSource;
         private System.Windows.Forms.BindingSource sinhViênBindingSource1;
         private System.Windows.Forms.BindingSource sinhViênBindingSource2;
+
         //  private WcfInstantFeedbackSource wcfInstantFeedbackSource1;
     }
 }
