@@ -13,20 +13,20 @@ using System.Windows.Forms;
 
 namespace QLNV1
 {
-    public partial class frptHocPhi : DevExpress.XtraEditors.XtraForm
+    public partial class frptDSSV : DevExpress.XtraEditors.XtraForm
     {
         public static SqlConnection conn = new SqlConnection();
         public static String connstr;
-        public static String database = "QLDSV_TC";
+        public static String database = "QLDSVHTC";
         public int type;
-        public frptHocPhi()
+        public frptDSSV()
         {
             InitializeComponent();
            
         }
 
       
-        public static string NumberToText(double inputNumber, bool suffix = true)
+    /*    public static string NumberToText(double inputNumber, bool suffix = true)
         {
             string[] unitNumbers = new string[] { "không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín" };
             string[] placeValues = new string[] { "", "nghìn", "triệu", "tỷ" };
@@ -113,8 +113,8 @@ namespace QLNV1
             if (isNegative) result = "Âm " + result;
             return "("+ result + (suffix ? " đồng chẵn)" : ")");
         }
-
-        public static int KetNoiSql(string severname,string mlogin,string password)
+    */
+     /*   public static int KetNoiSql(string severname,string mlogin,string password)
         {
             if (conn != null && conn.State == ConnectionState.Open)
                 conn.Close();
@@ -135,11 +135,11 @@ namespace QLNV1
             }
 
         }
-        void loadLOPcombobox()
+       /* void loadLOPcombobox()
         {
             DataTable dt = new DataTable();
             //  string cmd = "EXEC [dbo].[getAllLopByRole] "+type;
-            string cmd = "select MALOP,TENLOP from LOP";
+            string cmd = "select MALOP,TENLOP from LOP where MAKHOA = '" + cbKhoa.SelectedValue + "'";
             dt = Program.ExecSqlDataTable(cmd);
 
             BindingSource bdslh = new BindingSource();
@@ -147,19 +147,42 @@ namespace QLNV1
             cbLop.DataSource = bdslh;
             cbLop.DisplayMember = "MALOP";
             cbLop.ValueMember = "TENLOP";
-        }
+        }*/
         private void frptHocPhi_Load(object sender, EventArgs e)
         {
-            if (Program.mGroup.Equals("PGV") || Program.mGroup.Equals("KHOA"))
+            this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+
+            // TODO: This line of code loads data into the 'qLDSVHTCDataSet.LOP' table. You can move, or remove it, as needed.
+            this.lOPTableAdapter.Fill(this.qLDSVHTCDataSet.LOP);
+            // TODO: This line of code loads data into the 'qLDSVHTCDataSet.KHOA' table. You can move, or remove it, as needed.
+          //  this.kHOATableAdapter.Fill(this.qLDSVHTCDataSet.KHOA);
+            /* if (Program.mGroup.Equals("PGV") || Program.mGroup.Equals("KHOA"))
+             {
+                 if (KetNoiSql("M15R2\\SERVER_SITE4", Program.remotelogin, Program.remotepassword) == 0)
+                 {
+                     MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+                 }
+             }*/
+
+            cbLop.DataSource = lOPBindingSource;
+            cbLop.DisplayMember = "MALOP";
+            cbLop.ValueMember = "TENLOP";
+            cbKhoa.DataSource = Program.bds_dspm;
+            cbKhoa.DisplayMember = "TENKHOA";
+            cbKhoa.ValueMember = "TENSERVER";
+            cbKhoa.SelectedIndex = Program.mChinhanh;
+            if (Program.mGroup.Equals("PGV"))
+             {
+                cbKhoa.Enabled = true;
+             }
+            if (Program.mGroup.Equals("KHOA"))
             {
-                if (KetNoiSql("M15R2\\SERVER_SITE4", Program.remotelogin, Program.remotepassword) == 0)
-                {
-                    MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
-                }
+                cbKhoa.Enabled = false;
+               
             }
             if (Program.mGroup.Equals("PGV")) type = 0;
             else type = 1;
-            loadLOPcombobox();
+
 
 
         }
@@ -183,19 +206,26 @@ namespace QLNV1
         }
         private void btnIn_Click(object sender, EventArgs e)
         {
-            
-            if (txbNienKhoa.Text.Trim() == "")
-            {
-                MessageBox.Show("Niên khóa không được để trống", "", MessageBoxButtons.OK);
-                txbNienKhoa.Focus();
-                return;
-            }
-            if (nmHocKy.Value == 0)
-            {
-                MessageBox.Show("Học Kỳ không được để trống", "", MessageBoxButtons.OK);
-                nmHocKy.Focus();
-                return;
-            }
+
+            if (cbKhoa.SelectedValue == null)
+              {
+                  MessageBox.Show("Niên khóa không được để trống", "", MessageBoxButtons.OK);
+                cbKhoa.Focus();
+                  return;
+              }
+              if (cbLop.SelectedValue == null)
+              {
+                  MessageBox.Show("Học Kỳ không được để trống", "", MessageBoxButtons.OK);
+                cbLop.Focus();
+                  return;
+              }
+             // string query1 = "EXEC [RP_DanhSachSVLop] " + cbLop.SelectedValue;
+          //      SqlDataReader reader = ExecSqlDataReader(query1);
+//reader.Read();
+         
+            string malop = (string)cbLop.Text;
+           // reader.Close();
+            /*
             string nienkhoa = txbNienKhoa.Text;
             int hocky = (int)nmHocKy.Value;
             string malop = cbLop.Text;
@@ -212,25 +242,33 @@ namespace QLNV1
                 tongtien = reader1.GetInt32(0).ToString();     
                 reader1.Close();
 
-          
-           
-            if(tongtien != "0")
+
+
+          if (tongtien != "0")
+          {
+              tongtien = NumberToText(double.Parse(tongtien));
+          }
+
+            */
+          XrptInDSSV rpt = new XrptInDSSV(malop, connstr);
+       
+          rpt.lbMaLop.Text = malop;
+           string temp;
+            Console.WriteLine($"{cbKhoa.Text} | {cbKhoa.SelectedIndex} | {cbKhoa.SelectedItem} | {cbKhoa.SelectedValue}");
+            if (cbKhoa.SelectedValue != null && cbKhoa.SelectedValue.Equals("PTITHCM\\CNTT"))
             {
-                tongtien = NumberToText(double.Parse(tongtien));
+                temp = "Công Nghệ Thông Tin";
             }
-           
+            else
+            {
+                temp = "Viễn Thông";
+            }
+            rpt.lbKhoa.Text = temp;
 
-            XrptInHocPhi rpt = new XrptInHocPhi(malop, nienkhoa, hocky,connstr);
-            rpt.lbMaLop.Text = malop;
-            rpt.lbKhoa.Text = tenkhoa;
-            rpt.lbTienChu.Text = tongtien;
 
-
-            ReportPrintTool print = new ReportPrintTool(rpt);
-            print.ShowPreviewDialog();
-          
-           
-            
+          ReportPrintTool print = new ReportPrintTool(rpt);
+            print.AutoShowParametersPanel = false;
+          print.ShowPreviewDialog();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -246,6 +284,43 @@ namespace QLNV1
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void cbKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbKhoa.SelectedValue.ToString() == "System.Data.DataRowView")
+                return;
+            Program.severname = cbKhoa.SelectedValue.ToString();
+            if (cbKhoa.SelectedIndex != Program.mChinhanh)
+            {
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+            }
+            else
+            {
+                Program.mlogin = Program.mloginDN;
+                Program.password = Program.passwordDN;
+            }
+            if (Program.KetNoi() == 0)
+            {
+                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+
+            }
+            else
+            {
+                this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.lOPTableAdapter.Fill(this.qLDSVHTCDataSet.LOP);
+            }
         }
     }
 }

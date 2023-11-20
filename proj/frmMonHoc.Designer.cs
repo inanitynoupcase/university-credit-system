@@ -494,6 +494,7 @@ namespace QLNV1
             this.txbMaMonHoc.Name = "txbMaMonHoc";
             this.txbMaMonHoc.Size = new System.Drawing.Size(219, 20);
             this.txbMaMonHoc.TabIndex = 1;
+            this.txbMaMonHoc.EditValueChanged += new System.EventHandler(this.txbMaMonHoc_EditValueChanged);
             // 
             // bdsLopTinChi
             // 

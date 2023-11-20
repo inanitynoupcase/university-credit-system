@@ -113,6 +113,11 @@ namespace QLNV1
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.cHUYENNGANHTableAdapter = new QLNV1.QLDSVHTCDataSetTableAdapters.CHUYENNGANHTableAdapter();
+            this.sinhViênBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sinhViênBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.sinhViênBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+
             mASVLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
@@ -151,86 +156,89 @@ namespace QLNV1
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.fillByToolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sinhViênBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sinhViênBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sinhViênBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // mASVLabel
             // 
             mASVLabel.AutoSize = true;
-            mASVLabel.Location = new System.Drawing.Point(11, 38);
+            mASVLabel.Location = new System.Drawing.Point(13, 47);
             mASVLabel.Name = "mASVLabel";
-            mASVLabel.Size = new System.Drawing.Size(36, 13);
+            mASVLabel.Size = new System.Drawing.Size(45, 17);
             mASVLabel.TabIndex = 0;
             mASVLabel.Text = "Mã SV";
             // 
             // hOLabel
             // 
             hOLabel.AutoSize = true;
-            hOLabel.Location = new System.Drawing.Point(209, 38);
+            hOLabel.Location = new System.Drawing.Point(244, 47);
             hOLabel.Name = "hOLabel";
-            hOLabel.Size = new System.Drawing.Size(20, 13);
+            hOLabel.Size = new System.Drawing.Size(25, 17);
             hOLabel.TabIndex = 2;
             hOLabel.Text = "Họ";
             // 
             // tENLabel
             // 
             tENLabel.AutoSize = true;
-            tENLabel.Location = new System.Drawing.Point(368, 37);
+            tENLabel.Location = new System.Drawing.Point(429, 46);
             tENLabel.Name = "tENLabel";
-            tENLabel.Size = new System.Drawing.Size(25, 13);
+            tENLabel.Size = new System.Drawing.Size(31, 17);
             tENLabel.TabIndex = 4;
             tENLabel.Text = "Tên";
             // 
             // pHAILabel
             // 
             pHAILabel.AutoSize = true;
-            pHAILabel.Location = new System.Drawing.Point(366, 76);
+            pHAILabel.Location = new System.Drawing.Point(427, 94);
             pHAILabel.Name = "pHAILabel";
-            pHAILabel.Size = new System.Drawing.Size(27, 13);
+            pHAILabel.Size = new System.Drawing.Size(33, 17);
             pHAILabel.TabIndex = 6;
             pHAILabel.Text = "Phái";
             // 
             // dIACHILabel
             // 
             dIACHILabel.AutoSize = true;
-            dIACHILabel.Location = new System.Drawing.Point(11, 76);
+            dIACHILabel.Location = new System.Drawing.Point(13, 94);
             dIACHILabel.Name = "dIACHILabel";
-            dIACHILabel.Size = new System.Drawing.Size(39, 13);
+            dIACHILabel.Size = new System.Drawing.Size(48, 17);
             dIACHILabel.TabIndex = 8;
             dIACHILabel.Text = "Địa chỉ";
             // 
             // nGAYSINHLabel
             // 
             nGAYSINHLabel.AutoSize = true;
-            nGAYSINHLabel.Location = new System.Drawing.Point(11, 108);
+            nGAYSINHLabel.Location = new System.Drawing.Point(13, 133);
             nGAYSINHLabel.Name = "nGAYSINHLabel";
-            nGAYSINHLabel.Size = new System.Drawing.Size(54, 13);
+            nGAYSINHLabel.Size = new System.Drawing.Size(68, 17);
             nGAYSINHLabel.TabIndex = 10;
             nGAYSINHLabel.Text = "Ngày sinh";
             // 
             // mALOPLabel
             // 
             mALOPLabel.AutoSize = true;
-            mALOPLabel.Location = new System.Drawing.Point(14, 141);
+            mALOPLabel.Location = new System.Drawing.Point(16, 174);
             mALOPLabel.Name = "mALOPLabel";
-            mALOPLabel.Size = new System.Drawing.Size(38, 13);
+            mALOPLabel.Size = new System.Drawing.Size(47, 17);
             mALOPLabel.TabIndex = 12;
             mALOPLabel.Text = "Mã lớp";
             // 
             // dANGHIHOCLabel
             // 
             dANGHIHOCLabel.AutoSize = true;
-            dANGHIHOCLabel.Location = new System.Drawing.Point(11, 181);
+            dANGHIHOCLabel.Location = new System.Drawing.Point(13, 223);
             dANGHIHOCLabel.Name = "dANGHIHOCLabel";
-            dANGHIHOCLabel.Size = new System.Drawing.Size(76, 13);
+            dANGHIHOCLabel.Size = new System.Drawing.Size(98, 17);
             dANGHIHOCLabel.TabIndex = 14;
             dANGHIHOCLabel.Text = "Đang nghỉ học";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(209, 76);
+            label2.Location = new System.Drawing.Point(244, 94);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(27, 13);
+            label2.Size = new System.Drawing.Size(34, 17);
             label2.TabIndex = 17;
             label2.Text = "SĐT";
             label2.Click += new System.EventHandler(this.label2_Click);
@@ -238,9 +246,9 @@ namespace QLNV1
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(209, 109);
+            label3.Location = new System.Drawing.Point(244, 134);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(31, 13);
+            label3.Size = new System.Drawing.Size(39, 17);
             label3.TabIndex = 19;
             label3.Text = "Khóa";
             label3.Click += new System.EventHandler(this.label3_Click);
@@ -248,9 +256,9 @@ namespace QLNV1
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(366, 108);
+            label4.Location = new System.Drawing.Point(427, 133);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(21, 13);
+            label4.Size = new System.Drawing.Size(26, 17);
             label4.TabIndex = 21;
             label4.Text = "CN";
             // 
@@ -387,34 +395,37 @@ namespace QLNV1
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlTop.Size = new System.Drawing.Size(1083, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1263, 30);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 547);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 698);
+
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1083, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1263, 20);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 523);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 668);
+
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1083, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1263, 30);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 523);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 668);
+
             // 
             // barButtonItem1
             // 
@@ -573,7 +584,6 @@ namespace QLNV1
             this.colNGAYSINH,
             this.colMALOP1,
             this.colDANGHIHOC});
-            this.gridView2.DetailHeight = 284;
             this.gridView2.GridControl = this.sINHVIENGridControl;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.ReadOnly = true;
@@ -586,12 +596,12 @@ namespace QLNV1
             this.colMASV.AppearanceHeader.Options.UseBackColor = true;
             this.colMASV.Caption = "Mã sinh viên";
             this.colMASV.FieldName = "MASV";
-            this.colMASV.MinWidth = 21;
+            this.colMASV.MinWidth = 24;
             this.colMASV.Name = "colMASV";
             this.colMASV.OptionsColumn.ReadOnly = true;
             this.colMASV.Visible = true;
             this.colMASV.VisibleIndex = 0;
-            this.colMASV.Width = 81;
+            this.colMASV.Width = 94;
             // 
             // colHO
             // 
@@ -599,12 +609,12 @@ namespace QLNV1
             this.colHO.AppearanceHeader.Options.UseBackColor = true;
             this.colHO.Caption = "Họ";
             this.colHO.FieldName = "HOSV";
-            this.colHO.MinWidth = 21;
+            this.colHO.MinWidth = 24;
             this.colHO.Name = "colHO";
             this.colHO.OptionsColumn.ReadOnly = true;
             this.colHO.Visible = true;
             this.colHO.VisibleIndex = 1;
-            this.colHO.Width = 81;
+            this.colHO.Width = 94;
             // 
             // colTEN
             // 
@@ -612,12 +622,12 @@ namespace QLNV1
             this.colTEN.AppearanceHeader.Options.UseBackColor = true;
             this.colTEN.Caption = "Tên";
             this.colTEN.FieldName = "TENSV";
-            this.colTEN.MinWidth = 21;
+            this.colTEN.MinWidth = 24;
             this.colTEN.Name = "colTEN";
             this.colTEN.OptionsColumn.ReadOnly = true;
             this.colTEN.Visible = true;
             this.colTEN.VisibleIndex = 2;
-            this.colTEN.Width = 81;
+            this.colTEN.Width = 94;
             // 
             // colPHAI
             // 
@@ -625,12 +635,12 @@ namespace QLNV1
             this.colPHAI.AppearanceHeader.Options.UseBackColor = true;
             this.colPHAI.Caption = "Phái";
             this.colPHAI.FieldName = "PHAI";
-            this.colPHAI.MinWidth = 21;
+            this.colPHAI.MinWidth = 24;
             this.colPHAI.Name = "colPHAI";
             this.colPHAI.OptionsColumn.ReadOnly = true;
             this.colPHAI.Visible = true;
             this.colPHAI.VisibleIndex = 3;
-            this.colPHAI.Width = 81;
+            this.colPHAI.Width = 94;
             // 
             // colDIACHI
             // 
@@ -638,12 +648,12 @@ namespace QLNV1
             this.colDIACHI.AppearanceHeader.Options.UseBackColor = true;
             this.colDIACHI.Caption = "Địa chỉ";
             this.colDIACHI.FieldName = "DIACHI";
-            this.colDIACHI.MinWidth = 21;
+            this.colDIACHI.MinWidth = 24;
             this.colDIACHI.Name = "colDIACHI";
             this.colDIACHI.OptionsColumn.ReadOnly = true;
             this.colDIACHI.Visible = true;
             this.colDIACHI.VisibleIndex = 4;
-            this.colDIACHI.Width = 81;
+            this.colDIACHI.Width = 94;
             // 
             // colNGAYSINH
             // 
@@ -651,12 +661,12 @@ namespace QLNV1
             this.colNGAYSINH.AppearanceHeader.Options.UseBackColor = true;
             this.colNGAYSINH.Caption = "Ngày sinh";
             this.colNGAYSINH.FieldName = "NGAYSINH";
-            this.colNGAYSINH.MinWidth = 21;
+            this.colNGAYSINH.MinWidth = 24;
             this.colNGAYSINH.Name = "colNGAYSINH";
             this.colNGAYSINH.OptionsColumn.ReadOnly = true;
             this.colNGAYSINH.Visible = true;
             this.colNGAYSINH.VisibleIndex = 5;
-            this.colNGAYSINH.Width = 81;
+            this.colNGAYSINH.Width = 94;
             // 
             // colMALOP1
             // 
@@ -664,12 +674,12 @@ namespace QLNV1
             this.colMALOP1.AppearanceHeader.Options.UseBackColor = true;
             this.colMALOP1.Caption = "Mã lớp";
             this.colMALOP1.FieldName = "MALOP";
-            this.colMALOP1.MinWidth = 21;
+            this.colMALOP1.MinWidth = 24;
             this.colMALOP1.Name = "colMALOP1";
             this.colMALOP1.OptionsColumn.ReadOnly = true;
             this.colMALOP1.Visible = true;
             this.colMALOP1.VisibleIndex = 6;
-            this.colMALOP1.Width = 81;
+            this.colMALOP1.Width = 94;
             // 
             // colDANGHIHOC
             // 
@@ -677,87 +687,89 @@ namespace QLNV1
             this.colDANGHIHOC.AppearanceHeader.Options.UseBackColor = true;
             this.colDANGHIHOC.Caption = "Đang nghỉ học";
             this.colDANGHIHOC.FieldName = "NGHIHOC";
-            this.colDANGHIHOC.MinWidth = 21;
+            this.colDANGHIHOC.MinWidth = 24;
             this.colDANGHIHOC.Name = "colDANGHIHOC";
             this.colDANGHIHOC.OptionsColumn.ReadOnly = true;
             this.colDANGHIHOC.Visible = true;
             this.colDANGHIHOC.VisibleIndex = 7;
-            this.colDANGHIHOC.Width = 81;
+            this.colDANGHIHOC.Width = 94;
             // 
             // sINHVIENGridControl
             // 
-            this.sINHVIENGridControl.DataSource = this.bdsSinhVien;
+            this.sINHVIENGridControl.DataSource = this.sinhViênBindingSource2;
             this.sINHVIENGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sINHVIENGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sINHVIENGridControl.Location = new System.Drawing.Point(605, 323);
+            this.sINHVIENGridControl.Location = new System.Drawing.Point(729, 398);
+
             this.sINHVIENGridControl.MainView = this.gridView2;
             this.sINHVIENGridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sINHVIENGridControl.MenuManager = this.barManager1;
             this.sINHVIENGridControl.Name = "sINHVIENGridControl";
-            this.sINHVIENGridControl.Size = new System.Drawing.Size(478, 224);
+            this.sINHVIENGridControl.Size = new System.Drawing.Size(534, 300);
+
             this.sINHVIENGridControl.TabIndex = 7;
             this.sINHVIENGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
-            this.sINHVIENGridControl.Click += new System.EventHandler(this.sINHVIENGridControl_Click);
             // 
             // txbMaSV
             // 
             this.txbMaSV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "MASV", true));
-            this.txbMaSV.Location = new System.Drawing.Point(82, 36);
+            this.txbMaSV.Location = new System.Drawing.Point(96, 44);
             this.txbMaSV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbMaSV.MenuManager = this.barManager1;
             this.txbMaSV.Name = "txbMaSV";
-            this.txbMaSV.Size = new System.Drawing.Size(107, 20);
+            this.txbMaSV.Size = new System.Drawing.Size(125, 22);
             this.txbMaSV.TabIndex = 1;
             // 
             // txbHo
             // 
             this.txbHo.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "HOSV", true));
-            this.txbHo.Location = new System.Drawing.Point(242, 36);
+            this.txbHo.Location = new System.Drawing.Point(282, 44);
             this.txbHo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbHo.MenuManager = this.barManager1;
             this.txbHo.Name = "txbHo";
-            this.txbHo.Size = new System.Drawing.Size(107, 20);
+            this.txbHo.Size = new System.Drawing.Size(125, 22);
             this.txbHo.TabIndex = 3;
             // 
             // txbTen
             // 
             this.txbTen.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "TENSV", true));
-            this.txbTen.Location = new System.Drawing.Point(405, 34);
+            this.txbTen.Location = new System.Drawing.Point(472, 42);
             this.txbTen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbTen.MenuManager = this.barManager1;
             this.txbTen.Name = "txbTen";
-            this.txbTen.Size = new System.Drawing.Size(107, 20);
+            this.txbTen.Size = new System.Drawing.Size(185, 22);
+
             this.txbTen.TabIndex = 5;
             // 
             // pHAICheckEdit
             // 
             this.pHAICheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "PHAI", true));
-            this.pHAICheckEdit.Location = new System.Drawing.Point(405, 73);
+            this.pHAICheckEdit.Location = new System.Drawing.Point(472, 90);
             this.pHAICheckEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pHAICheckEdit.MenuManager = this.barManager1;
             this.pHAICheckEdit.Name = "pHAICheckEdit";
             this.pHAICheckEdit.Properties.Caption = "";
             this.pHAICheckEdit.Properties.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Inactive;
-            this.pHAICheckEdit.Size = new System.Drawing.Size(81, 20);
+            this.pHAICheckEdit.Size = new System.Drawing.Size(94, 24);
             this.pHAICheckEdit.TabIndex = 7;
             this.pHAICheckEdit.CheckedChanged += new System.EventHandler(this.pHAICheckEdit_CheckedChanged);
             // 
             // txbDiaChi
             // 
             this.txbDiaChi.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "DIACHI", true));
-            this.txbDiaChi.Location = new System.Drawing.Point(82, 73);
+            this.txbDiaChi.Location = new System.Drawing.Point(96, 90);
             this.txbDiaChi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbDiaChi.MenuManager = this.barManager1;
             this.txbDiaChi.Name = "txbDiaChi";
-            this.txbDiaChi.Size = new System.Drawing.Size(107, 20);
+            this.txbDiaChi.Size = new System.Drawing.Size(125, 22);
             this.txbDiaChi.TabIndex = 9;
             // 
             // deNgaySinh
             // 
             this.deNgaySinh.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "NGAYSINH", true));
             this.deNgaySinh.EditValue = null;
-            this.deNgaySinh.Location = new System.Drawing.Point(82, 106);
+            this.deNgaySinh.Location = new System.Drawing.Point(96, 130);
             this.deNgaySinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.deNgaySinh.MenuManager = this.barManager1;
             this.deNgaySinh.Name = "deNgaySinh";
@@ -765,27 +777,27 @@ namespace QLNV1
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deNgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deNgaySinh.Size = new System.Drawing.Size(107, 20);
+            this.deNgaySinh.Size = new System.Drawing.Size(125, 22);
             this.deNgaySinh.TabIndex = 11;
             // 
             // txbMaLop
             // 
             this.txbMaLop.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "MALOP", true));
-            this.txbMaLop.Location = new System.Drawing.Point(82, 139);
+            this.txbMaLop.Location = new System.Drawing.Point(96, 171);
             this.txbMaLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbMaLop.MenuManager = this.barManager1;
             this.txbMaLop.Name = "txbMaLop";
             this.txbMaLop.Properties.ReadOnly = true;
-            this.txbMaLop.Size = new System.Drawing.Size(107, 20);
+            this.txbMaLop.Size = new System.Drawing.Size(125, 22);
             this.txbMaLop.TabIndex = 13;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(516, 157);
+            this.pictureBox1.Location = new System.Drawing.Point(602, 193);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(89, 63);
+            this.pictureBox1.Size = new System.Drawing.Size(104, 78);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
@@ -816,52 +828,65 @@ namespace QLNV1
             this.panelControl2.Controls.Add(mASVLabel);
             this.panelControl2.Controls.Add(this.txbMaSV);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelControl2.Location = new System.Drawing.Point(0, 323);
+            this.panelControl2.Location = new System.Drawing.Point(0, 398);
             this.panelControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(605, 224);
+            this.panelControl2.Size = new System.Drawing.Size(729, 300);
+
             this.panelControl2.TabIndex = 7;
             this.panelControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl2_Paint);
             // 
             // textEdit3
             // 
-            this.textEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "MACN", true));
-            this.textEdit3.Location = new System.Drawing.Point(405, 106);
-            this.textEdit3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textEdit3.MenuManager = this.barManager1;
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(107, 20);
-            this.textEdit3.TabIndex = 22;
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsSinhVien, "MACN", true));
+            this.comboBox1.DataSource = this.cHUYENNGANHBindingSource;
+            this.comboBox1.DisplayMember = "TENCHUYENNGANH";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(472, 128);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(185, 24);
+            this.comboBox1.TabIndex = 22;
+            this.comboBox1.ValueMember = "MACN";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // cHUYENNGANHBindingSource
+            // 
+            this.cHUYENNGANHBindingSource.DataMember = "CHUYENNGANH";
+            this.cHUYENNGANHBindingSource.DataSource = this.DS;
             // 
             // textEdit2
             // 
             this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "KHOAHOC", true));
-            this.textEdit2.Location = new System.Drawing.Point(242, 105);
+            this.textEdit2.Location = new System.Drawing.Point(282, 129);
             this.textEdit2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textEdit2.MenuManager = this.barManager1;
             this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(107, 20);
+            this.textEdit2.Size = new System.Drawing.Size(125, 22);
             this.textEdit2.TabIndex = 20;
             // 
             // textEdit1
             // 
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "SDT", true));
-            this.textEdit1.Location = new System.Drawing.Point(242, 73);
+            this.textEdit1.Location = new System.Drawing.Point(282, 90);
             this.textEdit1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textEdit1.MenuManager = this.barManager1;
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(107, 20);
+            this.textEdit1.Size = new System.Drawing.Size(125, 22);
             this.textEdit1.TabIndex = 18;
             // 
             // dANGHIHOCCheckEdit
             // 
             this.dANGHIHOCCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSinhVien, "NGHIHOC", true));
-            this.dANGHIHOCCheckEdit.Location = new System.Drawing.Point(108, 178);
+            this.dANGHIHOCCheckEdit.EditValue = true;
+            this.dANGHIHOCCheckEdit.Location = new System.Drawing.Point(126, 219);
+
             this.dANGHIHOCCheckEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dANGHIHOCCheckEdit.MenuManager = this.barManager1;
             this.dANGHIHOCCheckEdit.Name = "dANGHIHOCCheckEdit";
             this.dANGHIHOCCheckEdit.Properties.Caption = "";
-            this.dANGHIHOCCheckEdit.Size = new System.Drawing.Size(81, 20);
+            this.dANGHIHOCCheckEdit.Size = new System.Drawing.Size(94, 24);
             this.dANGHIHOCCheckEdit.TabIndex = 15;
             this.dANGHIHOCCheckEdit.CheckedChanged += new System.EventHandler(this.dANGHIHOCCheckEdit_CheckedChanged);
             // 
@@ -872,7 +897,6 @@ namespace QLNV1
             this.colTENLOP,
             this.colKHOAHOC,
             this.colMAKHOA});
-            this.gridView1.DetailHeight = 284;
             this.gridView1.GridControl = this.lOPGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.ReadOnly = true;
@@ -885,12 +909,12 @@ namespace QLNV1
             this.colMALOP.AppearanceHeader.Options.UseBackColor = true;
             this.colMALOP.Caption = "Mã lớp";
             this.colMALOP.FieldName = "MALOP";
-            this.colMALOP.MinWidth = 21;
+            this.colMALOP.MinWidth = 24;
             this.colMALOP.Name = "colMALOP";
             this.colMALOP.OptionsColumn.ReadOnly = true;
             this.colMALOP.Visible = true;
             this.colMALOP.VisibleIndex = 0;
-            this.colMALOP.Width = 81;
+            this.colMALOP.Width = 94;
             // 
             // colTENLOP
             // 
@@ -898,12 +922,12 @@ namespace QLNV1
             this.colTENLOP.AppearanceHeader.Options.UseBackColor = true;
             this.colTENLOP.Caption = "Tên lớp";
             this.colTENLOP.FieldName = "TENLOP";
-            this.colTENLOP.MinWidth = 21;
+            this.colTENLOP.MinWidth = 24;
             this.colTENLOP.Name = "colTENLOP";
             this.colTENLOP.OptionsColumn.ReadOnly = true;
             this.colTENLOP.Visible = true;
             this.colTENLOP.VisibleIndex = 1;
-            this.colTENLOP.Width = 81;
+            this.colTENLOP.Width = 94;
             // 
             // colKHOAHOC
             // 
@@ -911,12 +935,12 @@ namespace QLNV1
             this.colKHOAHOC.AppearanceHeader.Options.UseBackColor = true;
             this.colKHOAHOC.Caption = "Khóa học";
             this.colKHOAHOC.FieldName = "NAMNHAPHOC";
-            this.colKHOAHOC.MinWidth = 21;
+            this.colKHOAHOC.MinWidth = 24;
             this.colKHOAHOC.Name = "colKHOAHOC";
             this.colKHOAHOC.OptionsColumn.ReadOnly = true;
             this.colKHOAHOC.Visible = true;
             this.colKHOAHOC.VisibleIndex = 2;
-            this.colKHOAHOC.Width = 81;
+            this.colKHOAHOC.Width = 94;
             // 
             // colMAKHOA
             // 
@@ -924,36 +948,35 @@ namespace QLNV1
             this.colMAKHOA.AppearanceHeader.Options.UseBackColor = true;
             this.colMAKHOA.Caption = "Mã khoa";
             this.colMAKHOA.FieldName = "MAKHOA";
-            this.colMAKHOA.MinWidth = 21;
+            this.colMAKHOA.MinWidth = 24;
             this.colMAKHOA.Name = "colMAKHOA";
             this.colMAKHOA.OptionsColumn.ReadOnly = true;
             this.colMAKHOA.Visible = true;
             this.colMAKHOA.VisibleIndex = 3;
-            this.colMAKHOA.Width = 81;
+            this.colMAKHOA.Width = 94;
             // 
             // lOPGridControl
             // 
             this.lOPGridControl.DataSource = this.bdsLop;
             this.lOPGridControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.lOPGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lOPGridControl.Location = new System.Drawing.Point(0, 80);
+            this.lOPGridControl.Location = new System.Drawing.Point(0, 99);
             this.lOPGridControl.MainView = this.gridView1;
             this.lOPGridControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lOPGridControl.MenuManager = this.barManager1;
             this.lOPGridControl.Name = "lOPGridControl";
-            this.lOPGridControl.Size = new System.Drawing.Size(1083, 243);
+            this.lOPGridControl.Size = new System.Drawing.Size(1263, 299);
             this.lOPGridControl.TabIndex = 6;
             this.lOPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.lOPGridControl.Click += new System.EventHandler(this.lOPGridControl_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(375, 15);
+            this.label1.Location = new System.Drawing.Point(437, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 19);
+            this.label1.Size = new System.Drawing.Size(68, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "KHOA";
             // 
@@ -961,10 +984,10 @@ namespace QLNV1
             // 
             this.cbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbKhoa.FormattingEnabled = true;
-            this.cbKhoa.Location = new System.Drawing.Point(439, 15);
+            this.cbKhoa.Location = new System.Drawing.Point(512, 18);
             this.cbKhoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbKhoa.Name = "cbKhoa";
-            this.cbKhoa.Size = new System.Drawing.Size(233, 21);
+            this.cbKhoa.Size = new System.Drawing.Size(271, 24);
             this.cbKhoa.TabIndex = 1;
             this.cbKhoa.SelectedIndexChanged += new System.EventHandler(this.cbKhoa_SelectedIndexChanged);
             // 
@@ -973,10 +996,10 @@ namespace QLNV1
             this.panelControl1.Controls.Add(this.cbKhoa);
             this.panelControl1.Controls.Add(this.label1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 24);
+            this.panelControl1.Location = new System.Drawing.Point(0, 30);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1083, 56);
+            this.panelControl1.Size = new System.Drawing.Size(1263, 69);
             this.panelControl1.TabIndex = 5;
             // 
             // barToolbarsListItem1
@@ -993,11 +1016,13 @@ namespace QLNV1
             // 
             // fillByToolStrip
             // 
+            this.fillByToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fillByToolStripButton});
-            this.fillByToolStrip.Location = new System.Drawing.Point(605, 323);
+            this.fillByToolStrip.Location = new System.Drawing.Point(729, 398);
             this.fillByToolStrip.Name = "fillByToolStrip";
-            this.fillByToolStrip.Size = new System.Drawing.Size(478, 25);
+            this.fillByToolStrip.Size = new System.Drawing.Size(534, 27);
+
             this.fillByToolStrip.TabIndex = 12;
             this.fillByToolStrip.Text = "fillByToolStrip";
             // 
@@ -1005,15 +1030,31 @@ namespace QLNV1
             // 
             this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.fillByToolStripButton.Name = "fillByToolStripButton";
-            this.fillByToolStripButton.Size = new System.Drawing.Size(52, 22);
+            this.fillByToolStripButton.Size = new System.Drawing.Size(63, 24);
             this.fillByToolStripButton.Text = "Chi tiết:";
             //this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
             // 
+            // sinhViênBindingSource
+            // 
+            this.sinhViênBindingSource.DataMember = "Sinh viên:";
+            this.sinhViênBindingSource.DataSource = this.bdsLop;
+            // 
+            // sinhViênBindingSource1
+            // 
+            this.sinhViênBindingSource1.DataMember = "Sinh viên:";
+            this.sinhViênBindingSource1.DataSource = this.bdsLop;
+            // 
+            // sinhViênBindingSource2
+            // 
+            this.sinhViênBindingSource2.DataMember = "Sinh viên:";
+            this.sinhViênBindingSource2.DataSource = this.bdsLop;
+            // 
             // frmSinhVien
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1083, 567);
+            this.ClientSize = new System.Drawing.Size(1263, 718);
+
             this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.sINHVIENGridControl);
             this.Controls.Add(this.panelControl2);
@@ -1058,6 +1099,9 @@ namespace QLNV1
             this.panelControl1.PerformLayout();
             this.fillByToolStrip.ResumeLayout(false);
             this.fillByToolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sinhViênBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sinhViênBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sinhViênBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1132,8 +1176,14 @@ namespace QLNV1
         private System.Windows.Forms.ToolStripButton fillByToolStripButton;
         private TextEdit textEdit1;
         private TextEdit textEdit2;
-        private TextEdit textEdit3;
-        private CheckEdit pHAICheckEdit;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.BindingSource cHUYENNGANHBindingSource;
+        private QLDSVHTCDataSetTableAdapters.CHUYENNGANHTableAdapter cHUYENNGANHTableAdapter;
+        public CheckEdit pHAICheckEdit;
+        private System.Windows.Forms.BindingSource sinhViênBindingSource;
+        private System.Windows.Forms.BindingSource sinhViênBindingSource1;
+        private System.Windows.Forms.BindingSource sinhViênBindingSource2;
+
         //  private WcfInstantFeedbackSource wcfInstantFeedbackSource1;
     }
 }

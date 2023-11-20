@@ -1,0 +1,1082 @@
+USE [QLDSVHTC]
+GO
+/****** Object:  StoredProcedure [dbo].[AddOrUpdateGiangVien]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[AddOrUpdateGiangVien]
+    @MaGV NVARCHAR(50),
+    @Ho NVARCHAR(50),
+    @Ten NVARCHAR(50),
+    @HocVi NVARCHAR(50),
+    @HocHam NVARCHAR(50),
+    @ChuyenMon NVARCHAR(50),
+    @MaKhoa NVARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Kiểm tra xem giảng viên có tồn tại trong bảng hay không
+    IF EXISTS (SELECT 1 FROM GIANGVIEN WHERE MAGV = @MaGV)
+    BEGIN
+        -- Cập nhật thông tin giảng viên
+        UPDATE GIANGVIEN
+        SET HOGV = @Ho,
+            TENGV = @Ten,
+            HOCVI = @HocVi,
+            HOCHAM = @HocHam,
+            CHUYENMON = @ChuyenMon,
+            MAKHOA = @MaKhoa
+        WHERE MAGV = @MaGV
+    END
+    ELSE
+    BEGIN
+        -- Thêm mới giảng viên
+        INSERT INTO GIANGVIEN (MAGV, HOGV, TENGV, HOCVI, HOCHAM, CHUYENMON, MAKHOA)
+        VALUES (@MaGV, @Ho, @Ten, @HocVi, @HocHam, @ChuyenMon, @MaKhoa)
+    END
+END
+GO
+/****** Object:  StoredProcedure [dbo].[GetAllHocKy]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[GetAllHocKy] @NIENKHOA nchar(9)  as 
+select HOCKY from LOPTINCHI where NIENKHOA= @NIENKHOA group by HOCKY
+GO
+/****** Object:  StoredProcedure [dbo].[GetAllNhom]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[GetAllNhom] @NIENKHOA varchar(9), @HOCKI int
+as select NHOM FROM LOPTINCHI where @NIENKHOA = NIENKHOA AND HOCKY = @HOCKI group by NHOM
+GO
+/****** Object:  StoredProcedure [dbo].[GetAllNienKhoa]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[GetAllNienKhoa] as 
+select NIENKHOA from LOPTINCHI group by NIENKHOA
+GO
+/****** Object:  StoredProcedure [dbo].[RP_BDMHLTC]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[RP_BDMHLTC] @NienKhoa nvarchar(10), @HocKy int, @Nhom int, @TenMon nvarchar(50)
+AS
+BEGIN
+    DECLARE @MaMon int
+    SELECT @MaMon = MAMON FROM MONHOC WHERE TENMON = @TenMon
+
+    DECLARE @LOPTINCHI int
+    SELECT @LOPTINCHI = LOPTINCHI.IDLTC 
+    FROM LOPTINCHI
+    INNER JOIN DAY ON LOPTINCHI.IDLTC = DAY.MALTC
+    WHERE 
+        LOPTINCHI.NIENKHOA = @NienKhoa 
+        AND LOPTINCHI.HOCKY = @HocKy 
+        AND LOPTINCHI.NHOM = @Nhom
+        AND LOPTINCHI.MAMON = @MaMon
+
+    SELECT
+        SINHVIEN.MASV,
+        HOSV, 
+		TENSV,
+        DIEM_CC,
+        DIEM_GK,
+        DIEM_CK,
+        DIEM_TK = ISNULL((ISNULL(DIEM_CC, 0) * 0.1) + (ISNULL(DIEM_GK, 0) * 0.3) + (ISNULL(DIEM_CK, 0) * 0.6), 0) 
+    FROM
+        DANGKY
+    INNER JOIN SINHVIEN ON DANGKY.MASV = SINHVIEN.MASV
+    WHERE
+        DANGKY.MALTC = @LOPTINCHI
+        AND HUYDANGKY = 0
+    ORDER BY SINHVIEN.MASV
+END
+GO
+/****** Object:  StoredProcedure [dbo].[RP_BDTKTHEOLOP]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[RP_BDTKTHEOLOP] @MALOP NVARCHAR(10)
+AS
+BEGIN
+    DECLARE @columns NVARCHAR(MAX)
+
+    -- Tạo bảng tạm thời để lưu trữ thông tin điểm
+    SET FMTONLY OFF
+    SELECT 
+        INFO = SINHVIEN.MASV + ' - ' + HOSV + ' ' + TENSV,
+        TENMON,
+        DIEM
+    INTO 
+        #GetAllMark
+    FROM 
+        SINHVIEN 
+    LEFT JOIN 
+        (
+            SELECT 
+                MASV,
+                A.TENMON,
+                DIEM = COALESCE(DIEM_CC * 0.1 + DIEM_GK * 0.3 + DIEM_CK * 0.6, 0) 
+            FROM 
+                DANGKY 
+            JOIN 
+                (
+                    SELECT 
+                        IDLTC,
+                        TENMON 
+                    FROM 
+                        LOPTINCHI, MONHOC 
+                    WHERE 
+                        LOPTINCHI.MAMON = MONHOC.MAMON
+                ) AS A
+            ON 
+                DANGKY.MALTC = A.IDLTC
+        ) AS B 
+    ON 
+        SINHVIEN.MASV = B.MASV
+    WHERE 
+        MALOP = @MALOP AND NGHIHOC = 0;
+
+    -- Chọn TOP(1) cột TENMH từ bảng tạm thời
+    SELECT TOP(1) @columns = TENMON 
+    FROM #GetAllMark 
+    WHERE TENMON IS NOT NULL;
+
+    -- Hiển thị thông tin từ bảng tạm thời
+    SELECT 
+        INFO,
+        TENMON = COALESCE(TENMON, @columns),
+        DIEM
+    FROM 
+        #GetAllMark;
+
+    -- Xóa bảng tạm thời
+    SET FMTONLY ON
+    DROP TABLE #GetAllMark;
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[RP_DanhSachSVLop]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE Procedure [dbo].[RP_DanhSachSVLop]
+@MALOP NVARCHAR(10)
+AS
+BEGIN
+	SELECT 
+	ROW_NUMBER() OVER (ORDER BY MASV) AS STT,
+
+	MASV,
+	HOSV + ' ' + TENSV AS HOTENSV,
+	CASE WHEN PHAI = 0 THEN N'NỮ' ELSE N'NAM' END AS PHAI,
+	FORMAT(NGAYSINH, 'dd/MM/yyyy') AS NGAYSINH,
+	DIACHI,
+	SDT,
+	KHOAHOC,
+	MACN,
+	CASE WHEN NGHIHOC = 0 THEN N'KHÔNG' ELSE N'CÓ' END AS NGHIHOC
+	FROM SINHVIEN where MALOP = @MALOP
+END
+GO
+/****** Object:  StoredProcedure [dbo].[RP_InDanhSachLopTinChi]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[RP_InDanhSachLopTinChi]
+    @NienKhoa nvarchar(10),
+    @HocKy int,
+    @MaKhoa nvarchar(10)
+AS
+BEGIN
+	SELECT
+    MONHOC.TENMON AS [TENMONHOC],
+    LOPTINCHI.NHOM AS [NHOM],
+    STUFF((SELECT ' - ' + GV.HOGV + ' ' + GV.TENGV
+           FROM DAY
+           INNER JOIN GIANGVIEN GV ON DAY.MAGV = GV.MAGV
+           WHERE DAY.MALTC = LOPTINCHI.IDLTC
+           FOR XML PATH('')), 1, 3, '') AS [HOTENGV],
+    LOPTINCHI.SOSINHVIEN_TOITHIEU AS [SOSVTOITHIEU],
+    COUNT(DANGKY.MALTC) AS [SOSVDANGKY]
+FROM
+    LOPTINCHI
+INNER JOIN MONHOC ON LOPTINCHI.MAMON = MONHOC.MAMON
+LEFT JOIN DANGKY ON LOPTINCHI.IDLTC = DANGKY.MALTC
+WHERE
+    LOPTINCHI.NIENKHOA = @NienKhoa
+    AND LOPTINCHI.HOCKY = @HocKy
+    AND LOPTINCHI.HUYLOP = 0
+    AND LOPTINCHI.MAKHOA = @MaKhoa
+GROUP BY
+     LOPTINCHI.IDLTC, MONHOC.TENMON, LOPTINCHI.NHOM, LOPTINCHI.SOSINHVIEN_TOITHIEU
+ORDER BY
+    MONHOC.TENMON, LOPTINCHI.NHOM;
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[RP_PhieuDiem]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[RP_PhieuDiem]
+    @MSSV NVARCHAR(10),
+    @Type INT
+-- 0: PGV (Chạy trên cả 2 khoa)
+-- 1: Khoa (Chạy trên khoa hiện tại)
+AS
+BEGIN
+    IF (@Type = 0)
+    BEGIN
+        IF EXISTS (SELECT 1 FROM SINHVIEN WHERE MASV = @MSSV)
+        BEGIN
+            WITH GETDIEMMON (MAMON, DIEMTK) AS
+            (
+                SELECT
+                    LOPTINCHI.MAMON,
+                    DIEMTK = DIEM_CC * 0.1 + DIEM_GK * 0.3 + DIEM_CK * 0.6
+                FROM
+                    DANGKY
+                    JOIN LOPTINCHI ON DANGKY.MALTC = LOPTINCHI.IDLTC
+                WHERE
+                    DANGKY.MASV = @MSSV
+                    AND HUYDANGKY = 0
+            )
+            SELECT
+                TENMON = MONHOC.TENMON,
+                DIEMTK = MAX(DIEMTK)
+            FROM
+                MONHOC
+                JOIN GETDIEMMON ON GETDIEMMON.MAMON = MONHOC.MAMON
+            GROUP BY
+                MONHOC.TENMON;
+        END
+        ELSE IF EXISTS (SELECT 1 FROM LINK0.QLDSVHTC.dbo.SINHVIEN WHERE MASV = @MSSV)
+        BEGIN
+            WITH GETDIEMMON (MAMON, DIEMTK) AS
+            (
+                SELECT
+                    LOPTINCHI.MAMON,
+                    DIEMTK = DIEM_CC * 0.1 + DIEM_GK * 0.3 + DIEM_CK * 0.6
+                FROM
+                    DANGKY
+                    JOIN LOPTINCHI ON DANGKY.MALTC = LOPTINCHI.IDLTC
+                WHERE
+                    DANGKY.MASV = @MSSV
+                    AND HUYDANGKY = 0
+            )
+            SELECT
+                TENMON = MONHOC.TENMON,
+                DIEMTK = MAX(DIEMTK)
+            FROM
+                MONHOC
+                JOIN GETDIEMMON ON GETDIEMMON.MAMON = MONHOC.MAMON
+            GROUP BY
+                MONHOC.TENMON;
+        END
+        ELSE
+        BEGIN
+            RAISERROR(N'SINH VIÊN NÀY KHÔNG TỒN TẠI', 16, 1);
+        END
+    END
+    ELSE IF (@Type = 1)
+    BEGIN
+        IF EXISTS (SELECT 1 FROM SINHVIEN WHERE MASV = @MSSV)
+        BEGIN
+            WITH GETDIEMMON (MAMON, DIEMTK) AS
+            (
+                SELECT
+                    LOPTINCHI.MAMON,
+                    DIEMTK = DIEM_CC * 0.1 + DIEM_GK * 0.3 + DIEM_CK * 0.6
+                FROM
+                    DANGKY
+                    JOIN LOPTINCHI ON DANGKY.MALTC = LOPTINCHI.IDLTC
+                WHERE
+                    DANGKY.MASV = @MSSV
+                    AND HUYDANGKY = 0
+            )
+            SELECT
+                TENMH = MONHOC.TENMON,
+                DIEMTK = MAX(DIEMTK)
+            FROM
+                MONHOC
+                JOIN GETDIEMMON ON GETDIEMMON.MAMON = MONHOC.MAMON
+            GROUP BY
+                MONHOC.TENMON;
+        END
+        ELSE
+        BEGIN
+            RAISERROR(N'SINH VIÊN NÀY KHÔNG TỒN TẠI', 16, 1);
+        END
+    END
+    ELSE
+    BEGIN
+        RAISERROR(N'LOẠI SINH VIÊN KHÔNG HỢP LỆ', 16, 1);
+    END
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[RP_SVDKLOPTINCHI]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[RP_SVDKLOPTINCHI]
+    @NienKhoa VARCHAR(9),
+    @HocKy INT,
+    @Nhom INT,
+    @TenMon NVARCHAR(50)
+AS
+BEGIN
+    DECLARE @MaMon INT
+
+    SELECT @MaMon = MAMON FROM MONHOC WHERE TENMON = @TenMon
+
+    SELECT 
+        SINHVIEN.MASV,
+        SINHVIEN.HOSV, 
+		SINHVIEN.TENSV,
+        CASE WHEN SINHVIEN.PHAI = 0 THEN N'NỮ' ELSE N'NAM' END AS PHAI,
+        SINHVIEN.MALOP
+    FROM
+        SINHVIEN
+    INNER JOIN
+        DANGKY ON SINHVIEN.MASV = DANGKY.MASV
+    INNER JOIN
+        LOPTINCHI ON DANGKY.MALTC = LOPTINCHI.IDLTC
+    INNER JOIN
+        MONHOC ON LOPTINCHI.MAMON = MONHOC.MAMON
+    WHERE
+        LOPTINCHI.NIENKHOA = @NienKhoa
+        AND LOPTINCHI.HOCKY = @HocKy
+        AND LOPTINCHI.NHOM = @Nhom
+        AND MONHOC.MAMON = @MaMon
+        AND LOPTINCHI.HUYLOP = 0
+    ORDER BY
+        SINHVIEN.TENSV, SINHVIEN.HOSV;
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[SP_BDMH]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_BDMH] @NienKhoa nvarchar(10), @HocKy int, @Nhom int, @TenMon nvarchar(50), @MAGV nvarchar(10)
+AS
+BEGIN
+     DECLARE @MaMon int
+    SELECT @MaMon = MAMON FROM MONHOC WHERE TENMON = @TenMon
+
+    DECLARE @LOPTINCHI int
+    SELECT @LOPTINCHI = LOPTINCHI.IDLTC 
+    FROM LOPTINCHI
+    INNER JOIN DAY ON LOPTINCHI.IDLTC = DAY.MALTC
+    WHERE 
+        LOPTINCHI.NIENKHOA = @NienKhoa 
+        AND LOPTINCHI.HOCKY = @HocKy 
+        AND LOPTINCHI.NHOM = @Nhom
+        AND LOPTINCHI.MAMON = @MaMon
+        AND DAY.MAGV = @MAGV
+
+    SELECT
+		@LOPTINCHI as MALTC, 
+        SINHVIEN.MASV,
+        HOTEN = HOSV + ' ' + TENSV,
+        DIEM_CC,
+        DIEM_GK,
+        DIEM_CK,
+        DIEM_TK = ISNULL((ISNULL(DIEM_CC, 0) * 0.1) + (ISNULL(DIEM_GK, 0) * 0.3) + (ISNULL(DIEM_CK, 0) * 0.6), 0) 
+    FROM
+        DANGKY
+    INNER JOIN SINHVIEN ON DANGKY.MASV = SINHVIEN.MASV
+    WHERE
+        DANGKY.MALTC = @LOPTINCHI
+        AND HUYDANGKY = 0
+    ORDER BY SINHVIEN.MASV
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_CHECKID]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_CHECKID] @Code NVARCHAR(15),
+@Type NVARCHAR(15)
+AS
+BEGIN
+	-- LOP
+	IF(@Type = 'MALOP')
+	BEGIN
+		
+		IF EXISTS(SELECT * FROM dbo.LOP WHERE dbo.LOP.MALOP = @Code)
+			RETURN 1; -- Mã tồn tại ở phân mãnh hiện tại
+	
+		ELSE IF EXISTS(SELECT * FROM LINK0.QLDSVHTC.dbo.LOP AS LOP WHERE LOP.MALOP = @Code)
+			RETURN 2;	--Mã NV tồn tại ở phân mãnh  khác
+	END
+
+	--MON Hoc
+	IF(@Type = 'MAMON')
+	BEGIN
+		IF EXISTS(SELECT * FROM dbo.MONHOC WHERE MAMON = @Code)
+		RETURN 1;
+	END
+	
+	
+
+
+		IF(@Type = 'MASV')
+	BEGIN
+		
+		IF EXISTS(SELECT * FROM dbo.SINHVIEN WHERE dbo.SINHVIEN.MASV = @Code)
+			RETURN 1; -- Mã tồn tại ở phân mãnh hiện tại
+	
+		ELSE IF EXISTS(SELECT * FROM LINK0.QLDSVHTC.dbo.SINHVIEN AS SV WHERE SV.MASV = @Code)
+			RETURN 2;	--Mã NV tồn tại ở phân mãnh  khác
+	END
+
+	RETURN 0	--Không bị trùng được thêm
+END
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[SP_CHECKNAME]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_CHECKNAME]
+@Name NVARCHAR(50),
+@Type NVARCHAR(15)
+AS
+BEGIN
+	--Kiểm tra Table lop của server hiện tại
+	IF(@Type = 'TENLOP')
+	BEGIN
+		IF EXISTS(SELECT * FROM dbo.LOP WHERE dbo.LOP.TENLOP = @Name)
+			RETURN 1; -- @name bị trùng  ở phân mãnh hiện tại
+	
+		ELSE IF EXISTS(SELECT * FROM LINK0.QLDSVHTC.dbo.LOP AS LOP WHERE LOP.TENLOP = @Name)
+			RETURN 2;	--@name bị trùng ở phân mãnh  khác
+	END
+
+	IF(@Type = 'TENMONHOC')
+	BEGIN
+		IF EXISTS(SELECT * FROM dbo.MONHOC WHERE TENMON = @Name)
+		RETURN 1;
+	END
+	
+	RETURN 0	--Không bị trùng ,được thêm
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_DanhSachLTCKoDK]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_DanhSachLTCKoDK]
+    @MaKhoa nvarchar(10)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	WITH NumberedGiangVien AS (
+		SELECT 
+			DAY.MALTC,
+			DAY.MAGV,
+			ROW_NUMBER() OVER (PARTITION BY DAY.MALTC ORDER BY DAY.MAGV) AS RN
+		FROM DAY
+		GROUP BY DAY.MALTC, DAY.MAGV
+	)
+
+	SELECT
+		LOPTINCHI.IDLTC AS [MALTC],
+		LOPTINCHI.NHOM AS [NHOM],
+		LOPTINCHI.HOCKY AS [HOCKY],
+		LOPTINCHI.NIENKHOA AS [NIENKHOA],
+		MONHOC.TENMON AS [TENMON],
+		MONHOC.MAMON AS [MAMON],
+		NHANVIEN.HONV + ' ' + NHANVIEN.TENNV AS [NHANVIEN],
+		STUFF((SELECT ' - ' + GV.HOGV + ' ' + GV.TENGV
+			FROM DAY
+			INNER JOIN GIANGVIEN GV ON DAY.MAGV = GV.MAGV
+			WHERE DAY.MALTC = LOPTINCHI.IDLTC
+			FOR XML PATH('')), 1, 3, '') AS [GIANGVIEN],
+		NGV.MAGV1,
+		NGV.MAGV2,
+		LOPTINCHI.SOSINHVIEN_TOITHIEU AS [SOSVTOITHIEU],
+		COUNT(DANGKY.MALTC) AS [SOSVDADANGKY],
+		THOIGIANDANGKY.MATGDK AS [MATGDK],
+		CONVERT(nvarchar(10), THOIGIANDANGKY.NGAYDANGKY, 103) AS [NGAYDANGKY], -- Định dạng dd/mm/yyyy
+		CONVERT(nvarchar(10), THOIGIANDANGKY.NGAYKETTHUCDK, 103) AS [NGAYKETTHUCDK], -- Định dạng dd/mm/yyyy
+		LOPTINCHI.MAKHOA AS [MAKHOA],
+		LOPTINCHI.HUYLOP AS [HUYLOP]
+	FROM
+		LOPTINCHI
+	INNER JOIN MONHOC ON LOPTINCHI.MAMON = MONHOC.MAMON
+	INNER JOIN NHANVIEN ON LOPTINCHI.MANV = NHANVIEN.MANV
+	INNER JOIN THOIGIANDANGKY ON LOPTINCHI.MATGDK = THOIGIANDANGKY.MATGDK
+	LEFT JOIN DANGKY ON LOPTINCHI.IDLTC = DANGKY.MALTC
+	LEFT JOIN (
+		SELECT 
+			MALTC,
+			MAX(CASE WHEN RN = 1 THEN MAGV END) AS MAGV1,
+			MAX(CASE WHEN RN = 2 THEN MAGV END) AS MAGV2
+		FROM NumberedGiangVien
+		GROUP BY MALTC
+	) NGV ON LOPTINCHI.IDLTC = NGV.MALTC
+	WHERE LOPTINCHI.MAKHOA = @MaKhoa -- Lọc theo mã khoa
+	GROUP BY
+		LOPTINCHI.IDLTC, LOPTINCHI.NIENKHOA, LOPTINCHI.HOCKY, LOPTINCHI.NHOM, MONHOC.TENMON, NHANVIEN.HONV, NHANVIEN.TENNV, LOPTINCHI.SOSINHVIEN_TOITHIEU, LOPTINCHI.MAKHOA, LOPTINCHI.HUYLOP, THOIGIANDANGKY.NGAYDANGKY, THOIGIANDANGKY.NGAYKETTHUCDK, MONHOC.MAMON, THOIGIANDANGKY.MATGDK, NGV.MAGV1,NGV.MAGV2
+	ORDER BY
+		MONHOC.TENMON, LOPTINCHI.NHOM;
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[SP_getInfoSVDKI]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[SP_getInfoSVDKI]
+@masv NVARCHAR(10)
+AS
+BEGIN
+	SELECT MASV,HOSV,TENSV,MALOP FROM dbo.SINHVIEN WHERE MASV = @masv
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_InDanhSachLopTinChi]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_InDanhSachLopTinChi]
+    @NienKhoa nvarchar(10),
+    @HocKy int,
+    @MaKhoa nvarchar(10)
+AS
+BEGIN
+	SELECT
+    LOPTINCHI.IDLTC AS [MALTC],
+    MONHOC.TENMON AS [TENMH],
+    LOPTINCHI.NHOM AS [NHOM],
+    STUFF((SELECT ' - ' + GV.HOGV + ' ' + GV.TENGV
+           FROM DAY
+           INNER JOIN GIANGVIEN GV ON DAY.MAGV = GV.MAGV
+           WHERE DAY.MALTC = LOPTINCHI.IDLTC
+           FOR XML PATH('')), 1, 3, '') AS [HOTEN],
+    LOPTINCHI.SOSINHVIEN_TOITHIEU AS [SOSVTOITHIEU],
+    COUNT(DANGKY.MALTC) AS [AMOUNT]
+FROM
+    LOPTINCHI
+INNER JOIN MONHOC ON LOPTINCHI.MAMON = MONHOC.MAMON
+LEFT JOIN DANGKY ON LOPTINCHI.IDLTC = DANGKY.MALTC
+WHERE
+    LOPTINCHI.NIENKHOA = @NienKhoa
+    AND LOPTINCHI.HOCKY = @HocKy
+    AND LOPTINCHI.HUYLOP = 0
+    AND LOPTINCHI.MAKHOA = @MaKhoa
+GROUP BY
+    LOPTINCHI.IDLTC, MONHOC.TENMON, LOPTINCHI.NHOM, LOPTINCHI.SOSINHVIEN_TOITHIEU
+ORDER BY
+    MONHOC.TENMON, LOPTINCHI.NHOM;
+END
+
+GO
+/****** Object:  StoredProcedure [dbo].[SP_Lay_Thong_Tin_GV_Tu_Login]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[SP_Lay_Thong_Tin_GV_Tu_Login]
+@TENLOGIN NVARCHAR(100)
+AS
+DECLARE @UID INT
+DECLARE @MAGV NVARCHAR(100)
+SELECT @UID = uid, @MAGV = name FROM SYS.sysusers
+WHERE sid = SUSER_SID(@TENLOGIN)
+
+DECLARE @HOTEN NVARCHAR(200)
+
+SELECT @HOTEN =
+CASE
+WHEN EXISTS (SELECT 1 FROM dbo.GIANGVIEN WHERE MAGV = @MAGV) THEN
+(SELECT HOGV + ' ' + TENGV FROM dbo.GIANGVIEN WHERE MAGV = @MAGV)
+ELSE
+(SELECT HONV + ' ' + TENNV FROM dbo.NHANVIEN WHERE MANV = @MAGV)
+END
+
+SELECT MAGV = @MAGV,
+HOTEN = @HOTEN,
+TENNHOM = name
+FROM SYS.sysusers
+WHERE uid = (SELECT groupuid FROM SYS.sysmembers WHERE memberuid = @UID)
+GO
+/****** Object:  StoredProcedure [dbo].[SP_LayDiemTheoSV]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_LayDiemTheoSV]
+    @MSSV NVARCHAR(10)
+AS
+BEGIN
+    WITH MonHocSinhVien AS (
+        SELECT
+            SINHVIEN.MASV,
+            MONHOC.MAMON,
+            MONHOC.TENMON,
+            KEHOACHGIANG.NAM,
+            KEHOACHGIANG.HOCKY
+        FROM
+            MONHOC
+            INNER JOIN KEHOACHGIANG ON MONHOC.MAMON = KEHOACHGIANG.MAMON
+            INNER JOIN CHUYENNGANH ON KEHOACHGIANG.MACN = CHUYENNGANH.MACN
+            INNER JOIN SINHVIEN ON CHUYENNGANH.MACN = SINHVIEN.MACN
+        WHERE
+            SINHVIEN.MASV = @MSSV
+    ),
+    DiemDangKy AS (
+        SELECT
+            SINHVIEN.MASV,
+            MONHOC.MAMON,
+            DANGKY.DIEM_CC,
+            DANGKY.DIEM_GK,
+            DANGKY.DIEM_CK
+        FROM
+            DANGKY
+            INNER JOIN LOPTINCHI ON DANGKY.MALTC = LOPTINCHI.IDLTC
+            INNER JOIN MONHOC ON LOPTINCHI.MAMON = MONHOC.MAMON
+            INNER JOIN KEHOACHGIANG ON MONHOC.MAMON = KEHOACHGIANG.MAMON
+            INNER JOIN CHUYENNGANH ON KEHOACHGIANG.MACN = CHUYENNGANH.MACN
+            INNER JOIN SINHVIEN ON DANGKY.MASV = SINHVIEN.MASV
+        WHERE
+            SINHVIEN.MASV = @MSSV AND HUYDANGKY = 0
+    )
+    SELECT
+       
+        MHS.MAMON,
+        MHS.TENMON,
+        MHS.NAM,
+        MHS.HOCKY,
+        DD.DIEM_CC,
+        DD.DIEM_GK,
+        DD.DIEM_CK,
+		DIEM_TK = ISNULL((ISNULL(DD.DIEM_CC, 0) * 0.1) + (ISNULL(DD.DIEM_GK, 0) * 0.3) + (ISNULL(DD.DIEM_CK, 0) * 0.6), 0) 
+    FROM MonHocSinhVien MHS
+    LEFT JOIN DiemDangKy DD ON MHS.MASV = DD.MASV AND MHS.MAMON = DD.MAMON;
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[SP_LayDSGV]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_LayDSGV] AS
+BEGIN
+	SELECT MAGV,HOTEN = HOGV+' '+TENGV FROM dbo.GIANGVIEN 
+END
+
+GO
+/****** Object:  StoredProcedure [dbo].[SP_LayDSNV]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_LayDSNV] AS
+BEGIN
+	SELECT MANV, HOTEN = HONV +' '+ TENNV FROM dbo.NHANVIEN 
+END
+
+GO
+/****** Object:  StoredProcedure [dbo].[SP_LayLopTheoNam]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/*alter PROC [dbo].[SP_LayThongTinSV]
+@masv NCHAR(10)
+AS
+BEGIN
+	SELECT HOTEN = HOSV +' '+TENSV ,MASV,MALOP,KHOAHOC FROM dbo.SINHVIEN WHERE MASV = @masv 
+END*/
+/*exec [dbo].[SP_LayThongTinSV] 'N18DCCN001'*/
+CREATE PROC [dbo].[SP_LayLopTheoNam] @NAM INT, @MALOP nvarchar(20)
+AS 
+BEGIN
+SELECT DISTINCT MALOP FROM LOP WHERE NAMNHAPHOC = @NAM
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_LayThongTinSV]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[SP_LayThongTinSV]
+@masv NCHAR(10)
+AS
+BEGIN
+IF EXISTS (
+    SELECT 1
+    FROM DANGKY
+    WHERE MASV = @masv
+        AND (DIEM_CC IS NOT NULL OR DIEM_GK IS NOT NULL OR DIEM_CK IS NOT NULL)
+)
+    SELECT -1;
+
+ELSE
+if exists (select 1 from SINHVIEN where MASV = @masv and NGHIHOC = 0)
+ SELECT HOTEN = HOSV +' '+TENSV ,MASV,MALOP,KHOAHOC FROM dbo.SINHVIEN WHERE MASV = @masv;
+ else 
+ select -2;
+END
+/*exec [dbo].[SP_LayThongTinSV] 'N18DCCN001'*/
+GO
+/****** Object:  StoredProcedure [dbo].[SP_LayThongTinSV_DangNhap]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[SP_LayThongTinSV_DangNhap]
+@masv NCHAR(10),@password NVARCHAR(40)
+AS
+BEGIN
+	SELECT MASV,HOTEN = HOSV +' '+TENSV FROM dbo.SINHVIEN WHERE MASV = @masv AND PASSWORD = @password
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_LIST_SVHUYDANGKY]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_LIST_SVHUYDANGKY] @MSSV nvarchar(20)
+AS
+BEGIN
+    SELECT 
+        LOPTINCHI.IDLTC AS MALTC,
+        LOPTINCHI.NIENKHOA AS NIENKHOA,
+        LOPTINCHI.HOCKY AS HOCKI,
+        MONHOC.TENMON AS TENMON,
+        LOPTINCHI.NHOM AS NHOM,
+        STUFF((SELECT ' - ' + GV.HOGV + ' ' + GV.TENGV
+               FROM DAY
+               INNER JOIN GIANGVIEN GV ON DAY.MAGV = GV.MAGV
+               WHERE DAY.MALTC = LOPTINCHI.IDLTC
+               FOR XML PATH('')), 1, 3, '') AS [Họ tên GV giảng]
+    FROM
+        LOPTINCHI
+        INNER JOIN MONHOC ON LOPTINCHI.MAMON = MONHOC.MAMON
+        LEFT JOIN DANGKY ON LOPTINCHI.IDLTC = DANGKY.MALTC
+        INNER JOIN SINHVIEN ON DANGKY.MASV = SINHVIEN.MASV
+    WHERE
+        SINHVIEN.MASV = @MSSV
+        AND DANGKY.HUYDANGKY = 0
+        AND DANGKY.DIEM_CC IS NULL
+        AND DANGKY.DIEM_CK IS NULL
+        AND DANGKY.DIEM_GK IS NULL;
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_NewLTCvaGVDAY]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_NewLTCvaGVDAY]
+    @SOSINHVIEN_TOITHIEU INT,
+    @NHOM INT,
+    @NIENKHOA NVARCHAR(50),
+    @HOCKY INT,
+    @MAMON INT,
+    @MANV NVARCHAR(10),
+    @HUYLOP BIT,
+    @MAKHOA NVARCHAR(10),
+    @MATGDK INT,
+    @MAGV1 NVARCHAR(10),
+    @MAGV2 NVARCHAR(10) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        DECLARE @IDLTC INT;
+
+        -- Tạo LTC mới trong bảng LOPTINCHI
+        INSERT INTO LOPTINCHI (SOSINHVIEN_TOITHIEU, NHOM, NIENKHOA, HOCKY, MAMON, MANV, HUYLOP, MAKHOA, MATGDK)
+        VALUES (@SOSINHVIEN_TOITHIEU, @NHOM, @NIENKHOA, @HOCKY, @MAMON, @MANV, @HUYLOP, @MAKHOA, @MATGDK);
+
+        -- Lấy IDLTC vừa tạo
+        SET @IDLTC = SCOPE_IDENTITY();
+
+        -- Thêm MAGV vào bảng DAY
+        INSERT INTO DAY (MALTC, MAGV)
+        VALUES (@IDLTC, @MAGV1);
+
+        IF (@MAGV2 IS NOT NULL)
+        BEGIN
+            INSERT INTO DAY (MALTC, MAGV)
+            VALUES (@IDLTC, @MAGV2);
+        END;
+
+   
+        COMMIT;
+		-- Thông báo thành công
+        RETURN 1
+
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+
+        -- Xử lý lỗi tại đây (nếu cần)
+        RAISERROR(N'Có lỗi trong quá trình thêm lớp tín chỉ',16,1)
+
+    END CATCH;
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[SP_REMOVELTCvaGVDAY]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_REMOVELTCvaGVDAY]
+    @IDLTC INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        -- Xóa hết các giáo viên liên quan đến IDLTC trong bảng DAY
+        DELETE FROM DAY WHERE MALTC = @IDLTC;
+
+        -- Xóa dòng trong bảng LOPTINCHI dựa trên IDLTC
+        DELETE FROM LOPTINCHI WHERE IDLTC = @IDLTC;
+
+        -- Hoàn thành giao dịch
+        COMMIT;
+    END TRY
+    BEGIN CATCH
+        -- Nếu có lỗi, rollback transaction
+        ROLLBACK;
+        -- Xử lý lỗi tại đây (nếu cần)
+        RAISERROR(N'Có lỗi trong quá trình xóa lớp tín chỉ', 16, 1)
+    END CATCH;
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[SP_TAOLOGIN]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[SP_TAOLOGIN]
+  @LGNAME VARCHAR(50),
+  @PASS VARCHAR(50),
+  @USERNAME VARCHAR(50),
+  @ROLE VARCHAR(50)
+AS
+
+	-- check login , user bị trùng 
+	IF EXISTS(SELECT name FROM sys.server_principals 
+				WHERE TYPE IN ('U', 'S', 'G')	--U: Windows Login Accounts
+				AND name NOT LIKE '%##%'		--S: SQL Login Accounts
+				AND name = @LGNAME)				--G: Windows Group Login Accounts
+		RETURN 1	--Trùng Login
+	ELSE IF EXISTS(SELECT name FROM sys.database_principals
+					WHERE type_desc = 'SQL_USER'
+					AND name = @USERNAME)
+		RETURN 2	--Trùng User
+
+	-- băt đầu tạo tài khoản
+  DECLARE @RET INT
+  EXEC @RET= SP_ADDLOGIN @LGNAME, @PASS,'QLDSVHTC'
+  IF (@RET =1) 
+     RETURN 3 -- tạo tài khoản không thành công
+ 
+  EXEC @RET= SP_GRANTDBACCESS @LGNAME, @USERNAME
+  IF (@RET =1) 
+  BEGIN
+       EXEC SP_DROPLOGIN @LGNAME
+       RETURN 3 -- tạo  tài khoảng không thành công
+  END
+  EXEC sp_addrolemember @ROLE, @USERNAME
+
+  --THEM ROLE SECURITYADMIN DE CO QUYEN TAO TAI KHOAN
+  EXEC sp_addsrvrolemember @LGNAME, 'SecurityAdmin'
+
+  RETURN 0  -- THANH CONG
+
+GO
+/****** Object:  StoredProcedure [dbo].[SP_UPDATELTCvaGVDAY]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_UPDATELTCvaGVDAY]
+    @IDLTC INT,
+    @SOSINHVIEN_TOITHIEU INT,
+    @NHOM INT,
+    @NIENKHOA NVARCHAR(50),
+    @HOCKY INT,
+    @MAMON INT,
+    @MANV NVARCHAR(10),
+    @HUYLOP BIT,
+    @MAKHOA NVARCHAR(10),
+    @MATGDK INT,
+    @MAGV1 NVARCHAR(10),
+    @MAGV2 NVARCHAR(10) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+  
+
+        -- Cập nhật thông tin trong bảng LOPTINCHI
+        UPDATE LOPTINCHI
+        SET
+            SOSINHVIEN_TOITHIEU = @SOSINHVIEN_TOITHIEU,
+            NHOM = @NHOM,
+            NIENKHOA = @NIENKHOA,
+            HOCKY = @HOCKY,
+            MAMON = @MAMON,
+            MANV = @MANV,
+            HUYLOP = @HUYLOP,
+            MAKHOA = @MAKHOA,
+            MATGDK = @MATGDK
+        WHERE IDLTC = @IDLTC;
+
+
+
+        -- Xóa hết các giáo viên liên quan đến IDLTC trong bảng DAY
+        DELETE FROM DAY WHERE MALTC = @IDLTC;
+
+
+
+        -- Thêm MAGV1 vào bảng DAY
+        INSERT INTO DAY (MALTC, MAGV)
+        VALUES (@IDLTC, @MAGV1);
+
+
+
+        -- Thêm MAGV2 vào bảng DAY nếu tồn tại
+        IF (@MAGV2 IS NOT NULL)
+        BEGIN
+            INSERT INTO DAY (MALTC, MAGV)
+            VALUES (@IDLTC, @MAGV2);
+     
+        
+        END;
+
+        -- Hoàn thành giao dịch
+        COMMIT;
+		RETURN 1;
+
+    END TRY
+    BEGIN CATCH
+        -- Nếu có lỗi, rollback transaction
+        ROLLBACK;
+        -- Log lỗi
+        RAISERROR(N'Có lỗi trong quá trình thêm lớp tín chỉ',16,1)
+		RETURN 0;
+    END CATCH;
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[SP_XULY_DIEM]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[SP_XULY_DIEM]
+@MSSV varchar(20),
+@MALTC int,
+@DIEMCC DECIMAL(5, 2),
+@DIEMGK DECIMAL(5, 2),
+@DIEMCK DECIMAL(5, 2)
+as 
+BEGIN
+	IF @DIEMCC = -1  
+		SET @DIEMCC = NULL
+	IF @DIEMGK = -1
+		SET @DIEMGK = NULL
+	IF @DIEMCK = -1
+		SET @DIEMCK = NULL
+	IF EXISTS (Select 1 From DANGKY where MASV = @MSSV AND MALTC = @MALTC)
+	BEGIN
+		UPDATE DANGKY
+		SET DIEM_CC = @DIEMCC, DIEM_GK = @DIEMGK, DIEM_CK = @DIEMCK
+		WHERE MASV = @MSSV AND MALTC = @MALTC
+	END
+	ELSE 
+	RAISERROR(N'THÔNG TIN ĐĂNG KÝ KHÔNG TỒN TẠI',16,1)
+	END
+
+GO
+/****** Object:  StoredProcedure [dbo].[SP_XULY_LTC]    Script Date: 11/17/2023 6:59:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[SP_XULY_LTC] 
+    @MASV NVARCHAR(10),
+    @MALTC INT,
+    @type smallint
+    --type=1 : đăng ký
+    --type=2 : hủy
+    -- SP này để vừa cho sinh viên đăng ký hoặc hủy môn đăng ký
+AS
+BEGIN
+    IF (@type = 1)
+    BEGIN
+        IF EXISTS (SELECT 1 FROM DANGKY WHERE MASV = @MASV AND MALTC = @MALTC)
+        BEGIN
+            RAISERROR(N'SINH VIÊN ĐÃ ĐĂNG KÝ LỚP', 16, 1)
+            RETURN
+        END
+        ELSE
+        BEGIN
+            -- Kiểm tra thời gian đăng ký
+            IF EXISTS (
+                SELECT 1 
+                FROM THOIGIANDANGKY 
+                INNER JOIN LOPTINCHI ON THOIGIANDANGKY.MATGDK = LOPTINCHI.MATGDK
+                WHERE LOPTINCHI.IDLTC = @MALTC AND GETDATE() BETWEEN THOIGIANDANGKY.NGAYDANGKY AND THOIGIANDANGKY.NGAYKETTHUCDK
+            )
+            BEGIN
+                INSERT INTO DBO.DANGKY(MALTC, MASV, HUYDANGKY)
+                VALUES (@MALTC, @MASV, 0)
+            END
+            ELSE
+            BEGIN
+                RAISERROR(N'HẾT THỜI GIAN ĐĂNG KÝ', 16, 1)
+            END
+        END
+    END
+    ELSE IF(@type = 2)
+    BEGIN
+        IF EXISTS (SELECT 1 FROM DANGKY WHERE MASV = @MASV AND MALTC = @MALTC)
+        BEGIN
+            UPDATE DANGKY SET HUYDANGKY = 1 WHERE MALTC = @MALTC AND MASV = @MASV
+        END
+        ELSE
+        BEGIN
+            RAISERROR(N'SINH VIÊN CHƯA ĐĂNG KÝ LỚP', 16, 1)
+        END
+    END
+END
+GO
+

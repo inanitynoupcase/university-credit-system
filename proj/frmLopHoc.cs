@@ -328,6 +328,7 @@ namespace QLNV1
                 this.LOPTableAdapter.Fill(this.DS.LOP);
                 this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+                if(bdsLop.Count > 0)
                 macn = ((DataRowView)bdsLop[0])["MAKHOA"].ToString();
             }
         }
@@ -368,6 +369,11 @@ namespace QLNV1
         }
 
         private void txbMaLop_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lOPGridControl_Click(object sender, EventArgs e)
         {
 
         }

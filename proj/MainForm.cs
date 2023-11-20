@@ -80,21 +80,22 @@ namespace QLNV1
         {
             if (Program.mGroup.Equals("SV"))
             {
-               
-                DangKibarButton2.Enabled = true;
-                DiemButtonItem.Enabled = HocPhibarButton.Enabled = LopHocbarButton.Enabled = LopTinChibarButton.Enabled = MonHocButtonItem.Enabled = btnSinhVien.Enabled = btnTaoTK.Enabled= false;
+
+                DangKibarButton.Enabled = true;
+                DiemButtonItem.Enabled = ChuyenLopBtn.Enabled = barButtonItem10.Enabled = HocPhibarButton.Enabled = LopHocbarButton.Enabled = LopTinChibarButton.Enabled = MonHocButtonItem.Enabled = btnSinhVien.Enabled = btnTaoTK.Enabled= false;
                 rpBaoCao.Visible = false;
                 DIEMSVBTN.Enabled = true;
             }
-            if (Program.mGroup.Equals("PKT"))
+          if (Program.mGroup.Equals("KHOA"))
             {
-                HocPhibarButton.Enabled = true;
-                DiemButtonItem.Enabled = LopHocbarButton.Enabled = LopTinChibarButton.Enabled = MonHocButtonItem.Enabled = btnSinhVien.Enabled = DangKibarButton2.Enabled= false;
-                rpBaoCao.Visible = false;
+                barButtonItem10.Enabled = ChuyenLopBtn.Enabled = LopHocbarButton.Enabled = DangKibarButton.Enabled = MonHocButtonItem.Enabled = btnSinhVien.Enabled=DIEMSVBTN.Enabled = LopTinChibarButton.Enabled = false;
+                DiemButtonItem.Enabled = true;
             }
-            if(Program.mGroup.Equals("PGV")|| Program.mGroup.Equals("KHOA"))
+
+            if (Program.mGroup.Equals("PGV"))
             {
-                DangKibarButton2.Enabled= HocPhibarButton.Enabled= false;
+                DangKibarButton.Enabled= DIEMSVBTN.Enabled= false; DiemButtonItem.Enabled = false;
+
             }
         }
         private void LopHocbarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -238,11 +239,11 @@ namespace QLNV1
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = this.CheckExists(typeof(frptHocPhi));
+            Form frm = this.CheckExists(typeof(frptDSSV));
             if (frm != null) frm.Activate();
             else
             {
-                frptHocPhi f = new frptHocPhi();
+                frptDSSV f = new frptDSSV();
                 f.MdiParent = this;
                 f.Show();
             }
@@ -279,6 +280,30 @@ namespace QLNV1
             else
             {
                 DiemSVForm f = new DiemSVForm();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void ChuyenLopBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormChuyenLop));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormChuyenLop f = new FormChuyenLop();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormGV));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormGV f = new FormGV();
                 f.MdiParent = this;
                 f.Show();
             }

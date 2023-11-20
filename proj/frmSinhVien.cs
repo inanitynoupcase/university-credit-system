@@ -42,13 +42,13 @@ namespace QLNV1
             panelControl2.Enabled = false;
         }
 
-        private void lOPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+       /* private void lOPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
             this.bdsLop.EndEdit();
             this.tableAdapterManager.UpdateAll(this.DS);
 
-        }
+        }*/
 
         private void frmSinhVien_Load(object sender, EventArgs e)
         {
@@ -228,8 +228,8 @@ namespace QLNV1
                 this.DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.DANGKYTableAdapter.Fill(this.DS.DANGKY);
 
-                
-                macn = ((DataRowView)bdsLop[0])["MAKHOA"].ToString();
+                if(bdsLop.Count > 0    )              macn = ((DataRowView)bdsLop[0])["MAKHOA"].ToString();
+
             }
             
         }
@@ -308,9 +308,11 @@ namespace QLNV1
             panelControl2.Enabled = true;
             bdsSinhVien.AddNew();
             txbMaLop.Text = ((DataRowView)bdsLop[bdsLop.Position])["MALOP"].ToString();
+            txbMaSV.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;
             btnGhi.Enabled = btnPhucHoi.Enabled = true;
             sINHVIENGridControl.Enabled = false;
+            comboBox1.SelectedIndex = 0;
         }
 
         private void btnLamMoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -412,20 +414,14 @@ namespace QLNV1
             Console.WriteLine("weq");
         }
 
-        private void sINHVIENGridControl_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void btn(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
         }
 
-        private void lOPGridControl_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void bdsDangKi_CurrentChanged(object sender, EventArgs e)
         {
@@ -469,5 +465,30 @@ namespace QLNV1
         {
 
         }
+
+        private void fillByToolStripButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.cHUYENNGANHTableAdapter.FillBy(this.DS.CHUYENNGANH);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void pHAILabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

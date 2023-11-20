@@ -329,5 +329,10 @@ namespace QLNV1
         {
 
         }
+
+        private void txbMaMonHoc_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

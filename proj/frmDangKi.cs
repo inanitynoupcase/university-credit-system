@@ -41,7 +41,7 @@ namespace QLNV1
         void loadcbNienkhoa()
         {
             DataTable dt = new DataTable();
-            string cmd = "EXEC dbo.GetAllNienKhoa";
+            string cmd = "EXEC SP_NIENKHOAHIENTAI";
             dt = Program.ExecSqlDataTable(cmd);
 
             BindingSource bdsNienKhoa = new BindingSource();

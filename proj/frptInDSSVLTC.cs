@@ -38,8 +38,8 @@ namespace QLNV1
                 cbKhoa.Enabled = false;
             }
             cbMonHoc.DataSource = bdsMonHoc;
-            cbMonHoc.DisplayMember = "TENMH";
-            cbMonHoc.ValueMember = "TENMH";
+            cbMonHoc.DisplayMember = "TENMON";
+            cbMonHoc.ValueMember = "TENMON";
 
 
             loadcbNienkhoa();
@@ -114,7 +114,8 @@ namespace QLNV1
             int hocky = Int32.Parse(cbHocKi.Text);
             int nhom = Int32.Parse(cbNhom.Text);
             string monhoc = cbMonHoc.SelectedValue.ToString();
-            string khoa = cbKhoa.Text;
+            string khoa = (string)cbKhoa.SelectedValue;
+            if (khoa == "PTITHCM\\CNTT") khoa = "Công Nghệ Thông Tin"; else khoa = "Viễn Thông";
             Xrpt_SVDangKyLTC rpt = new Xrpt_SVDangKyLTC(nienkhoa, hocky, nhom, monhoc);
             rpt.lbMonHoc.Text = monhoc;
             rpt.lbHocKy.Text = hocky.ToString();
