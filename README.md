@@ -69,8 +69,8 @@ Chương trình cho phép ta tạo các login, password và cho login này làm 
 
 *-	Danh sách lớp tín chỉ:* User nhập vào Niên khóa, học kỳ, chương trình in ra các lớp tín chỉ đã mở (chưa hủy) trong Niên khóa, học kỳ thuộc khoa mà user đang chọn. Mẫu in: (in theo thứ tự tên môn học, nhóm)
 
-										KHOA XXXXXXXXXXXX
-								Niên khóa: ####-####   Học kỳ: #
+							KHOA XXXXXXXXXXXX
+						Niên khóa: ####-####   Học kỳ: #
 
 | STT | Tên môn học| Nhóm | Họ tên GV giảng | Số SV tối thiểu | Số SV đã đăng ký  |
 |:-------:|:------:|:-------:|:-------:|:-------:|:------:|
@@ -80,10 +80,10 @@ Số lượng lớp đã mở: 1
 
 *-	Danh sách sinh viên đăng ký lớp tín chỉ:*  User nhập vào Niên khóa, học kỳ, môn học, nhóm, chương trình in ra danh sách theo thứ tự tăng dần tên + họ sinh viên với mẫu sau:
 
-							DANH SÁCH SINH VIÊN ĐĂNG KÝ LỚP TÍN CHỈ
-										KHOA XXXXXXXXXXXX
-								Niên khóa: ####-####   Học kỳ: #
-								Môn học: XXXXXXXXXXX – Nhóm: #
+					DANH SÁCH SINH VIÊN ĐĂNG KÝ LỚP TÍN CHỈ
+						KHOA XXXXXXXXXXXX
+					Niên khóa: ####-####   Học kỳ: #
+					Môn học: XXXXXXXXXXX – Nhóm: #
 
 
 | STT | Mã SV | Họ | Tên |	Phái | Mã lớp |
@@ -94,10 +94,10 @@ Số sinh viên đã đăng ký: 1
 
 *- Bảng điểm môn học của 1 lớp tín chỉ:* User nhập vào Niên khóa, học kỳ, môn học, nhóm, chương trình in ra bảng điểm theo thứ tự tăng dần tên + họ với mẫu sau:
 
-									BẢNG ĐIỂM HẾT MÔN
-									KHOA XXXXXXXXXXXX
-								Niên khóa: ####-####   Học kỳ: #
-								Môn học: XXXXXXXXXXX – Nhóm: #
+					BẢNG ĐIỂM HẾT MÔN
+					KHOA XXXXXXXXXXXX
+				Niên khóa: ####-####   Học kỳ: #
+				Môn học: XXXXXXXXXXX – Nhóm: #
 
 
 | STT | Mã SV | Họ | Tên | Điểm chuyên cần |Điểm giữa kỳ| Điểm cuối kỳ | Điểm hết môn  |
@@ -113,9 +113,9 @@ Phiếu điểm gồm có các cột: ```STT | TÊN MÔN HỌC | ĐIỂM```
 
 *- Bảng điểm tổng kết:* Bảng điểm tổng kết của 1 lớp dựa vào mã lớp nhập vào. Điểm thi là điểm lớn nhất của các lần thi. (Cross-Tab) 
 
-								BẢNG ĐIỂM TỔNG KẾT CUỐI KHÓA
-								LỚP: XXXXXXXXXXXXX – KHÓA HỌC: 
-									KHOA: XXXXXXXXXXX
+				BẢNG ĐIỂM TỔNG KẾT CUỐI KHÓA
+				LỚP: XXXXXXXXXXXXX – KHÓA HỌC: 
+					KHOA: XXXXXXXXXXX
 MASV-Họ tên	Môn học 1	Môn học 2	Môn học 3	Môn học 4	Môn học n
 
 
